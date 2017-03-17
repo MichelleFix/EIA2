@@ -15,5 +15,5 @@ document.addEventListener('DOMContentLoaded', function(){
 	
     name = prompt("Wie ist Ihr Name?"); 
     
-    document.getElementById("begrueﬂung").innerHTML += name; 
+    document.getElementById("welcoming").innerHTML += name; 
 });

@@ -10,6 +10,6 @@ nicht kopiert und auch nicht diktiert.
 document.addEventListener('DOMContentLoaded', function () {
     var name;
     name = prompt("Wie ist Ihr Name?");
-    document.getElementById("begrue�ung").innerHTML += name;
+    document.getElementById("welcoming").innerHTML += name;
 });
 //# sourceMappingURL=aufgabe0.js.map
