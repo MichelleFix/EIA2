@@ -40,4 +40,4 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 //Anordnung durch CSS-Befehl in der ts-Datei. 
 //Position absolute. beginn bei 0/0. 2. div bei 0/0+div-Breite 3. Div bei 0/0+ (2*div-Breite) 
-//# sourceMappingURL=Aufgabe3.js.map
+//# sourceMappingURL=Aufgabe3a.js.map
