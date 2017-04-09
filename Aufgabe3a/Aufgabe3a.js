@@ -38,15 +38,12 @@ document.addEventListener('DOMContentLoaded', function () {
         rice *= 2;
     }
     // Ersten 8 Felder markieren
-    var _loop_1 = function(k) {
+    for (var k = 0; k < 8; k++) {
         var firstRow = document.getElementsByTagName("div");
         firstRow[k].addEventListener("click", function () {
             firstRow[k].classList.toggle("marked");
             totalRice();
         });
-    };
-    for (var k = 0; k < 8; k++) {
-        _loop_1(k);
     }
     function totalRice() {
         var markedDiv = document.getElementsByClassName("marked");
@@ -55,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("display").style.display = "none";
         }
         else {
-            document.getElementById("position").style.display = "inline-block";
+            document.getElementById("display").style.display = "inline";
             for (var l = 0; l < markedDiv.length; l++) {
                 total += Number(markedDiv[l].textContent);
                 document.getElementById("display").innerText = "Dezimal: " + totalRice + "\r" + "Hexadezimal: " + total.toString(16);
