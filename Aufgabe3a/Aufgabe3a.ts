@@ -7,15 +7,15 @@
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
- 
+
 document.addEventListener('DOMContentLoaded', function() {
 
     //Variablen deklarieren
- 
+
     let n = 64;
     let lines = 0;
     let rice = 1;
-  
+
     for (var i = 0; i < 64; i++) {           //Bei jeder Wiederholung der Schleife wird ein Div hinzugefügt
         let div = document.createElement("div");  //Div Tag werden erstellt und in den Body geschrieben. 
         document.body.appendChild(div);
@@ -24,30 +24,61 @@ document.addEventListener('DOMContentLoaded', function() {
             div.className = "divFloat";
             lines++;                      // die neue Zeile wird erstellt
         }
-        
+
         if (lines % 2 == 0) {               //wenn eine gerade Zeilen (0,2,4,6) gelesen wird....
             if (i % 2 == 0) {               // werden die geraden Felder schwarz ...
-               div.style.backgroundColor = "black";
+                div.style.backgroundColor = "black";
             }
             else {                          // und die ungeraden Felder weiß
                 div.style.backgroundColor = "white";
             }
         }
-        
-           
+
+
         if (lines % 2 != 0) {               //wenn eine ungerade Zeilen (1,3,5,7) gelesen wird....
             if (i % 2 == 0) {               // werden die geraden Felder weiß ...
-                 div.style.backgroundColor = "white";
+                div.style.backgroundColor = "white";
             }
             else {                          // und die ungeraden Felder schwarz
                 div.style.backgroundColor = "black";
             }
         }
-        
+
         div.innerText = "" + rice;          // vorherige Anzahl der Reiskörner immer mal 2
         rice *= 2;
-     }
-    
+    }
+
+    // Ersten 8 Felder markieren
+
+    for (let k = 0; k < 8; k++) {
+        let firstRow = document.getElementsByTagName("div");
+        firstRow[k].addEventListener("click", function() {
+
+            firstRow[k].classList.toggle("marked");
+            totalRice();
+        });
+    }
+    function totalRice() {
+        var markedDiv = document.getElementsByClassName("marked");
+        var total = 0;
+        if (markedDiv.length == 0) {
+            document.getElementById("display").style.display = "none";
+        }
+        else {
+            document.getElementById("position").style.display = "inline-block";
+
+            for (let l = 0; l < markedDiv.length; l++) {
+               total += Number(markedDiv[l].textContent);
+                document.getElementById("display").innerText ="Dezimal: " + totalRice + "\r" + "Hexadezimal: " + total.toString(16);
+            }
+        }
+
+    }
+
+    document.addEventListener("mousemove", function(Event) {
+        document.getElementById("display").style.left = (Event.clientX + 10) + "px";
+        document.getElementById("display").style.top = (Event.clientY + 10) + "px";
+    });
 });
 
 //Anordnung durch CSS-Befehl in der ts-Datei. 

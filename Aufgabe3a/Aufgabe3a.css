@@ -9,3 +9,7 @@ div {
 .divFloat {
 	clear: both;
 }
+
+.marked{
+	background-color: yellow;
+}
