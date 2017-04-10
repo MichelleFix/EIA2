@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
             document.getElementById("display").style.display = "inline";
             for (var l = 0; l < markedDiv.length; l++) {
                 total += Number(markedDiv[l].textContent);
-                document.getElementById("display").innerText = "Dezimal: " + totalRice + "\r" + "Hexadezimal: " + total.toString(16);
+                document.getElementById("display").innerText = "Dezimal: " + total + "\r" + "Hexadezimal: " + total.toString(16);
             }
         }
     }

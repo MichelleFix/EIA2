@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             for (let l = 0; l < markedDiv.length; l++) {
                total += Number(markedDiv[l].textContent);
-                document.getElementById("display").innerText = "Dezimal: " + totalRice + "\r" + "Hexadezimal: " + total.toString(16);
+                document.getElementById("display").innerText = "Dezimal: " + total + "\r" + "Hexadezimal: " + total.toString(16);
             }
         }
 
