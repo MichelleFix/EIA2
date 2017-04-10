@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function() {
             handCards.push(cards[value]);
 
           
+            
         }
 
     }
