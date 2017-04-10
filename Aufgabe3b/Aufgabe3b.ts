@@ -10,19 +10,18 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     var cards = ["Karo 7", "Karo 8", "Karo 9", "Karo 10", "Karo Bube", "Karo Dame", "Karo König", "Karo As", "Kreuz 7", "Kreuz 8", "Kreuz 9", "Kreuz 10", "Kreuz Bube", "Kreuz Dame", "Kreuz König", "Kreuz As", "Herz 7", "Herz 8", "Herz 9", "Herz 10", "Herz Bube", "Herz Dame", "Herz König", "Herz As", "Pik 7", "Pik 8", "Pik 9", "Pik 10", "Pik Bube", "Pik Dame", "Pik König", "Pik As"];
-    var handCards = []; //leeres Array für die Handkarten
-    var discardPile = []; //leeres Array für den Ablagestapel
+    var handCards: string[] = []; //leeres Array für die Handkarten
+    var discardPile: string[] = []; //leeres Array für den Ablagestapel
 
     document.getElementById("drawpile").addEventListener("click", moveToHand);
     function moveToHand() {
-        if (handCards < 5 && cards.length > 0) {
+        if (handCards.length < 5 && cards.length > 0) {
             var value = (Math.random() * cards.length) + 0;
             var randomCard = cards[value];
             cards.splice(value, 1);
             handCards.push(cards[value]);
 
-            //hier war der Spaß zu Ende, weil ich nicht weiß wie ich die Kartenwerte in die einzelnen Divs schreiben soll.
-
+          
         }
 
     }
