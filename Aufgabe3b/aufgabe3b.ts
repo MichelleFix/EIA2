@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
             cards.splice(value, 1);
             handCards.push(cards[value]);
 
-          
-            
+
+
         }
 
     }
