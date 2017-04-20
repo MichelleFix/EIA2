@@ -13,7 +13,7 @@ div {
 	
 }
 
-#discardpile{
+#discard{
 	background-color: pink;
 	position: absolute;
 	text-align: center;
@@ -22,7 +22,7 @@ div {
 	
 }
 
-.handcards{
+#handcard{
 	background-color: red;
 	display: inline;
 	float: left;

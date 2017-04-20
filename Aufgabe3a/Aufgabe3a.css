@@ -19,8 +19,8 @@ div {
 	height: 5em;
 	width: 10em;
 	padding: 0.5em;
-	z-index: 10;
-	background-color: greay;
+	z-index: 100;
+	background-color: grey;
 	position: absolute;
 	fontsize: 10pt;
 	text-align: center;

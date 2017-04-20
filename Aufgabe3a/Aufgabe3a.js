@@ -6,12 +6,13 @@
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
+// ### Frage: warumwirdes beim anklicken nicht gelb?
 document.addEventListener('DOMContentLoaded', function () {
     //Variablen deklarieren
     var n = 64;
     var lines = 0;
     var rice = 1;
-    for (var i = 0; i < 64; i++) {
+    for (var i = 0; i < n; i++) {
         var div = document.createElement("div"); //Div Tag werden erstellt und in den Body geschrieben. 
         document.body.appendChild(div);
         if (i % 8 == 0) {
@@ -37,11 +38,11 @@ document.addEventListener('DOMContentLoaded', function () {
         div.innerText = "" + rice; // vorherige Anzahl der Reisk�rner immer mal 2
         rice *= 2;
     }
-    // Ersten 8 Felder markieren
+    // Aufgabe3a
     for (var k = 0; k < 8; k++) {
         var firstRow = document.getElementsByTagName("div");
         firstRow[k].addEventListener("click", function () {
-            firstRow[k].classList.toggle("marked");
+            this.classList.toggle("marked");
             totalRice();
         });
     }

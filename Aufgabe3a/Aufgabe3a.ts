@@ -8,15 +8,18 @@
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
 
+// ### Frage: warumwirdes beim anklicken nicht gelb?
+
+
 document.addEventListener('DOMContentLoaded', function() {
 
     //Variablen deklarieren
 
-    let n = 64;
-    let lines = 0;
-    let rice = 1;
+    let n: number = 64;
+    let lines: number = 0;
+    let rice: number = 1;
 
-    for (var i = 0; i < 64; i++) {           //Bei jeder Wiederholung der Schleife wird ein Div hinzugefügt
+    for (var i = 0; i < n; i++) {           //Bei jeder Wiederholung der Schleife wird ein Div hinzugefügt
         let div = document.createElement("div");  //Div Tag werden erstellt und in den Body geschrieben. 
         document.body.appendChild(div);
 
@@ -48,17 +51,17 @@ document.addEventListener('DOMContentLoaded', function() {
         rice *= 2;
     }
 
-    // Ersten 8 Felder markieren
+    // Aufgabe3a
 
     for (var k = 0; k < 8; k++) {
         var firstRow = document.getElementsByTagName("div");
-        firstRow[k].addEventListener("click", function() {
+        firstRow[k].addEventListener("click", function(): void {
 
-            firstRow[k].classList.toggle("marked");
+            this.classList.toggle("marked");
             totalRice();
         });
     }
-    function totalRice() {
+    function totalRice(): void {
         var markedDiv = document.getElementsByClassName("marked");
         var total = 0;
         if (markedDiv.length == 0) {
@@ -68,7 +71,7 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById("display").style.display = "inline";
 
             for (let l = 0; l < markedDiv.length; l++) {
-               total += Number(markedDiv[l].textContent);
+                total += Number(markedDiv[l].textContent);
                 document.getElementById("display").innerText = "Dezimal: " + total + "\r" + "Hexadezimal: " + total.toString(16);
             }
         }
