@@ -6,6 +6,8 @@
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
+//Frage: wie kann ich die erstellten divs ansprechen??? Zeile 51
+//         wie kann es dir variable 'div' auch weiter unten noch erkennen? zeile 61
 document.addEventListener('DOMContentLoaded', function () {
     var cards = ["Karo 7", "Karo 8", "Karo 9", "Karo 10", "Karo Bube", "Karo Dame", "Karo K�nig", "Karo As", "Kreuz 7", "Kreuz 8", "Kreuz 9", "Kreuz 10", "Kreuz Bube", "Kreuz Dame", "Kreuz K�nig", "Kreuz As", "Herz 7", "Herz 8", "Herz 9", "Herz 10", "Herz Bube", "Herz Dame", "Herz K�nig", "Herz As", "Pik 7", "Pik 8", "Pik 9", "Pik 10", "Pik Bube", "Pik Dame", "Pik K�nig", "Pik As"];
     var handCards = []; //leeres Array f�r die Handkarten
@@ -39,16 +41,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
     //Von der Hand auf den Ablagestapel
-    document.getElementById("handcard").addEventListener("click", moveToDiscard); //wie kann ich die erstellten divs ansprechen???
+    document.getElementById("handcard").addEventListener("click", moveToDiscard);
     function moveToDiscard() {
         for (var i = 0; i < handCards.length; i++) {
             handCards.splice(i, 1);
             discard.push(handCards[i]);
             break;
         }
-        if (discard.length > 0) {
-            document.getElementById("discard").textContent = discard[discard.length - 1];
-        }
+        //        document.getElementById("discard").textContent = "Nachziehstapel " + "\r\n" + "Karten: " + cards.length;
+        //        div.parentNode.removeChild(div);
     }
 });
 //# sourceMappingURL=aufgabe3b.js.map

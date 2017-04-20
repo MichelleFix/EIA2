@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     //Von der Hand auf den Ablagestapel
 
-    document.getElementById("handcard").addEventListener("click", moveToDiscard);        
+    document.getElementById("handcard").addEventListener("click", moveToDiscard);
     function moveToDiscard() {
         for (var i = 0; i < handCards.length; i++) {
             handCards.splice(i, 1);
@@ -59,8 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
             break;
         }
 
-        document.getElementById("discard").textContent = "Nachziehstapel " + "\r\n" + "Karten: " + cards.length;
-        div.parentNode.removeChild(div);
+        //        document.getElementById("discard").textContent = "Nachziehstapel " + "\r\n" + "Karten: " + cards.length;
+        //        div.parentNode.removeChild(div);
     }
 
 
