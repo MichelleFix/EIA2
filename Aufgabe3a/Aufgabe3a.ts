@@ -8,7 +8,7 @@
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
 
-// ### Frage: warumwirdes beim anklicken nicht gelb?
+// ### Frage: warum wird es beim anklicken nicht gelb?
 
 
 document.addEventListener('DOMContentLoaded', function() {
