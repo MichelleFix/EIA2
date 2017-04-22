@@ -37,11 +37,12 @@ namespace maumau {
 
             //Die neu erstellten Divs
             let s: CSSStyleDeclaration = div.style;
+            s.position = "relative";
             s.cssFloat = "left"
             s.display = "inline";
             s.textAlign = "center";
             s.backgroundColor = "red";
-            s.margin = "8em";
+            s.margin = "2em";
             s.width = "100px";
             s.height = "200px";
         }

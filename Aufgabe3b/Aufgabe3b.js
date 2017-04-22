@@ -30,11 +30,12 @@ var maumau;
             div.textContent = pulledCard; //darauf soll geschrieben werden, um welche karte es sich handelt
             //Die neu erstellten Divs
             var s = div.style;
+            s.position = "relative";
             s.cssFloat = "left";
             s.display = "inline";
             s.textAlign = "center";
             s.backgroundColor = "red";
-            s.margin = "8em";
+            s.margin = "2em";
             s.width = "100px";
             s.height = "200px";
         }
@@ -64,4 +65,4 @@ var maumau;
         document.getElementById("handcard").addEventListener("click", moveToDiscard);
     });
 })(maumau || (maumau = {}));
-//# sourceMappingURL=aufgabe3b.js.map
+//# sourceMappingURL=Aufgabe3b.js.map
