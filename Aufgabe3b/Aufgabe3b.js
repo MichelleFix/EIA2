@@ -6,8 +6,6 @@
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
-//Frage: wie kann ich die erstellten divs ansprechen??? Zeile 51
-//         wie kann es dir variable 'div' auch weiter unten noch erkennen? zeile 61
 var maumau;
 (function (maumau) {
     var cards = ["Karo 7", "Karo 8", "Karo 9", "Karo 10", "Karo Bube", "Karo Dame", "Karo K�nig", "Karo As", "Kreuz 7", "Kreuz 8", "Kreuz 9", "Kreuz 10", "Kreuz Bube", "Kreuz Dame", "Kreuz K�nig", "Kreuz As", "Herz 7", "Herz 8", "Herz 9", "Herz 10", "Herz Bube", "Herz Dame", "Herz K�nig", "Herz As", "Pik 7", "Pik 8", "Pik 9", "Pik 10", "Pik Bube", "Pik Dame", "Pik K�nig", "Pik As"];
@@ -23,7 +21,7 @@ var maumau;
             cards.splice(value, 1); // EIN Element, das an der Stelle "value" kommt, wird aus dem array entfernt
             handCards.push(pulledCard); // Das entfernte element wird in das array handcards an der stelle 0 eingef�gt. also ganz noch vorne
             document.getElementById("drawpile").textContent = "Nachziehstapel " + "\r\n" + "Karten: " + cards.length;
-            // KURZSCHREIBWEISE:           handCards.push(cards.splice(value, 1)[0]);
+            // KURZSCHREIBWEISE: handCards.push(cards.splice(value, 1)[0]);
             //danach soll ein Div f�r die neue Karte ertsellt werden.
             var div = document.createElement("div");
             document.getElementById("handcard").appendChild(div);
@@ -46,9 +44,9 @@ var maumau;
         var div = _event.target;
         console.log(div);
         for (var i = 0; i < handCards.length; i++) {
-            handCards.splice(i, 1);
             discard.push(handCards[i]);
             currentCard = handCards[i];
+            handCards.splice(i, 1);
             break;
         }
         document.getElementById("discard").textContent = "Ablagestapel " + "\r\n" + "Karten: " + currentCard;
