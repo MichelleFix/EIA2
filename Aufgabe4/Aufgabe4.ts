@@ -6,8 +6,8 @@
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
 
- 
-     namespace L4_Canvas {
+
+namespace L4_Canvas {
     window.addEventListener("load", init);
     let crc2: CanvasRenderingContext2D;
 
@@ -66,7 +66,7 @@
 
         for (var i: number = 0; i < 50; i++) {
             var random: number = Math.floor((Math.random() * 5) + 0);
-            
+
             var x: number = (Math.random() * (400 - 250) + 250);
             var y: number = (Math.random() * (540 - 450) + 450);
             switch (random) {
@@ -195,7 +195,7 @@
     function drawFlower1(_x: number, _y: number, _fillColor: string): void {
         crc2.beginPath();
         crc2.fillStyle = _fillColor;
-        crc2.strokeStyle= _fillColor;
+        crc2.strokeStyle = _fillColor;
         crc2.moveTo(_x, _y);
         //        crc2.lineTo(_x,_y+10);
         crc2.bezierCurveTo(_x + 5, _y + 25, _x + 15, _y + 25, _x + 20, _y);

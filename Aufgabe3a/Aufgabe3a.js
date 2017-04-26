@@ -6,7 +6,6 @@
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
-// ### Frage: warum wird es beim anklicken nicht gelb?
 var schach;
 (function (schach) {
     document.addEventListener('DOMContentLoaded', function () {

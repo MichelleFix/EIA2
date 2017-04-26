@@ -8,7 +8,7 @@
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
 
-// ### Frage: warum wird es beim anklicken nicht gelb?
+
 
 namespace schach {
 
@@ -81,7 +81,7 @@ namespace schach {
 
         console.log(div.style.backgroundColor);
 
-        
+
         div.classList.toggle("marked");
 
 
