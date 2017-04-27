@@ -52,15 +52,13 @@ var maumau;
         document.getElementById("discard").textContent = "Ablagestapel " + "\r\n" + "Karten: " + currentCard;
         div.remove();
     }
-    document.addEventListener('DOMContentLoaded', function () {
-        var cards = ["Karo 7", "Karo 8", "Karo 9", "Karo 10", "Karo Bube", "Karo Dame", "Karo K�nig", "Karo As", "Kreuz 7", "Kreuz 8", "Kreuz 9", "Kreuz 10", "Kreuz Bube", "Kreuz Dame", "Kreuz K�nig", "Kreuz As", "Herz 7", "Herz 8", "Herz 9", "Herz 10", "Herz Bube", "Herz Dame", "Herz K�nig", "Herz As", "Pik 7", "Pik 8", "Pik 9", "Pik 10", "Pik Bube", "Pik Dame", "Pik K�nig", "Pik As"];
-        var handCards = []; //leeres Array f�r die Handkarten
-        var discard = []; //leeres Array f�r den Ablagestapel
+    document.addEventListener("DOMContentLoaded", init);
+    function init() {
         // 1. Bei jedem Klick auf den nachziehstapel muss eine random karte auf die hand wandern. Die Random karte muss aus dem Nachziehstapel gel�scht werden
         document.getElementById("drawpile").addEventListener("click", moveToHand);
         console.log("click draw");
         //Von der Hand auf den Ablagestapel
         document.getElementById("handcard").addEventListener("click", moveToDiscard);
-    });
+    }
 })(maumau || (maumau = {}));
 //# sourceMappingURL=Aufgabe3b.js.map

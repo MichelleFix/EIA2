@@ -12,7 +12,9 @@
 
 namespace schach {
 
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', init);
+
+    function init(_event: Event): void {
 
         //Variablen deklarieren
 
@@ -55,11 +57,11 @@ namespace schach {
 
         // erste Reihe wird angesprochen ( 8 Felder)
         selectedDivs();
-        
+
         // Display Kasten hängt an der Maus
         document.addEventListener("mousemove", drawDisplay);
 
-    });
+    }
     //Ende DOM content loaded
 
 
@@ -108,7 +110,7 @@ namespace schach {
 
     }
 
-    function drawDisplay(_event:MouseEvent): void {
+    function drawDisplay(_event: MouseEvent): void {
         document.getElementById("display").style.left = (_event.clientX + 10) + "px";
         document.getElementById("display").style.top = (_event.clientY + 10) + "px";
     }

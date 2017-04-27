@@ -28,7 +28,7 @@ namespace maumau {
             // KURZSCHREIBWEISE: handCards.push(cards.splice(value, 1)[0]);
 
             //danach soll ein Div für die neue Karte ertsellt werden.
-            
+
             var div: HTMLDivElement = document.createElement("div");
             document.getElementById("handcard").appendChild(div);
             div.textContent = pulledCard;                            //darauf soll geschrieben werden, um welche karte es sich handelt
@@ -65,13 +65,8 @@ namespace maumau {
         div.remove();
     }
 
-    document.addEventListener('DOMContentLoaded', function(): void {
-
-        var cards = ["Karo 7", "Karo 8", "Karo 9", "Karo 10", "Karo Bube", "Karo Dame", "Karo König", "Karo As", "Kreuz 7", "Kreuz 8", "Kreuz 9", "Kreuz 10", "Kreuz Bube", "Kreuz Dame", "Kreuz König", "Kreuz As", "Herz 7", "Herz 8", "Herz 9", "Herz 10", "Herz Bube", "Herz Dame", "Herz König", "Herz As", "Pik 7", "Pik 8", "Pik 9", "Pik 10", "Pik Bube", "Pik Dame", "Pik König", "Pik As"];
-        var handCards: string[] = []; //leeres Array für die Handkarten
-        var discard: string[] = []; //leeres Array für den Ablagestapel
-
-
+    document.addEventListener("DOMContentLoaded", init);
+    function init(): void {
         // 1. Bei jedem Klick auf den nachziehstapel muss eine random karte auf die hand wandern. Die Random karte muss aus dem Nachziehstapel gelöscht werden
 
         document.getElementById("drawpile").addEventListener("click", moveToHand);
@@ -80,5 +75,5 @@ namespace maumau {
         //Von der Hand auf den Ablagestapel
         document.getElementById("handcard").addEventListener("click", moveToDiscard);
 
-    });
+    }
 }

@@ -8,7 +8,8 @@
 //nicht kopiert und auch nicht diktiert.
 var schach;
 (function (schach) {
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', init);
+    function init(_event) {
         //Variablen deklarieren
         var n = 64;
         var lines = 0;
@@ -44,7 +45,7 @@ var schach;
         selectedDivs();
         // Display Kasten h�ngt an der Maus
         document.addEventListener("mousemove", drawDisplay);
-    });
+    }
     //Ende DOM content loaded
     function selectedDivs() {
         var firstRow = document.getElementsByTagName("div");
