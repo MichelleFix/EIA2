@@ -53,12 +53,12 @@ namespace schach {
             rice *= 2;
         }
 
+        // erste Reihe wird angesprochen ( 8 Felder)
         selectedDivs();
+        
+        // Display Kasten hängt an der Maus
+        document.addEventListener("mousemove", drawDisplay);
 
-        document.addEventListener("mousemove", function(Event) {
-            document.getElementById("display").style.left = (Event.clientX + 10) + "px";
-            document.getElementById("display").style.top = (Event.clientY + 10) + "px";
-        });
     });
     //Ende DOM content loaded
 
@@ -107,6 +107,13 @@ namespace schach {
         }
 
     }
+
+    function drawDisplay(_event:MouseEvent): void {
+        document.getElementById("display").style.left = (_event.clientX + 10) + "px";
+        document.getElementById("display").style.top = (_event.clientY + 10) + "px";
+    }
+
+
 }
 //Anordnung durch CSS-Befehl in der ts-Datei. 
 //Position absolute. beginn bei 0/0. 2. div bei 0/0+div-Breite 3. Div bei 0/0+ (2*div-Breite)

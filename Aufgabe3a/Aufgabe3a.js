@@ -40,11 +40,10 @@ var schach;
             div.innerText = "" + rice; // vorherige Anzahl der Reisk�rner immer mal 2
             rice *= 2;
         }
+        // erste Reihe wird angesprochen ( 8 Felder)
         selectedDivs();
-        document.addEventListener("mousemove", function (Event) {
-            document.getElementById("display").style.left = (Event.clientX + 10) + "px";
-            document.getElementById("display").style.top = (Event.clientY + 10) + "px";
-        });
+        // Display Kasten h�ngt an der Maus
+        document.addEventListener("mousemove", drawDisplay);
     });
     //Ende DOM content loaded
     function selectedDivs() {
@@ -77,6 +76,10 @@ var schach;
                 document.getElementById("display").innerText = "Dezimal: " + total + "\r" + "Hexadezimal: " + total.toString(16);
             }
         }
+    }
+    function drawDisplay(_event) {
+        document.getElementById("display").style.left = (_event.clientX + 10) + "px";
+        document.getElementById("display").style.top = (_event.clientY + 10) + "px";
     }
 })(schach || (schach = {}));
 //Anordnung durch CSS-Befehl in der ts-Datei. 
