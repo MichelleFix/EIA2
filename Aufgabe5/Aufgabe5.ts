@@ -14,7 +14,7 @@ namespace L4_Canvas {
     var n: number = 10;
     let x: number[] = [];
     let y: number[] = [];
-    var imgData: ImageData;
+    let imgData: ImageData;
 
 
     let canvas: HTMLCanvasElement;
@@ -103,22 +103,24 @@ namespace L4_Canvas {
             }
         }
 
+        // ##### Aufgabe 5 #####
+
         // Bienenkorb
         drawBasket();
 
         // Biene
-        drawBee(170, 260);
+        drawBee(170, 400);
 
-        flyBees();
+        // Bienen fliegen lassen
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
+        flyBees();
 
 
-        // ##### Aufgabe 5
-        // 10 Bienen zeichnen lassen
+        // 10 Bienen zeichnen
 
         for (let i: number = 0; i < n; i++) {
             x[i] = 170;
-            y[i] = 270;
+            y[i] = 400;
         }
 
         window.setTimeout(flyBees, 100);
@@ -273,6 +275,7 @@ namespace L4_Canvas {
         crc2.beginPath();
         crc2.scale(1, 1.5);
         crc2.arc(170, 260, 25, 0, 2 * Math.PI, true);
+
         crc2.fillStyle = "#61210B";
         crc2.strokeStyle = "#61210B";
         crc2.closePath();
@@ -281,6 +284,7 @@ namespace L4_Canvas {
 
         crc2.beginPath();
         crc2.arc(170, 267, 10, 0, 2 * Math.PI, true);
+        crc2.setTransform(1, 0, 0, 1, 0, 0);
         crc2.fillStyle = "black";
         crc2.strokeStyle = "black";
         crc2.closePath();
@@ -290,14 +294,65 @@ namespace L4_Canvas {
 
     // Biene zeichen
 
-    function drawBee(_x: number, _y: number): void {
+    function drawBee(_x: number, _y: number): void {        // x = 170 y = 400  , _scaleX: number, _scaleY:number
+
+        // Körper
         crc2.beginPath();
-        crc2.arc(_x, _y, 5, 0, 2 * Math.PI, true);
         crc2.fillStyle = "yellow";
         crc2.strokeStyle = "black";
+        crc2.moveTo(_x - 10, _y);
+        crc2.bezierCurveTo(_x + 3.75, _y - 7, _x + 11.25, _y - 7, _x + 15, _y);
+        crc2.bezierCurveTo(_x + 11.25, _y + 7, _x + 3.75, _y + 7, _x - 15, _y);
         crc2.closePath();
         crc2.fill();
         crc2.stroke();
+
+        // Kopf
+        crc2.beginPath();
+        crc2.fillStyle = "black";
+        crc2.strokeStyle = "black";
+        crc2.moveTo(_x + 15, _y);
+        crc2.arc(_x + 15, _y, 5, 0, 2 * Math.PI, true);
+        crc2.closePath();
+        crc2.fill();
+        crc2.stroke();
+
+        //Flügel
+        crc2.beginPath();
+        crc2.fillStyle = "#CEF6F5";
+        crc2.strokeStyle = "#CEF6F5";
+        crc2.moveTo(_x + 11, _y - 3);
+        crc2.bezierCurveTo(_x + 20, _y - 20, _x + 2, _y - 20, _x + 13, _y - 3);
+        crc2.closePath();
+        crc2.fill();
+        crc2.stroke();
+
+        // Streifen
+
+        crc2.beginPath();
+        crc2.strokeStyle = "black";
+        crc2.moveTo(_x -2 , _y - 4);
+        crc2.lineTo(_x -2, _y + 4);
+        crc2.closePath();
+        crc2.fill();
+        crc2.stroke();
+        
+        crc2.beginPath();
+        crc2.strokeStyle = "black";
+        crc2.moveTo(_x +1 , _y -6);
+        crc2.lineTo(_x +1, _y + 6);
+        crc2.closePath();
+        crc2.fill();
+        crc2.stroke();
+        
+        crc2.beginPath();
+        crc2.strokeStyle = "black";
+        crc2.moveTo(_x +4 , _y -6.5);
+        crc2.lineTo(_x +4, _y + 6.5);
+        crc2.closePath();
+        crc2.fill();
+        crc2.stroke();
+       
 
     }
 
@@ -308,9 +363,8 @@ namespace L4_Canvas {
         console.log("Animate called");
 
 
+        crc2.putImageData(imgData, 0, 0); // Laden der Landschaft
 
-        //      crc2.putImageData(imgData, 0, 0); // Laden der Landschaft
-        //        console.log("canvas")
 
         for (let i: number = 0; i < n; i++) {
             x[i] += Math.floor(Math.random() * 10) - 5;
@@ -323,32 +377,25 @@ namespace L4_Canvas {
 
             if (y[i] > canvas.height) {     // Wenn die Bienen unten aus dem Bildschirmrand rausfliegen, fliegen sie oben wieder rein
 
-                y[i] = 0 ;
+                y[i] = 0;
             }
 
             if (y[i] < 0) {                // Wenn die Biene oben rausfliegt, kommt sie unten wieder raus
 
                 y[i] = canvas.height;
             }
-
-
-
             drawBee(x[i], y[i]);
             console.log("Bienchen")
         }
 
         window.setTimeout(flyBees, 20);
     }
-    
-      function clickCanvas (_event:Event):void{
-          
+
+    function clickCanvas(_event: Event): void {
+
         x.push(170);
-        y.push(260);  
+        y.push(400);
         n++;
-      
-      
-      
-      
-      }
+    }
 
 }
