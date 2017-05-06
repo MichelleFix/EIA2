@@ -6,9 +6,9 @@
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
 
-// zeile 395: Wie schreibe ich x[i] um, sodass es auf s reagiert?
 
-// Wann muss drawBiene aufgerufen werden und wie! 
+
+
 
 
 namespace L6_Canvas {
