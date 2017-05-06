@@ -1,4 +1,4 @@
-//Aufgabe: Aufgabe 6
+//Aufgabe: Aufgabe 6a
 //Name: Michelle Fix
 //Matrikel: 254671
 //Datum: 23.04.2017
@@ -6,14 +6,13 @@
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
 // zeile 395: Wie schreibe ich x[i] um, sodass es auf s reagiert?
+// Wann muss drawBiene aufgerufen werden und wie! 
 var L6_Canvas;
 (function (L6_Canvas) {
     window.addEventListener("load", init);
     var crc2;
     var bees = [];
     var n = 10; // Anzahl der Bienen
-    //    let x: number[] = [];
-    //    let y: number[] = [];
     var imgData;
     var canvas;
     canvas = document.getElementsByTagName("canvas")[0];
@@ -78,17 +77,18 @@ var L6_Canvas;
         // ##### Aufgabe 5 #####
         // Bienenkorb
         drawBasket();
-        // Biene
-        //        drawBee(_s.x,);
+        //        // Biene
+        //        drawBee(bees.x, bees.y, bees.color);
         // Bienen fliegen lassen
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
         flyBees();
         // 10 Bienen zeichnen
         for (var i_1 = 0; i_1 < n; i_1++) {
-            var s = { x: 0, y: 0 };
-            s.x = Math.random() * 170;
-            s.y = Math.random() * 400;
-            bees[i_1] = s;
+            var b = { x: 0, y: 0, color: "" };
+            b.x = Math.random() * 170;
+            b.y = Math.random() * 400;
+            b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+            bees[i_1] = b;
         }
         window.setTimeout(flyBees, 200);
         //        canvas.addEventListener("click", clickCanvas);
@@ -225,14 +225,14 @@ var L6_Canvas;
         crc2.stroke();
     }
     // Biene zeichen
-    function drawBee(_s) {
+    function drawBee(_b) {
         // K�rper
         crc2.beginPath();
         crc2.fillStyle = "yellow";
         crc2.strokeStyle = "black";
-        crc2.moveTo(_s.x - 10, _s.y);
-        crc2.bezierCurveTo(_s.x + 3.75, _s.y - 7, _s.x + 11.25, _s.y - 7, _s.x + 15, _s.y);
-        crc2.bezierCurveTo(_s.x + 11.25, _s.y + 7, _s.x + 3.75, _s.y + 7, _s.x - 15, _s.y);
+        crc2.moveTo(_b.x - 10, _b.y);
+        crc2.bezierCurveTo(_b.x + 3.75, _b.y - 7, _b.x + 11.25, _b.y - 7, _b.x + 15, _b.y);
+        crc2.bezierCurveTo(_b.x + 11.25, _b.y + 7, _b.x + 3.75, _b.y + 7, _b.x - 15, _b.y);
         crc2.closePath();
         crc2.fill();
         crc2.stroke();
@@ -240,8 +240,8 @@ var L6_Canvas;
         crc2.beginPath();
         crc2.fillStyle = "black";
         crc2.strokeStyle = "black";
-        crc2.moveTo(_s.x + 15, _s.y);
-        crc2.arc(_s.x + 15, _s.y, 5, 0, 2 * Math.PI, true);
+        crc2.moveTo(_b.x + 15, _b.y);
+        crc2.arc(_b.x + 15, _b.y, 5, 0, 2 * Math.PI, true);
         crc2.closePath();
         crc2.fill();
         crc2.stroke();
@@ -249,30 +249,30 @@ var L6_Canvas;
         crc2.beginPath();
         crc2.fillStyle = "#CEF6F5";
         crc2.strokeStyle = "#CEF6F5";
-        crc2.moveTo(_s.x + 11, _s.y - 3);
-        crc2.bezierCurveTo(_s.x + 20, _s.y - 20, _s.x + 2, _s.y - 20, _s.x + 13, _s.y - 3);
+        crc2.moveTo(_b.x + 11, _b.y - 3);
+        crc2.bezierCurveTo(_b.x + 20, _b.y - 20, _b.x + 2, _b.y - 20, _b.x + 13, _b.y - 3);
         crc2.closePath();
         crc2.fill();
         crc2.stroke();
         // Streifen
         crc2.beginPath();
         crc2.strokeStyle = "black";
-        crc2.moveTo(_s.x - 2, _s.y - 4);
-        crc2.lineTo(_s.x - 2, _s.y + 4);
+        crc2.moveTo(_b.x - 2, _b.y - 4);
+        crc2.lineTo(_b.x - 2, _b.y + 4);
         crc2.closePath();
         crc2.fill();
         crc2.stroke();
         crc2.beginPath();
         crc2.strokeStyle = "black";
-        crc2.moveTo(_s.x + 1, _s.y - 6);
-        crc2.lineTo(_s.x + 1, _s.y + 6);
+        crc2.moveTo(_b.x + 1, _b.y - 6);
+        crc2.lineTo(_b.x + 1, _b.y + 6);
         crc2.closePath();
         crc2.fill();
         crc2.stroke();
         crc2.beginPath();
         crc2.strokeStyle = "black";
-        crc2.moveTo(_s.x + 4, _s.y - 6.5);
-        crc2.lineTo(_s.x + 4, _s.y + 6.5);
+        crc2.moveTo(_b.x + 4, _b.y - 6.5);
+        crc2.lineTo(_b.x + 4, _b.y + 6.5);
         crc2.closePath();
         crc2.fill();
         crc2.stroke();
@@ -282,24 +282,19 @@ var L6_Canvas;
         console.log("Animate called");
         crc2.putImageData(imgData, 0, 0); // Laden der Landschaft
         for (var i = 0; i < n; i++) {
-            var s = bees[i];
-            s.x += Math.floor(Math.random() * 10) - 5;
-            s.y += Math.random() * 4 - 2;
-            //            if (s.x[i] < 0 - 10) {          //Wenn sie nach links aus dem Fenster fliegen kommt sie rechts wieder rein
-            //
-            //                _s.x[i] = canvas.width + 10;     // +10 ist der Radius der Biene, damit es einen flie�eden �bergang gibt
-            //            }
-            //
-            //            if (_s.y[i] > canvas.height) {     // Wenn die Bienen unten aus dem Bildschirmrand rausfliegen, fliegen sie oben wieder rein
-            //
-            //                _s.y[i] = 0;
-            //            }
-            //
-            //            if (_s.y[i] < 0) {                // Wenn die Biene oben rausfliegt, kommt sie unten wieder raus
-            //
-            //                _s.y[i] = canvas.height;
-            //            }
-            drawBee(s);
+            var b = bees[i];
+            b.x += Math.floor(Math.random() * 10) - 5;
+            b.y += Math.random() * 4 - 2;
+            if (b.x < 0 - 10) {
+                b.x = canvas.width + 10; // +10 ist der Radius der Biene, damit es einen flie�eden �bergang gibt
+            }
+            if (b.y > canvas.height) {
+                b.y = 0;
+            }
+            if (b.y < 0) {
+                b.y = canvas.height;
+            }
+            drawBee(b);
             console.log("Bienchen");
         }
         window.setTimeout(flyBees, 20);
