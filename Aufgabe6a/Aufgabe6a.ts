@@ -406,7 +406,7 @@ namespace L6_Canvas {
 
     function clickCanvas(_event: Event): void {
 
-        s.x.push(170);
+        bees.x.push(170);
         s.y.push(400);
         n++;
     }
