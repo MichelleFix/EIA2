@@ -26,6 +26,7 @@ namespace L6_Canvas {
     let bees: Bee[] = [];
     var n: number = 10;         // Anzahl der Bienen
 
+    // Canvas wird nach jeder Bienenbewegung neu geladen
     let imgData: ImageData;
 
 
@@ -35,12 +36,6 @@ namespace L6_Canvas {
     console.log(canvas);
 
     function init(_event: Event): void {
-
-
-
-        //gibt es mehrere Canvas tags im Html, kann ich das gewollte element mit der zahl in der eckigen klammer rauspicken
-        // bsp: document.getElementsByTagName("canvas")[4]
-
 
         crc2 = canvas.getContext('2d');
 
@@ -91,7 +86,10 @@ namespace L6_Canvas {
         drawFlower2(350, 500, 10, "#FF0040");
         drawFlower2(370, 450, 10, "#FF8000");
 
+        // Bienenkorb
+        drawBasket();
 
+        // Blumen an random Stelle plazieren
         for (var i: number = 0; i < 50; i++) {
             var random: number = Math.floor((Math.random() * 5) + 0);
 
@@ -115,33 +113,29 @@ namespace L6_Canvas {
             }
         }
 
-        // ##### Aufgabe 5 #####
+        // 10 Bienen zeichnen
 
-        // Bienenkorb
-        drawBasket();
+        for (let i: number = 0; i < n; i++) {
+            let b: Bee = { x: 0, y: 0, color: " " };
+            b.x = 170;
+            b.y = 400;
+            b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+            bees[i] = b;
+        }
 
-        //        // Biene
-        //        drawBee(bees.x, bees.y, bees.color);
 
         // Bienen fliegen lassen
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
         flyBees();
 
 
-        // 10 Bienen zeichnen
-
-        for (let i: number = 0; i < n; i++) {
-            let b: Bee = { x: 0, y: 0, color: "" };
-            b.x = Math.random() * 170;
-            b.y = Math.random() * 400;
-            b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-            bees[i] = b;
-        }
 
         window.setTimeout(flyBees, 200);
 
-        //        canvas.addEventListener("click", clickCanvas);
+        canvas.addEventListener("click", clickCanvas);
     }
+
+
     // #######################################  Content Loaded ENDE ######################################
 
     // Sonne
@@ -308,7 +302,7 @@ namespace L6_Canvas {
 
         // Körper
         crc2.beginPath();
-        crc2.fillStyle = "yellow";
+        crc2.fillStyle = _b.color;
         crc2.strokeStyle = "black";
         crc2.moveTo(_b.x - 10, _b.y);
         crc2.bezierCurveTo(_b.x + 3.75, _b.y - 7, _b.x + 11.25, _b.y - 7, _b.x + 15, _b.y);
@@ -403,11 +397,10 @@ namespace L6_Canvas {
         window.setTimeout(flyBees, 20);
     }
 
-//    function clickCanvas(_event: Event): void {       
-//
-//        x.push(170);  Syntax?????
-//        y.push(400);
-//        n++;
-//    }
+    function clickCanvas(_event: Event): void {
+        bees.push({ x: 170, y: 400, color: "yellow" });
+        bees.push({ x: 170, y: 400, color: "yellow" });
+        n++;
+    }
 
 }
