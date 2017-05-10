@@ -21,7 +21,7 @@ var StudiVZ;
         }
     }
     function saveData(_input) {
-        var array = _input.split(", "); // bei jedem Komma wir das array zerhackt
+        var array = _input.split(","); // bei jedem Komma wir das array zerhackt
         var s = {
             matrikel: parseInt(array[0]),
             name: array[1],
@@ -43,10 +43,11 @@ var StudiVZ;
     function queryData(_matrikel) {
         var result;
         for (var i = 0; i < students.length; i++) {
-            if (students[i].matrikel == _matrikel)
-                var sex = (students[i].sex).toString(); // sex irgendwie in typ string umwandeln wie kann 
-            result = students[i];
-            return "Welcome back " + students[i].firstname + "! : \nMatrikelnummer: " + students[i].matrikel + "\nName: " + students[i].name + "\nVorname: " + students[i].firstname + "\nAlter: " + students[i].age + "\nGeschlecht: " + students[i].sex + "\nKommentar: " + students[i].comment;
+            var sex = void 0;
+            if (students[i].matrikel == _matrikel) {
+                var sex_1 = (students[i].sex).toString(); // sex irgendwie in typ string umwandeln wie kann 
+                return "Welcome back " + students[i].firstname + "! : \nMatrikelnummer: " + students[i].matrikel + "\nName: " + students[i].name + "\nVorname: " + students[i].firstname + "\nAlter: " + students[i].age + "\nGeschlecht: " + students[i].sex + "\nKommentar: " + students[i].comment;
+            }
         }
         return "Die eingegebene Matrikelnummer ist nicht vorhanden";
     }

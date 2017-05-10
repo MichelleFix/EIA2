@@ -8,8 +8,8 @@ namespace StudiVZ {
         comment: string;
 
     }
-    var students: StudentData[] = [];
-    var stop: boolean = false;
+    let students: StudentData[] = [];
+    let stop: boolean = false;
 
     while (!stop) {
         var action: string = prompt("Datensatz anlegen (n), abfragen(a) oder Programm beenden (s)\nn,a oder s eingeben");
@@ -17,12 +17,12 @@ namespace StudiVZ {
         switch (action) {
             case "n":
             case "N":
-                var input: string = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0 = w oder 1 = m) und Kommentar");
+                let input: string = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0 = w oder 1 = m) und Kommentar");
                 alert(saveData(input));
                 break;
             case "a":
             case "A":
-                var matrikel: number = parseInt(prompt("Eingabe Matrikelnummer"));
+                let matrikel: number = parseInt(prompt("Eingabe Matrikelnummer"));
                 alert(queryData(matrikel));
                 break;
             case "s":
@@ -32,7 +32,7 @@ namespace StudiVZ {
     }
 
     function saveData(_input: string): string {
-        let array: string[] = _input.split(", ");       // bei jedem Komma wir das array zerhackt
+        let array: string[] = _input.split(",");       // bei jedem Komma wir das array zerhackt
         let s: StudentData = {
             matrikel: parseInt(array[0]),
             name: array[1],
@@ -56,11 +56,13 @@ namespace StudiVZ {
     function queryData(_matrikel: number): string {
         let result: StudentData;
         for (let i: number = 0; i < students.length; i++) {
-            if (students[i].matrikel == _matrikel)
-                var sex = (students[i].sex).toString();   // sex irgendwie in typ string umwandeln wie kann 
-
-            result = students[i];
-            return "Welcome back " + students[i].firstname + "! : \nMatrikelnummer: " + students[i].matrikel + "\nName: " + students[i].name + "\nVorname: " + students[i].firstname + "\nAlter: " + students[i].age + "\nGeschlecht: " + students[i].sex + "\nKommentar: " + students[i].comment;
+            let sex: string;
+            if (students[i].matrikel == _matrikel) {
+                let sex = (students[i].sex).toString(); // sex irgendwie in typ string umwandeln wie kann 
+                return "Welcome back " + students[i].firstname + "! : \nMatrikelnummer: " + students[i].matrikel + "\nName: " + students[i].name + "\nVorname: " + students[i].firstname + "\nAlter: " + students[i].age + "\nGeschlecht: " + students[i].sex + "\nKommentar: " + students[i].comment;
+            }
+//            result = students[i];
+            
 
         }
 

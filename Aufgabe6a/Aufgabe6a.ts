@@ -17,6 +17,7 @@ namespace L6_Canvas {
         x: number;
         y: number;
         color: string;
+        wingSize: number;
 
     }
 
@@ -116,10 +117,11 @@ namespace L6_Canvas {
         // 10 Bienen zeichnen
 
         for (let i: number = 0; i < n; i++) {
-            let b: Bee = { x: 0, y: 0, color: " " };
+            let b: Bee = { x: 0, y: 0, color: " ", wingSize: 0 };
             b.x = 170;
             b.y = 400;
             b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
+            b.wingSize = (Math.random() * (40 - 10) + 10);
             bees[i] = b;
         }
 
@@ -326,7 +328,7 @@ namespace L6_Canvas {
         crc2.fillStyle = "#CEF6F5";
         crc2.strokeStyle = "#CEF6F5";
         crc2.moveTo(_b.x + 11, _b.y - 3);
-        crc2.bezierCurveTo(_b.x + 20, _b.y - 20, _b.x + 2, _b.y - 20, _b.x + 13, _b.y - 3);
+        crc2.bezierCurveTo(_b.x + _b.wingSize, _b.y - _b.wingSize, _b.x + (_b.wingSize - 18), _b.y - _b.wingSize,_b.x + 11, _b.y - 3); //_b.x + 20, _b.y - 20, _b.x + 2, _b.y - 20, _b.x + 13, _b.y - 3
         crc2.closePath();
         crc2.fill();
         crc2.stroke();
@@ -398,8 +400,8 @@ namespace L6_Canvas {
     }
 
     function clickCanvas(_event: Event): void {
-        bees.push({ x: 170, y: 400, color: "yellow" });
-        bees.push({ x: 170, y: 400, color: "yellow" });
+        bees.push({ x: 170, y: 400, color:"yellow", wingSize: 20});
+        bees.push({ x: 170, y: 400, color: "yellow", wingSize: 20 });
         n++;
     }
 
