@@ -7,19 +7,21 @@
 //nicht kopiert und auch nicht diktiert.
 
 namespace L7_Classes {
+    window.addEventListener("load", init);
+    export let canvas: HTMLCanvasElement;
     export let crc2: CanvasRenderingContext2D;
+
     let bees: Bee[] = [];
     var n: number = 10;         // Anzahl der Bienen
-let imgData: ImageData;
-    window.addEventListener("load", init);
+    let imgData: ImageData;
+
 
     function init(_event: Event): void {
-        let canvas: HTMLCanvasElement;
+
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
 
-        
-        
+
         // Himmel
         crc2.fillStyle = "#A9D0F5";
         crc2.fillRect(0, 0, canvas.width, canvas.height);
@@ -57,50 +59,30 @@ let imgData: ImageData;
         //Palmenblätter
         drawPalm();
 
+        // neue Blume zeichnen
+        let newFlower: Flower = new Flower(0, 0);     // verbindung mit den constructor
 
-        // Blume 1
-        drawFlower1(350, 520, "#FA58F4");
+        // Blume an random Stelle plazieren
+        newFlower.setRandomPlace();
 
-        // Blume 2
-        drawFlower2(400, 480, 10, "#F2F5A9");
-        drawFlower2(350, 500, 10, "#FF0040");
-        drawFlower2(370, 450, 10, "#FF8000");
+        //        // Blume 1
+        //        drawFlower1(350, 520, "#FA58F4");
+        //
+        //        // Blume 2
+        //        drawFlower2(400, 480, 10, "#F2F5A9");
+        //        drawFlower2(350, 500, 10, "#FF0040");
+        //        drawFlower2(370, 450, 10, "#FF8000");
 
         // Bienenkorb
         drawBasket();
 
-        // Blumen an random Stelle plazieren
-        for (var i: number = 0; i < 50; i++) {
-            var random: number = Math.floor((Math.random() * 5) + 0);
 
-            var randomX: number = (Math.random() * (400 - 250) + 250);
-            var randomY: number = (Math.random() * (540 - 450) + 450);
-            switch (random) {
-                case 0:
-                    drawFlower1(randomX, randomY, "#FA58F4");
-                    break;
-
-                case 1:
-                    drawFlower1(randomX, randomY, "#2ECCFA");
-                    break;
-
-                case 2:
-                    drawFlower1(randomX, randomY, "#6A0888");
-                    break;
-
-                default:
-                    break;
-            }
-        }
 
         // 10 Bienen zeichnen
 
         for (let i: number = 0; i < n; i++) {
-            let b: Bee = new Bee (170,400);// { x: 0, y: 0, color: " ", wingSize: 0 };
+            let b: Bee = new Bee(170, 400);// { x: 0, y: 0, color: " ", wingSize: 0 };
             bees[i] = b;
-//            b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
-//            b.wingSize = (Math.random() * (40 - 10) + 10);
-            
         }
 
 
@@ -215,40 +197,8 @@ let imgData: ImageData;
         crc2.stroke();
     }
 
-    // BLume
-
-    function drawFlower1(_x: number, _y: number, _fillColor: string): void {
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor;
-        crc2.strokeStyle = _fillColor;
-        crc2.moveTo(_x, _y);
-        //        crc2.lineTo(_x,_y+10);
-        crc2.bezierCurveTo(_x + 5, _y + 25, _x + 15, _y + 25, _x + 20, _y);
-        crc2.lineTo(_x + 15, _y + 5);
-        crc2.lineTo(_x + 10, _y);
-        crc2.lineTo(_x + 5, _y + 5);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
 
 
-    }
-
-    // BLume 2 
-
-    function drawFlower2(_x: number, _y: number, _r: number, _fillColor: string): void {
-        crc2.beginPath();
-        crc2.fillStyle = _fillColor; // "#F2F5A9"
-        crc2.strokeStyle = _fillColor;
-        crc2.arc(_x, _y, _r, 0, 2 * Math.PI, true); //(400, 480, 10, 0, 2 * Math.PI, true)
-        crc2.moveTo(_x, _y + 10);
-        crc2.lineTo(_x, _y + 20);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-
-    }
 
     // Bienenkorb
     function drawBasket(): void {
@@ -273,69 +223,6 @@ let imgData: ImageData;
         crc2.stroke();
     }
 
-    // Biene zeichen
-
-    function drawBee(_b: Bee): void {        // x = 170 y = 400  , _scaleX: number, _scaleY:number
-
-        // Körper
-        crc2.beginPath();
-        crc2.fillStyle = _b.color;
-        crc2.strokeStyle = "black";
-        crc2.moveTo(_b.x - 10, _b.y);
-        crc2.bezierCurveTo(_b.x + 3.75, _b.y - 7, _b.x + 11.25, _b.y - 7, _b.x + 15, _b.y);
-        crc2.bezierCurveTo(_b.x + 11.25, _b.y + 7, _b.x + 3.75, _b.y + 7, _b.x - 15, _b.y);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        // Kopf
-        crc2.beginPath();
-        crc2.fillStyle = "black";
-        crc2.strokeStyle = "black";
-        crc2.moveTo(_b.x + 15, _b.y);
-        crc2.arc(_b.x + 15, _b.y, 5, 0, 2 * Math.PI, true);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        //Flügel
-        crc2.beginPath();
-        crc2.fillStyle = "#CEF6F5";
-        crc2.strokeStyle = "#CEF6F5";
-        crc2.moveTo(_b.x + 11, _b.y - 3);
-        crc2.bezierCurveTo(_b.x + _b.wingSize, _b.y - _b.wingSize, _b.x + (_b.wingSize - 18), _b.y - _b.wingSize, _b.x + 11, _b.y - 3); //_b.x + 20, _b.y - 20, _b.x + 2, _b.y - 20, _b.x + 13, _b.y - 3
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        // Streifen
-
-        crc2.beginPath();
-        crc2.strokeStyle = "black";
-        crc2.moveTo(_b.x - 2, _b.y - 4);
-        crc2.lineTo(_b.x - 2, _b.y + 4);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        crc2.beginPath();
-        crc2.strokeStyle = "black";
-        crc2.moveTo(_b.x + 1, _b.y - 6);
-        crc2.lineTo(_b.x + 1, _b.y + 6);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-        crc2.beginPath();
-        crc2.strokeStyle = "black";
-        crc2.moveTo(_b.x + 4, _b.y - 6.5);
-        crc2.lineTo(_b.x + 4, _b.y + 6.5);
-        crc2.closePath();
-        crc2.fill();
-        crc2.stroke();
-
-
-    }
 
     // Bienen fliegen lassen
 
@@ -351,8 +238,6 @@ let imgData: ImageData;
 
             let b: Bee = bees[i];
 
-            b.x += Math.floor(Math.random() * 10) - 5;
-            b.y += Math.random() * 4 - 2;
 
             if (b.x < 0 - 10) {          //Wenn sie nach links aus dem Fenster fliegen kommt sie rechts wieder rein
 
@@ -367,7 +252,7 @@ let imgData: ImageData;
             if (b.y < 0) {                // Wenn die Biene oben rausfliegt, kommt sie unten wieder raus
                 b.y = canvas.height;
             }
-            drawBee(b);
+            b.update();
             console.log("Bienchen")
         }
 
@@ -375,8 +260,9 @@ let imgData: ImageData;
     }
 
     function clickCanvas(_event: Event): void {
-        bees.push({ x: 170, y: 400, color: "yellow", wingSize: 20 });
-        bees.push({ x: 170, y: 400, color: "yellow", wingSize: 20 });
+
+        let newBee: Bee = new Bee(170, 400); // es wird auf den constructor zugegriffen, der die beiden Parameter x und y verlangt        
+        bees.push(newBee);
         n++;
     }
 
