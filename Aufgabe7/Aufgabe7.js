@@ -1,7 +1,7 @@
-//Aufgabe: Aufgabe 6a
+//Aufgabe: Aufgabe 7
 //Name: Michelle Fix
 //Matrikel: 254671
-//Datum: 23.04.2017
+//Datum: 14.05.2017
 //Hiermit versichere ich, dass ich diesen
 //Code selbst geschrieben habe. Er wurde
 //nicht kopiert und auch nicht diktiert.
@@ -172,7 +172,6 @@ var L7_Classes;
     }
     // Bienen fliegen lassen
     function flyBees() {
-        console.log("Animate called");
         L7_Classes.crc2.putImageData(imgData, 0, 0); // Laden der Landschaft
         for (var i = 0; i < n; i++) {
             var b = bees[i];
@@ -186,7 +185,6 @@ var L7_Classes;
                 b.y = L7_Classes.canvas.height;
             }
             b.update();
-            console.log("Bienchen");
         }
         window.setTimeout(flyBees, 20);
     }
