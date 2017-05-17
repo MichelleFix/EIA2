@@ -8,7 +8,7 @@ namespace L7_Classes {
 
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
-    
+
     window.addEventListener("load", init);
 
     // Variablen für die Bienen
@@ -83,15 +83,16 @@ namespace L7_Classes {
 
         let flowers: Flower = new Flower(x, y);   // neue Blume wird erstellt
 
-        for (let i: number = 0; i < f; i++) {
-            randomFlowerNumber = Math.floor((Math.random() * 5) + 0);       // 1. Attribut von Flower
+        for (let i: number = 0; i < 50; i++) {
+            flowers.randomFlowerNumber = Math.floor((Math.random() * 5) + 0);       // 1. Attribut von Flower
             flowers.setRandomPosition();
 
-            switch (randomFlowerNumber) {                 // 1. Attribut von Flower
+            switch (flowers.randomFlowerNumber) {                 // 1. Attribut von Flower
                 case 0:
                     flowers.drawFlower1();           // 1. Methode this.x, this.y, "#FA58F4"
+             
                     break;
-
+                    
                 case 1:
                     flowers.drawFlower2();         //this.x, this.y, "#2ECCFA"
                     break;

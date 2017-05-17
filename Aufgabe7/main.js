@@ -6,8 +6,6 @@
 var L7_Classes;
 (function (L7_Classes) {
     window.addEventListener("load", init);
-    //    export let crc2: CanvasRenderingContext2D;
-    //    export let canvas: HTMLCanvasElement;
     // Variablen f�r die Bienen
     var bees = []; // Bienen-Array
     var n = 10; // Anzahl der Bienen
@@ -66,10 +64,10 @@ var L7_Classes;
         L7_Classes.canvas.addEventListener("click", clickCanvas);
         //  ----------------------------  Blumen ----------------------------------------
         var flowers = new L7_Classes.Flower(x, y); // neue Blume wird erstellt
-        for (var i = 0; i < f; i++) {
-            randomFlowerNumber = Math.floor((Math.random() * 5) + 0); // 1. Attribut von Flower
+        for (var i = 0; i < 50; i++) {
+            flowers.randomFlowerNumber = Math.floor((Math.random() * 5) + 0); // 1. Attribut von Flower
             flowers.setRandomPosition();
-            switch (randomFlowerNumber) {
+            switch (flowers.randomFlowerNumber) {
                 case 0:
                     flowers.drawFlower1(); // 1. Methode this.x, this.y, "#FA58F4"
                     break;
