@@ -6,10 +6,10 @@ namespace L7_Classes {
         randomFlowerNumber: number;
 
 
-        constructor(_x: number, _y: number) {
+        constructor() {
             this.setRandomPosition();
-            this.x = _x;
-            this.y = _y;
+            //this.x = _x;
+            //this.y = _y;
 
         }
 

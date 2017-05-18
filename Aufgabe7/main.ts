@@ -71,40 +71,45 @@ namespace L7_Classes {
             bees[i] = b;
         }
 
+
+
+
+
+        //  ----------------------------  Blumen ----------------------------------------
+
+
+        for (let i: number = 0; i < 50; i++) {
+            let flower: Flower = new Flower();   // neue Blume wird erstellt
+
+            flower.randomFlowerNumber = Math.floor((Math.random() * 1) + 0);       // 1. Attribut von Flower
+            flower.setRandomPosition();
+
+            switch (flower.randomFlowerNumber) {                 // 1. Attribut von Flower
+                case 0:
+                    flower.drawFlower1();           // 1. Methode this.x, this.y, "#FA58F4"
+
+                    break;
+
+                case 1:
+                    flower.drawFlower2();         //this.x, this.y, "#2ECCFA"
+                    break;
+
+                default:
+                    break;
+            }   // Ende switch
+            flowerArray.push(new Flower());      // Array flowers erstellen um die Blumen darin abzuspeichern um auf sie später zugreifen zu können
+
+        }   // Ende for-Schleife
+        console.log(flowerArray);                          //Array in die Konsole
+
+        //  ----------------------------  Bienen ----------------------------------------
+        
         // Bienen fliegen lassen
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
         flyBees();
         window.setTimeout(flyBees, 200);
         // Bei Klick hinzufügen
         canvas.addEventListener("click", clickCanvas);
-
-
-        //  ----------------------------  Blumen ----------------------------------------
-
-        let flowers: Flower = new Flower(x, y);   // neue Blume wird erstellt
-
-        for (let i: number = 0; i < 50; i++) {
-            flowers.randomFlowerNumber = Math.floor((Math.random() * 5) + 0);       // 1. Attribut von Flower
-            flowers.setRandomPosition();
-
-            switch (flowers.randomFlowerNumber) {                 // 1. Attribut von Flower
-                case 0:
-                    flowers.drawFlower1();           // 1. Methode this.x, this.y, "#FA58F4"
-             
-                    break;
-                    
-                case 1:
-                    flowers.drawFlower2();         //this.x, this.y, "#2ECCFA"
-                    break;
-
-                default:
-                    break;
-            }   // Ende switch
-            flowerArray.push(new Flower(x, y));      // Array flowers erstellen um die Blumen darin abzuspeichern um auf sie später zugreifen zu können
-
-        }   // Ende for-Schleife
-        console.log(flowerArray);                          //Array in die Konsole
-
 
     }
 

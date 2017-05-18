@@ -1,10 +1,10 @@
 var L7_Classes;
 (function (L7_Classes) {
     var Flower = (function () {
-        function Flower(_x, _y) {
+        function Flower() {
             this.setRandomPosition();
-            this.x = _x;
-            this.y = _y;
+            //this.x = _x;
+            //this.y = _y;
         }
         // BLume
         Flower.prototype.drawFlower1 = function () {
