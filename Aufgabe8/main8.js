@@ -64,26 +64,24 @@ var L8_Inheritance;
         L8_Inheritance.canvas.addEventListener("click", clickCanvas);
         //  ----------------------------  Blumen ----------------------------------------
         // neue Blume wird erstellt
-        //        for (let i: number = 0; i < b; i++) {
-        //            f.randomFlower();       // 1. Attribut von Flower
-        //            f.setRandomPosition();
-        //            switch (f.randomFlowerNumber) {                 // 1. Attribut von Flower
-        //                case 0:
-        //                    let t: Tulip = new Tulip(x, y);           // 1. Methode this.x, this.y, "#FA58F4"
-        //                    f.push(t);      // Array flowers erstellen um die Blumen darin abzuspeichern um auf sie sp�ter zugreifen zu k�nnen
-        //                    break;
-        //
-        //                case 1:
-        //                    let l: Lollipop = new Lollipop(x, y);         //this.x, this.y, "#2ECCFA"
-        //                    f.push(l);      // Array flowers erstellen um die Blumen darin abzuspeichern um auf sie sp�ter zugreifen zu k�nnen
-        //                    break;
-        //
-        //                default:
-        //                    break;
-        //            }   // Ende switch
-        //
-        //
-        //        }   // Ende for-Schleife
+        for (var i = 0; i < b; i++) {
+            var randomFlowerNumber = Math.floor((Math.random() * 1) + 0); // 1. Attribut von Flower
+            // let randomNumber zw 0 1
+            switch (randomFlowerNumber) {
+                case 0:
+                    var t = new L8_Inheritance.Tulip(x, y);
+                    t.draw; // 1. Methode this.x, this.y, "#FA58F4"
+                    f.push(t); // Array flowers erstellen um die Blumen darin abzuspeichern um auf sie sp�ter zugreifen zu k�nnen
+                    break;
+                case 1:
+                    var l = new L8_Inheritance.Lollipop(x, y);
+                    l.draw(); //this.x, this.y, "#2ECCFA"
+                    f.push(l); // Array flowers erstellen um die Blumen darin abzuspeichern um auf sie sp�ter zugreifen zu k�nnen
+                    break;
+                default:
+                    break;
+            } // Ende switch
+        } // Ende for-Schleife
     } // ENDE INIT
     // Sonne
     function drawSun(_x, _y, _fillColor) {

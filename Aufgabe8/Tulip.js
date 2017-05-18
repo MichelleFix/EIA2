@@ -7,8 +7,8 @@ var L8_Inheritance;
 (function (L8_Inheritance) {
     var Tulip = (function (_super) {
         __extends(Tulip, _super);
-        function Tulip(_x, _y) {
-            _super.call(this, _x, _y);
+        function Tulip() {
+            _super.apply(this, arguments);
         }
         // Tulpe
         Tulip.prototype.draw = function () {
@@ -23,6 +23,9 @@ var L8_Inheritance;
             L8_Inheritance.crc2.closePath();
             L8_Inheritance.crc2.fill();
             L8_Inheritance.crc2.stroke();
+        };
+        Tulip.prototype.setRandomPosition = function () {
+            _super.prototype.setRandomPosition.call(this);
         };
         return Tulip;
     }(L8_Inheritance.Flowers));

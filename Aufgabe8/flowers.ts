@@ -4,16 +4,13 @@ namespace L8_Inheritance {
         x: number;
         y: number;
         color: string;
-        randomFlowerNumber: number;
+        //randomFlowerNumber: number;
 
 
-        constructor(_x: number, _y: number) {
+        constructor() {
             console.log("create Flower");
             this.setRandomPosition();
             this.setRandomStyle();
-            this.x = _x;
-            this.y = _y;
-
         }
 
         draw(): void {
@@ -31,8 +28,6 @@ namespace L8_Inheritance {
 
         }
 
-        randomFlower(): void {
-            this.randomFlowerNumber = Math.floor((Math.random() * 5) + 0);
-        }
+
     }
 }
