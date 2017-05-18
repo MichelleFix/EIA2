@@ -3,9 +3,10 @@ namespace L8_Inheritance {
         radius: number;
 
 
-        constructor(_x: number, _y: number) {
-            super(_x, _y);
-            this.radius = (Math.random() * (10 - 5) + 50);
+        constructor(_radius: number) {
+            super();
+            super.setRandomPosition();
+            this.radius = _radius;
         }
 
         // BLume 2 

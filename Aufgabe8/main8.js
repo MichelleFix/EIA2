@@ -69,12 +69,12 @@ var L8_Inheritance;
             // let randomNumber zw 0 1
             switch (randomFlowerNumber) {
                 case 0:
-                    var t = new L8_Inheritance.Tulip(x, y);
+                    var t = new L8_Inheritance.Tulip();
                     t.draw; // 1. Methode this.x, this.y, "#FA58F4"
                     f.push(t); // Array flowers erstellen um die Blumen darin abzuspeichern um auf sie sp�ter zugreifen zu k�nnen
                     break;
                 case 1:
-                    var l = new L8_Inheritance.Lollipop(x, y);
+                    var l = new L8_Inheritance.Lollipop(10);
                     l.draw(); //this.x, this.y, "#2ECCFA"
                     f.push(l); // Array flowers erstellen um die Blumen darin abzuspeichern um auf sie sp�ter zugreifen zu k�nnen
                     break;

@@ -2,7 +2,14 @@ namespace L8_Inheritance {
     export class Tulip extends Flowers {
 
 
-                // Tulpe
+        constructor() {
+            super();
+            super.setRandomPosition();
+        }
+
+
+
+        // Tulpe
         draw(): void {
             crc2.beginPath();
             crc2.fillStyle = this.color;                            // Attribut von Flower
@@ -18,9 +25,6 @@ namespace L8_Inheritance {
 
         }
         
-        setRandomPosition(): void {
-            super.setRandomPosition();
-
-        }
+        
     }
 }

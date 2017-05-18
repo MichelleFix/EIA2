@@ -94,7 +94,7 @@ namespace L8_Inheritance {
                     break;
 
                 case 1:
-                    let l: Lollipop = new Lollipop(); 
+                    let l: Lollipop = new Lollipop(10); 
                     l.draw();        //this.x, this.y, "#2ECCFA"
                     f.push(l);      // Array flowers erstellen um die Blumen darin abzuspeichern um auf sie später zugreifen zu können
                     break;

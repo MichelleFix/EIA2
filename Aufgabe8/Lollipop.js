@@ -7,9 +7,10 @@ var L8_Inheritance;
 (function (L8_Inheritance) {
     var Lollipop = (function (_super) {
         __extends(Lollipop, _super);
-        function Lollipop(_x, _y) {
-            _super.call(this, _x, _y);
-            this.radius = (Math.random() * (10 - 5) + 50);
+        function Lollipop(_radius) {
+            _super.call(this);
+            _super.prototype.setRandomPosition.call(this);
+            this.radius = _radius;
         }
         // BLume 2 
         Lollipop.prototype.draw = function () {
