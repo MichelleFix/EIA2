@@ -14,7 +14,8 @@ namespace L8_Inheritance {
 
         update(): void{
             this.draw();
-            this.fly();   
+            this.fly();
+               
         
         }
         

@@ -4,6 +4,8 @@
 //Datum: 21.05.2017
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 
+// Code bisher nicht funktionsfähig!
+
 namespace L8_Inheritance {
 
     export let crc2: CanvasRenderingContext2D;
@@ -276,6 +278,7 @@ namespace L8_Inheritance {
         }
 
         window.setTimeout(flyBees, 20);
+
     }
 
     function clickCanvas(_event: Event): void {
