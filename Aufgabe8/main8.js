@@ -1,7 +1,7 @@
-//Aufgabe: Aufgabe 7
+//Aufgabe: Aufgabe 8
 //Name: Michelle Fix
 //Matrikel: 254671
-//Datum: 14.05.2017
+//Datum: 21.05.2017
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 var L8_Inheritance;
 (function (L8_Inheritance) {
@@ -11,8 +11,8 @@ var L8_Inheritance;
     var n = 10; // Anzahl der Bienen
     var imgData; // Bildschirm wird aktualisiert
     // Variablen f�r die Blumen
-    var f = [];
-    var b = 50; // Anzahl der Blumen
+    L8_Inheritance.f = [];
+    var b = 15; // Anzahl der Blumen
     //    let randomFlowerNumber: number;
     var x;
     var y;
@@ -51,37 +51,44 @@ var L8_Inheritance;
         // Bienenkorb
         drawBasket();
         //  ----------------------------  Bienen ----------------------------------------
-        // 10 Bienen zeichnen
+        // 10 normale Bienen zeichnen
         for (var i = 0; i < n; i++) {
-            var b_1 = new L8_Inheritance.Bees(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
-            bees[i] = b_1;
+            var b_1 = new L8_Inheritance.normalBee(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
+            bees.push(b_1);
         }
+        // 10 Honigbienen zeichnen
+        for (var i = 0; i < n; i++) {
+            var h = new L8_Inheritance.HoneyBee(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
+            h.draw();
+            bees.push(h);
+        }
+        //  ----------------------------  Blumen ----------------------------------------
+        // neue Blume wird erstellt
+        for (var i = 0; i < b; i++) {
+            var randomFlowerNumber = Math.floor((Math.random() * 1) + 0);
+            // let randomNumber zw 0 1
+            switch (randomFlowerNumber) {
+                case 0:
+                    var t = new L8_Inheritance.Tulip();
+                    t.draw();
+                    L8_Inheritance.f.push(t);
+                    break;
+                case 1:
+                    var l = new L8_Inheritance.Lollipop(10);
+                    l.draw();
+                    L8_Inheritance.f.push(l);
+                    break;
+                default:
+                    break;
+            } // Ende switch
+        } // Ende for-Schleife
+        //  ----------------------------  Bienen ----------------------------------------
         // Bienen fliegen lassen
         imgData = L8_Inheritance.crc2.getImageData(0, 0, L8_Inheritance.canvas.width, L8_Inheritance.canvas.height); // canvas speichern
         flyBees();
         window.setTimeout(flyBees, 200);
         // Bei Klick hinzuf�gen
         L8_Inheritance.canvas.addEventListener("click", clickCanvas);
-        //  ----------------------------  Blumen ----------------------------------------
-        // neue Blume wird erstellt
-        for (var i = 0; i < b; i++) {
-            var randomFlowerNumber = Math.floor((Math.random() * 1) + 0); // 1. Attribut von Flower
-            // let randomNumber zw 0 1
-            switch (randomFlowerNumber) {
-                case 0:
-                    var t = new L8_Inheritance.Tulip();
-                    t.draw; // 1. Methode this.x, this.y, "#FA58F4"
-                    f.push(t); // Array flowers erstellen um die Blumen darin abzuspeichern um auf sie sp�ter zugreifen zu k�nnen
-                    break;
-                case 1:
-                    var l = new L8_Inheritance.Lollipop(10);
-                    l.draw(); //this.x, this.y, "#2ECCFA"
-                    f.push(l); // Array flowers erstellen um die Blumen darin abzuspeichern um auf sie sp�ter zugreifen zu k�nnen
-                    break;
-                default:
-                    break;
-            } // Ende switch
-        } // Ende for-Schleife
     } // ENDE INIT
     // Sonne
     function drawSun(_x, _y, _fillColor) {
@@ -91,7 +98,7 @@ var L8_Inheritance;
         L8_Inheritance.crc2.arc(400, 60, 50, 0, 2 * Math.PI, false);
         L8_Inheritance.crc2.closePath();
         L8_Inheritance.crc2.fill();
-        L8_Inheritance.crc2.stroke(); //Warum hier 1 fill, obwohl nach dem close?
+        L8_Inheritance.crc2.stroke();
     }
     // ### Pyramide 1 Gro� ### 
     function drawPyramid1() {
@@ -205,7 +212,7 @@ var L8_Inheritance;
         window.setTimeout(flyBees, 20);
     }
     function clickCanvas(_event) {
-        var newBee = new L8_Inheritance.Bees(170, 400); // es wird auf den constructor zugegriffen, der die beiden Parameter x und y verlangt        
+        var newBee = new L8_Inheritance.allBees(170, 400); // es wird auf den constructor zugegriffen, der die beiden Parameter x und y verlangt        
         bees.push(newBee);
         n++;
     }

@@ -1,5 +1,5 @@
 namespace L8_Inheritance {
-    export class Bees {
+    export class allBees {
         x: number;
         y: number;
         color: string;

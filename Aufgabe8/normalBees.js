@@ -5,18 +5,17 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var L8_Inheritance;
 (function (L8_Inheritance) {
-    var HoneyBee = (function (_super) {
-        __extends(HoneyBee, _super);
-        function HoneyBee(_x, _y) {
+    var normalBee = (function (_super) {
+        __extends(normalBee, _super);
+        function normalBee(_x, _y) {
             _super.call(this, _x, _y);
-            console.log("Create honeybee");
-            //            this.setRandomPosition();
-            //            this.setRandomTargetPosition();
+            console.log("Create normal Bee");
+            this.setRandomStyle();
         }
-        HoneyBee.prototype.draw = function () {
+        normalBee.prototype.draw = function () {
             // K�rper
             L8_Inheritance.crc2.beginPath();
-            L8_Inheritance.crc2.fillStyle = "#E4BE35";
+            L8_Inheritance.crc2.fillStyle = this.color;
             L8_Inheritance.crc2.strokeStyle = "black";
             L8_Inheritance.crc2.moveTo(this.x - 10, this.y);
             L8_Inheritance.crc2.bezierCurveTo(this.x + 3.75, this.y - 7, this.x + 11.25, this.y - 7, this.x + 15, this.y);
@@ -65,22 +64,8 @@ var L8_Inheritance;
             L8_Inheritance.crc2.fill();
             L8_Inheritance.crc2.stroke();
         };
-        HoneyBee.prototype.setRandomTargetPosition = function () {
-            this.targetX = Math.random() * L8_Inheritance.crc2.canvas.width;
-            this.targetY = Math.random() * L8_Inheritance.crc2.canvas.height;
-        };
-        HoneyBee.prototype.fly = function () {
-            var xDiff = this.targetX - this.x;
-            var yDiff = this.targetY - this.y;
-            if (Math.abs(xDiff) < 1 && Math.abs(yDiff) < 1)
-                this.setRandomTargetPosition();
-            //            else {
-            //                this.x += xDiff * this.speed;
-            //                this.y += yDiff * this.speed;
-            //            } //ende else
-        }; //Ende Fly funktion
-        return HoneyBee;
+        return normalBee;
     }(L8_Inheritance.allBees));
-    L8_Inheritance.HoneyBee = HoneyBee; // Ende Klasse
-})(L8_Inheritance || (L8_Inheritance = {})); // Ende namespace
-//# sourceMappingURL=Honeybees.js.map
+    L8_Inheritance.normalBee = normalBee;
+})(L8_Inheritance || (L8_Inheritance = {}));
+//# sourceMappingURL=normalBees.js.map

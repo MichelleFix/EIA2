@@ -1,43 +1,17 @@
 namespace L8_Inheritance {
-    export class HoneyBee extends allBees {
-        targetX: number;
-        targetY: number;
-        speed: number;
+    export class normalBee extends allBees {
 
         constructor(_x: number, _y: number) {
             super(_x, _y);
-            console.log("Create honeybee");
-            this.speed = 1;
-
-            //            this.setRandomPosition();
-            //            this.setRandomTargetPosition();
-        }
-
-        setRandomTarget(): void {
-            let randomtargetflower: number = Math.round(Math.random() * (Flowers.length - 1));
-            this.targetX = f[randomtargetflower].x;
-            this.targetY = f[randomtargetflower].y;
-        }
-
-
-        flyHoneyBee(): void {
-            let dx: number = this.targetX - this.x;
-            let dy: number = this.targetY - this.y;
-            let d: number = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-            if (d >= 2) {
-                this.setRandomTarget();
-            }
-            else {
-                this.x += dx * this.speed;
-                this.y += dy * this.speed;
-            }
+            console.log("Create normal Bee");
+            this.setRandomStyle();
 
         }
-
+        
         draw(): void {
             // Körper
             crc2.beginPath();
-            crc2.fillStyle = "#E4BE35";
+            crc2.fillStyle = this.color;
             crc2.strokeStyle = "black";
             crc2.moveTo(this.x - 10, this.y);
             crc2.bezierCurveTo(this.x + 3.75, this.y - 7, this.x + 11.25, this.y - 7, this.x + 15, this.y);
@@ -92,10 +66,5 @@ namespace L8_Inheritance {
             crc2.fill();
             crc2.stroke();
         }
-        setRandomTargetPosition(): void {
-            this.targetX = Math.random() * crc2.canvas.width;
-            this.targetY = Math.random() * crc2.canvas.height;
-        }
-
-    } // Ende Klasse
-} // Ende namespace
+    }
+}

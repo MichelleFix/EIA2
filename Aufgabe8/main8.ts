@@ -1,7 +1,7 @@
-//Aufgabe: Aufgabe 7
+//Aufgabe: Aufgabe 8
 //Name: Michelle Fix
 //Matrikel: 254671
-//Datum: 14.05.2017
+//Datum: 21.05.2017
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
 
 namespace L8_Inheritance {
@@ -11,13 +11,14 @@ namespace L8_Inheritance {
     window.addEventListener("load", init);
 
     // Variablen für die Bienen
-    let bees: Bees[] = [];       // Bienen-Array
+    let bees: allBees[] = [];       // Bienen-Array
+
     var n: number = 10;         // Anzahl der Bienen
     let imgData: ImageData;     // Bildschirm wird aktualisiert
 
     // Variablen für die Blumen
-    let f: Flowers[] = [];
-    var b: number = 50;         // Anzahl der Blumen
+    export let f: Flowers[] = [];
+    var b: number = 15;         // Anzahl der Blumen
     //    let randomFlowerNumber: number;
     let x: number;
     let y: number;
@@ -62,41 +63,41 @@ namespace L8_Inheritance {
         drawPalm();
         // Bienenkorb
         drawBasket();
+        
 
         //  ----------------------------  Bienen ----------------------------------------
 
-        // 10 Bienen zeichnen
+        // 10 normale Bienen zeichnen
         for (let i: number = 0; i < n; i++) {
-            let b: Bees = new Bees(170, 400);// { x: 0, y: 0, color: " ", wingSize: 0 };
-            bees[i] = b;
+            let b: normalBee = new normalBee(170, 400);// { x: 0, y: 0, color: " ", wingSize: 0 };
+            bees.push(b);
         }
 
-        // Bienen fliegen lassen
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
-        flyBees();
-        window.setTimeout(flyBees, 200);
-        // Bei Klick hinzufügen
-        canvas.addEventListener("click", clickCanvas);
-
+        // 10 Honigbienen zeichnen
+        for (let i: number = 0; i < n; i++) {
+            let h: HoneyBee = new HoneyBee(170, 400);// { x: 0, y: 0, color: " ", wingSize: 0 };
+            h.draw();
+            bees.push(h);
+        }
 
         //  ----------------------------  Blumen ----------------------------------------
 
         // neue Blume wird erstellt
         for (let i: number = 0; i < b; i++) {
-            let randomFlowerNumber = Math.floor((Math.random() * 1) + 0);       // 1. Attribut von Flower
-           
+            let randomFlowerNumber = Math.floor((Math.random() * 1) + 0);
+
             // let randomNumber zw 0 1
-            switch (randomFlowerNumber) {                 // 1. Attribut von Flower
+            switch (randomFlowerNumber) {
                 case 0:
                     let t: Tulip = new Tulip();
-                    t.draw           // 1. Methode this.x, this.y, "#FA58F4"
-                    f.push(t);      // Array flowers erstellen um die Blumen darin abzuspeichern um auf sie später zugreifen zu können
+                    t.draw();
+                    f.push(t);
                     break;
 
                 case 1:
-                    let l: Lollipop = new Lollipop(10); 
-                    l.draw();        //this.x, this.y, "#2ECCFA"
-                    f.push(l);      // Array flowers erstellen um die Blumen darin abzuspeichern um auf sie später zugreifen zu können
+                    let l: Lollipop = new Lollipop(10);
+                    l.draw();
+                    f.push(l);
                     break;
 
                 default:
@@ -105,6 +106,14 @@ namespace L8_Inheritance {
 
 
         }   // Ende for-Schleife
+
+        //  ----------------------------  Bienen ----------------------------------------
+        // Bienen fliegen lassen
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
+        flyBees();
+        window.setTimeout(flyBees, 200);
+        // Bei Klick hinzufügen
+        canvas.addEventListener("click", clickCanvas);
 
     }   // ENDE INIT
 
@@ -117,7 +126,7 @@ namespace L8_Inheritance {
         crc2.arc(400, 60, 50, 0, 2 * Math.PI, false);
         crc2.closePath();
         crc2.fill();
-        crc2.stroke();                                //Warum hier 1 fill, obwohl nach dem close?
+        crc2.stroke();
     }
 
     // ### Pyramide 1 Groß ### 
@@ -245,7 +254,7 @@ namespace L8_Inheritance {
 
         for (let i: number = 0; i < n; i++) {
 
-            let b: Bees = bees[i];
+            let b: allBees = bees[i];
 
 
             if (b.x < 0 - 10) {          //Wenn sie nach links aus dem Fenster fliegen kommt sie rechts wieder rein
@@ -262,6 +271,7 @@ namespace L8_Inheritance {
                 b.y = canvas.height;
             }
             b.update();
+           
 
         }
 
@@ -270,7 +280,7 @@ namespace L8_Inheritance {
 
     function clickCanvas(_event: Event): void {
 
-        let newBee: Bees = new Bees(170, 400); // es wird auf den constructor zugegriffen, der die beiden Parameter x und y verlangt        
+        let newBee: allBees = new allBees(170, 400); // es wird auf den constructor zugegriffen, der die beiden Parameter x und y verlangt        
         bees.push(newBee);
         n++;
     }
