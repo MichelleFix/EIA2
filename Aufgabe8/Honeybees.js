@@ -10,9 +10,27 @@ var L8_Inheritance;
         function HoneyBee(_x, _y) {
             _super.call(this, _x, _y);
             console.log("Create honeybee");
+            this.speed = 1;
             //            this.setRandomPosition();
             //            this.setRandomTargetPosition();
         }
+        HoneyBee.prototype.setRandomTarget = function () {
+            var randomtargetflower = Math.round(Math.random() * (L8_Inheritance.Flowers.length - 1));
+            this.targetX = L8_Inheritance.f[randomtargetflower].x;
+            this.targetY = L8_Inheritance.f[randomtargetflower].y;
+        };
+        HoneyBee.prototype.flyHoneyBee = function () {
+            var dx = this.targetX - this.x;
+            var dy = this.targetY - this.y;
+            var d = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+            if (d >= 2) {
+                this.setRandomTarget();
+            }
+            else {
+                this.x += dx * this.speed;
+                this.y += dy * this.speed;
+            }
+        };
         HoneyBee.prototype.draw = function () {
             // K�rper
             L8_Inheritance.crc2.beginPath();
@@ -69,16 +87,6 @@ var L8_Inheritance;
             this.targetX = Math.random() * L8_Inheritance.crc2.canvas.width;
             this.targetY = Math.random() * L8_Inheritance.crc2.canvas.height;
         };
-        HoneyBee.prototype.fly = function () {
-            var xDiff = this.targetX - this.x;
-            var yDiff = this.targetY - this.y;
-            if (Math.abs(xDiff) < 1 && Math.abs(yDiff) < 1)
-                this.setRandomTargetPosition();
-            //            else {
-            //                this.x += xDiff * this.speed;
-            //                this.y += yDiff * this.speed;
-            //            } //ende else
-        }; //Ende Fly funktion
         return HoneyBee;
     }(L8_Inheritance.allBees));
     L8_Inheritance.HoneyBee = HoneyBee; // Ende Klasse
