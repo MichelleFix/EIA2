@@ -10,8 +10,13 @@ var L8_Inheritance;
         function normalBee(_x, _y) {
             _super.call(this, _x, _y);
             console.log("Create normal Bee");
-            this.setRandomStyle();
+            //            this.setRandomStyle();
         }
+        // Info von fly reingemacht
+        normalBee.prototype.fly = function () {
+            this.x += Math.floor(Math.random() * 10) - 5;
+            this.y += Math.random() * 4 - 2;
+        };
         normalBee.prototype.draw = function () {
             // K�rper
             L8_Inheritance.crc2.beginPath();

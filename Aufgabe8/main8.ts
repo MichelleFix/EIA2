@@ -7,8 +7,7 @@
 // Code bisher nicht funktionsfähig!
 
 namespace L8_Inheritance {
-
-    export let crc2: CanvasRenderingContext2D;
+export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
     window.addEventListener("load", init);
 
@@ -65,28 +64,12 @@ namespace L8_Inheritance {
         drawPalm();
         // Bienenkorb
         drawBasket();
-        
-
-        //  ----------------------------  Bienen ----------------------------------------
-
-        // 10 normale Bienen zeichnen
-        for (let i: number = 0; i < n; i++) {
-            let b: normalBee = new normalBee(170, 400);// { x: 0, y: 0, color: " ", wingSize: 0 };
-            bees.push(b);
-        }
-
-        // 10 Honigbienen zeichnen
-        for (let i: number = 0; i < n; i++) {
-            let h: HoneyBee = new HoneyBee(170, 400);// { x: 0, y: 0, color: " ", wingSize: 0 };
-            h.draw();
-            bees.push(h);
-        }
-
+        // Blumen vor Bienen und imgData hinter Blumen, nicht hinter Bienen, sonst werden Bienen auch mit abgespeichert
         //  ----------------------------  Blumen ----------------------------------------
 
         // neue Blume wird erstellt
-        for (let i: number = 0; i < b; i++) {
-            let randomFlowerNumber = Math.floor((Math.random() * 1) + 0);
+        for (let i: number = 0; i < b; i++) { // zwei Fälle also mal zwei bei Math. random 
+            let randomFlowerNumber: number = Math.floor((Math.random() * 2) + 0);
 
             // let randomNumber zw 0 1
             switch (randomFlowerNumber) {
@@ -108,12 +91,27 @@ namespace L8_Inheritance {
 
 
         }   // Ende for-Schleife
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
+
+        //  ----------------------------  Bienen ----------------------------------------
+
+        // 10 normale Bienen zeichnen
+        for (let i: number = 0; i < n; i++) {
+            let b: normalBee = new normalBee(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
+            bees.push(b);
+        }
+
+        // 10 Honigbienen zeichnen
+        for (let i: number = 0; i < n; i++) {
+            let h: HoneyBee = new HoneyBee(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
+            h.draw();
+            bees.push(h);
+        }
+        console.log(bees);
 
         //  ----------------------------  Bienen ----------------------------------------
         // Bienen fliegen lassen
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
-        flyBees();
-        window.setTimeout(flyBees, 200);
+        window.setTimeout(flyBees, 20);
         // Bei Klick hinzufügen
         canvas.addEventListener("click", clickCanvas);
 
@@ -253,8 +251,8 @@ namespace L8_Inheritance {
 
         crc2.putImageData(imgData, 0, 0); // Laden der Landschaft
 
-
-        for (let i: number = 0; i < n; i++) {
+        // in bees.length geändert
+        for (let i: number = 0; i < bees.length; i++) {
 
             let b: allBees = bees[i];
 
@@ -273,7 +271,7 @@ namespace L8_Inheritance {
                 b.y = canvas.height;
             }
             b.update();
-           
+
 
         }
 
@@ -283,10 +281,8 @@ namespace L8_Inheritance {
 
     function clickCanvas(_event: Event): void {
 
-        let newBee: allBees = new allBees(170, 400); // es wird auf den constructor zugegriffen, der die beiden Parameter x und y verlangt        
+        let newBee: allBees = new HoneyBee(170, 400); // es wird auf den constructor zugegriffen, der die beiden Parameter x und y verlangt        
         bees.push(newBee);
         n++;
     }
-
-
 }

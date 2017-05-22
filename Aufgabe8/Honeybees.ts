@@ -6,25 +6,21 @@ namespace L8_Inheritance {
 
         constructor(_x: number, _y: number) {
             super(_x, _y);
-            console.log("Create honeybee");
-            this.speed = 1;
-
-            //            this.setRandomPosition();
-            //            this.setRandomTargetPosition();
+            this.speed = 0.05;
+            this.setRandomTarget();
         }
 
-        setRandomTarget(): void {
-            let randomtargetflower: number = Math.round(Math.random() * (Flowers.length - 1));
+        setRandomTarget(): void { // f.length geändert
+            let randomtargetflower: number = Math.round(Math.random() * (f.length - 1));
             this.targetX = f[randomtargetflower].x;
             this.targetY = f[randomtargetflower].y;
         }
 
 
-        flyHoneyBee(): void {
+        fly(): void {
             let dx: number = this.targetX - this.x;
             let dy: number = this.targetY - this.y;
-            let d: number = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-            if (d >= 2) {
+            if (Math.abs(dx) < 0.5 && Math.abs(dy) < 1) {
                 this.setRandomTarget();
             }
             else {
@@ -91,10 +87,6 @@ namespace L8_Inheritance {
             crc2.closePath();
             crc2.fill();
             crc2.stroke();
-        }
-        setRandomTargetPosition(): void {
-            this.targetX = Math.random() * crc2.canvas.width;
-            this.targetY = Math.random() * crc2.canvas.height;
         }
 
     } // Ende Klasse

@@ -1,13 +1,9 @@
 namespace L8_Inheritance {
     export class Tulip extends Flowers {
-
-
         constructor() {
             super();
             super.setRandomPosition();
         }
-
-
 
         // Tulpe
         draw(): void {
@@ -24,7 +20,7 @@ namespace L8_Inheritance {
             crc2.stroke();
 
         }
-        
-        
+
+
     }
 }

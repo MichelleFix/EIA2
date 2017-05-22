@@ -4,8 +4,13 @@ namespace L8_Inheritance {
         constructor(_x: number, _y: number) {
             super(_x, _y);
             console.log("Create normal Bee");
-            this.setRandomStyle();
+//            this.setRandomStyle();
 
+        }
+        // Info von fly reingemacht
+        fly(): void {
+            this.x += Math.floor(Math.random() * 10) - 5;
+            this.y += Math.random() * 4 - 2;    
         }
         
         draw(): void {

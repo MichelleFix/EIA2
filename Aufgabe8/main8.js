@@ -51,22 +51,11 @@ var L8_Inheritance;
         drawPalm();
         // Bienenkorb
         drawBasket();
-        //  ----------------------------  Bienen ----------------------------------------
-        // 10 normale Bienen zeichnen
-        for (var i = 0; i < n; i++) {
-            var b_1 = new L8_Inheritance.normalBee(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
-            bees.push(b_1);
-        }
-        // 10 Honigbienen zeichnen
-        for (var i = 0; i < n; i++) {
-            var h = new L8_Inheritance.HoneyBee(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
-            h.draw();
-            bees.push(h);
-        }
+        // Blumen vor Bienen und imgData hinter Blumen, nicht hinter Bienen, sonst werden Bienen auch mit abgespeichert
         //  ----------------------------  Blumen ----------------------------------------
         // neue Blume wird erstellt
         for (var i = 0; i < b; i++) {
-            var randomFlowerNumber = Math.floor((Math.random() * 1) + 0);
+            var randomFlowerNumber = Math.floor((Math.random() * 2) + 0);
             // let randomNumber zw 0 1
             switch (randomFlowerNumber) {
                 case 0:
@@ -83,11 +72,23 @@ var L8_Inheritance;
                     break;
             } // Ende switch
         } // Ende for-Schleife
+        imgData = L8_Inheritance.crc2.getImageData(0, 0, L8_Inheritance.canvas.width, L8_Inheritance.canvas.height); // canvas speichern
+        //  ----------------------------  Bienen ----------------------------------------
+        // 10 normale Bienen zeichnen
+        for (var i = 0; i < n; i++) {
+            var b_1 = new L8_Inheritance.normalBee(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
+            bees.push(b_1);
+        }
+        // 10 Honigbienen zeichnen
+        for (var i = 0; i < n; i++) {
+            var h = new L8_Inheritance.HoneyBee(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
+            h.draw();
+            bees.push(h);
+        }
+        console.log(bees);
         //  ----------------------------  Bienen ----------------------------------------
         // Bienen fliegen lassen
-        imgData = L8_Inheritance.crc2.getImageData(0, 0, L8_Inheritance.canvas.width, L8_Inheritance.canvas.height); // canvas speichern
-        flyBees();
-        window.setTimeout(flyBees, 200);
+        window.setTimeout(flyBees, 20);
         // Bei Klick hinzuf�gen
         L8_Inheritance.canvas.addEventListener("click", clickCanvas);
     } // ENDE INIT
@@ -197,7 +198,8 @@ var L8_Inheritance;
     // Bienen fliegen lassen
     function flyBees() {
         L8_Inheritance.crc2.putImageData(imgData, 0, 0); // Laden der Landschaft
-        for (var i = 0; i < n; i++) {
+        // in bees.length ge�ndert
+        for (var i = 0; i < bees.length; i++) {
             var b_2 = bees[i];
             if (b_2.x < 0 - 10) {
                 b_2.x = L8_Inheritance.canvas.width + 10; // +10 ist der Radius der Biene, damit es einen flie�eden �bergang gibt
@@ -213,7 +215,7 @@ var L8_Inheritance;
         window.setTimeout(flyBees, 20);
     }
     function clickCanvas(_event) {
-        var newBee = new L8_Inheritance.allBees(170, 400); // es wird auf den constructor zugegriffen, der die beiden Parameter x und y verlangt        
+        var newBee = new L8_Inheritance.HoneyBee(170, 400); // es wird auf den constructor zugegriffen, der die beiden Parameter x und y verlangt        
         bees.push(newBee);
         n++;
     }

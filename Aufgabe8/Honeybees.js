@@ -9,21 +9,18 @@ var L8_Inheritance;
         __extends(HoneyBee, _super);
         function HoneyBee(_x, _y) {
             _super.call(this, _x, _y);
-            console.log("Create honeybee");
-            this.speed = 1;
-            //            this.setRandomPosition();
-            //            this.setRandomTargetPosition();
+            this.speed = 0.05;
+            this.setRandomTarget();
         }
         HoneyBee.prototype.setRandomTarget = function () {
-            var randomtargetflower = Math.round(Math.random() * (L8_Inheritance.Flowers.length - 1));
+            var randomtargetflower = Math.round(Math.random() * (L8_Inheritance.f.length - 1));
             this.targetX = L8_Inheritance.f[randomtargetflower].x;
             this.targetY = L8_Inheritance.f[randomtargetflower].y;
         };
-        HoneyBee.prototype.flyHoneyBee = function () {
+        HoneyBee.prototype.fly = function () {
             var dx = this.targetX - this.x;
             var dy = this.targetY - this.y;
-            var d = Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
-            if (d >= 2) {
+            if (Math.abs(dx) < 0.5 && Math.abs(dy) < 1) {
                 this.setRandomTarget();
             }
             else {
@@ -82,10 +79,6 @@ var L8_Inheritance;
             L8_Inheritance.crc2.closePath();
             L8_Inheritance.crc2.fill();
             L8_Inheritance.crc2.stroke();
-        };
-        HoneyBee.prototype.setRandomTargetPosition = function () {
-            this.targetX = Math.random() * L8_Inheritance.crc2.canvas.width;
-            this.targetY = Math.random() * L8_Inheritance.crc2.canvas.height;
         };
         return HoneyBee;
     }(L8_Inheritance.allBees));

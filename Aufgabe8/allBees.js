@@ -8,14 +8,15 @@ var L8_Inheritance;
             this.y = _y;
         }
         allBees.prototype.update = function () {
-            this.draw();
             this.fly();
+            this.draw();
         };
         allBees.prototype.draw = function () {
+            // nix
         };
+        //Info in fly rausgenommen
         allBees.prototype.fly = function () {
-            this.x += Math.floor(Math.random() * 10) - 5;
-            this.y += Math.random() * 4 - 2;
+            //nix
         };
         allBees.prototype.setRandomStyle = function () {
             this.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
