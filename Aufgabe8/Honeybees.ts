@@ -10,7 +10,7 @@ namespace L8_Inheritance {
             this.setRandomTarget();
         }
 
-        setRandomTarget(): void { // f.length geändert
+        setRandomTarget(): void { 
             let randomtargetflower: number = Math.round(Math.random() * (f.length - 1));
             this.targetX = f[randomtargetflower].x;
             this.targetY = f[randomtargetflower].y;

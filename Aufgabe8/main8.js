@@ -3,7 +3,6 @@
 //Matrikel: 254671
 //Datum: 21.05.2017
 //Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde nicht kopiert und auch nicht diktiert.
-// Code bisher nicht funktionsf�hig!
 var L8_Inheritance;
 (function (L8_Inheritance) {
     window.addEventListener("load", init);
