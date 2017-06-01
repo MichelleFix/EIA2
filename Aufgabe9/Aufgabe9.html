@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8" />
+<title>FormElements</title>
+<link rel="stylesheet" href="FormElements.css" type="text/css" />
+<script src="FormElements.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+
+	<header>
+		<h1>EISDEALER</h1>
+	</header>
+
+	<fieldset id="Icecream">
+		<legend> Erstelle deinen persönlichen Eisbecher </legend>
+
+		<!--WAFFEL oder BECHER  -->
+		<button id="Waffel">Waffel</button>
+		<p>oder</p>
+		<button id="Cup">Becher</button>
+
+		<!--EISSORTE  -->
+		Eissorten <select name="Eissorten" id="Eissorten">
+		</select>
+
+		<!--ANZAHL DER KUGELN  -->
+		<input type="number" name="Scoops" step="1" min="1" max="6" value="0" />
+
+		<!--Eissorte und Kugeln hinzufügen  -->
+		<button id="AddIcecreamToOrder">> Hinzufügen</button>
+
+		<hr>
+
+		<button id="AddIcecream">+ Eissorte hinzufügen</button>
+
+	</fieldset>
+
+	<fieldset id="CheckboxToppings">
+		<legend> Toppings </legend>
+		<input type="checkbox" name="Checkbox1" value="check1" id="check1" />
+		<input type="checkbox" name="Checkbox2" value="check2" id="check2" />
+		<input type="checkbox" name="Checkbox3" value="check3" id="check3" />
+		<input type="checkbox" name="Checkbox4" value="check4" id="check4" />
+		<input type="checkbox" name="Checkbox5" value="check5" id="check5" />
+		<input type="checkbox" name="Checkbox6" value="check6" id="check6" />
+
+
+		<!-- Add Toppings  -->
+		<button id="AddToppingsToOrder">> Hinzufügen</button>
+
+	</fieldset>
+
+	<fieldset id="Deliveryoptions">
+		<legend> Lieferoptionen </legend>
+		<input type="radio" name="Delivery" value="radio1" id="Pickup"/> 
+		<label for="radio1">Abholung im Geschäft</label>
+		<input type="radio" name="Delivery" value="radio2" id="Delivery"/>
+		<label for="radio2">Lieferung nach Hause</label>
+		
+	</fieldset>
+	
+	<fieldset id="CustomerData">
+		<legend> Kundendaten </legend>
+		Name
+		<input type="text" name="Name" placeholder="Name" required/>
+
+		Vorname
+		<input type="text" name="Surname" placeholder="Vorname"/>
+
+		Anschrift
+		<input type="text" name="Street" placeholder="Straße"/>
+		<input type="number" name="Housenumber" pattern="[0-9]{4}" placeholder="Nr."/>
+		<input type="number" name="Postcode" pattern="[0-9]{4}" placeholder="PLZ"/>
+		<input type="text" name="Place" placeholder="Ort"/>
+		<input type="email" name="Mail" placeholder="E-Mail"/>
+
+	</fieldset>
+	
+	<button id="checkOrder"> Angaben überprüfen</button>
+	
+	
+	
+	
