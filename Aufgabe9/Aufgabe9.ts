@@ -57,7 +57,6 @@ namespace Form {
     // -------------------------------------------------- EISSORTEN ------------------------------------------------------
     //  Eissorten erstellen
     function createIcecream(): void {
-        // Erstelle pro Sorte Kuchen einen Input
         for (let i: number = 0; i < flavors.length; i++) {
             console.log(flavors[i]);
             createFlavor(flavors[i]);
@@ -85,17 +84,11 @@ namespace Form {
 //Eissorte hinzufügen            
         function addFlavor(_event :Event) :void{
             let amount: number = 8;
-            for (let n: number = 0; n >= amount; n++){
-                createFlavor();
+            for (let n: number = 0; n > amount; n++){
+//                createFlavor();                       Wie kann ich die obere Funktion aufrufen und die Parameter mitnehmen??
             }
-            //        let select: HTMLSelectElement = document.createElement("select");
-    //        let option: HTMLOptionElement = document.createElement("option");    //        let input: HTMLInputElement = document.createElement("input");
-    //        
-    //        option.innerText = _sort;
-    //        select.name = "Flavor";
-    //        select.appendChild(i);    // 
-    //    //    
-//} 
+    }
+   
     // -------------------------------------------------- Toppings -------------------------------------------------- 
     function createCheckbox(_verzierung: string): void {
         let label: HTMLLabelElement = document.createElement("label");
