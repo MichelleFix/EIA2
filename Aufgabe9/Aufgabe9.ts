@@ -6,13 +6,14 @@ namespace Form {
     let toppings: string[] = ["Schokosirup", "Streusel", "Erdbeeren", "Sahne", "Smarties", "Krokant"];
     // Arrays wo die ausgewählten Elemente gespeichert werden
     let inputFlavors: HTMLOptionElement[] = [];
-    let inputToppings: HTMLOptionElement[] = [];
+    let inputToppings: HTMLInputElement[] = [];
 
     // Elemente aus dem HTML Dokument
     let waffelButton: HTMLElement = document.getElementById("Waffel");
     let cupButton: HTMLElement = document.getElementById("Cup");
     let newFlavorButton: HTMLElement = document.getElementById("AddIcecream");
     let checkButton: HTMLElement = document.getElementById("checkOrder");
+    let checkboxToppings: HTMLElement = document.getElementById("CheckboxToppings");
 
 
     function init(_event: Event): void {
@@ -25,8 +26,8 @@ namespace Form {
         // Eissorte hinzufügen
         //        document.addEventListener("click", addFlavor);
 
-        // Eissorten einfügen 
-        createFlavors();
+        // Erstellt quasi alles 
+        createIcecream();
 
         fieldset.addEventListener("change", change);
 
@@ -51,11 +52,15 @@ namespace Form {
 
     // -------------------------------------------------- EISSORTEN ------------------------------------------------------
     //  Eissorten erstellen
-    function createFlavors(): void {
+    function createIcecream(): void {
         // Erstelle pro Sorte Kuchen einen Input
         for (let i: number = 0; i < flavors.length; i++) {
             console.log(flavors[i]);
             createFlavor(flavors[i]);
+        }
+
+        for (let i: number = 0; i < toppings.length; i++) {
+            createCheckbox(toppings[i]);
         }
     }
 
@@ -72,8 +77,8 @@ namespace Form {
 
         inputFlavors.push();
     }
-    
-//Eissorte hinzufügen    
+     
+//Eissorte hinzufügen        
 //function addFlavor(_event :Event) :void{    //        let select: HTMLSelectElement = document.createElement("select");
     //        let option: HTMLOptionElement = document.createElement("option");    //        let input: HTMLInputElement = document.createElement("input");
     //        
@@ -83,8 +88,8 @@ namespace Form {
     //    //    
 //}
     
-    // -------------------------------------------------- Toppings ------------------------------------------------------
-function createCheckbox(_verzierung: string): void {
+    // -------------------------------------------------- Toppings ------------------------------------------------------    
+    function createCheckbox(_verzierung: string): void {
         let label: HTMLLabelElement = document.createElement("label");
         let input: HTMLInputElement = document.createElement("input");
 
@@ -93,28 +98,67 @@ function createCheckbox(_verzierung: string): void {
         input.type = "checkbox";
         label.id = _verzierung;
 
-        verzierungen.appendChild(label);
-        inputVerzierung.push(input);
-    } }
+        checkboxToppings.appendChild(label);
+        inputToppings.push(input);
+    
 
 
 
     function change(): void {
         let sum: number = 0;
-        let display = document.getElementById("Sum");
 
         for (let i: number = 0; i < inputFlavors.length; i++) {
             sum += parseInt(inputFlavors[i].value);
         }
-        for (let i: number = 0; i < inputToppings.length; i++) {
-            if (inputToppings[i].checked)
-            { sum += 1.5; }
-        }       }    
 
-function updateShoppingCard(): void {
-    
-
-}
-
+        for (let i: number = 0; i < inputToppings.lengt; i++) {
+            sum += 0.15;
+        }
+       
+        if (cupButton.onclick){
+            sum += 0,1;     
+        }
+        else{
+            none;
+            }
+        
+        updateShoppingCard(sum);
+     } 
+        
+    function updateShoppingCard(): void {
+    let sum: HTMLElement = document.getElementById("Sum");
+    let items: HTMLElement = document.getElementById("Items");
+    items.innerText = "";
+    
+    if (cupButton.onclick){
+        items.innerText += "Becher" + " " +"0,10"+ "â‚¬" + " \n";
+        }
+    if (waffelButton.onclick){
+        items.innerText += "Waffel" + " " +"0,00"+ "â‚¬" + " \n";
+        }
+    
+    for (let i: number = 0; i < inputFlavors.length; i++) {
+            if (parseInt(inputFlavors[i].value) > 0) {
+                items.innerText += flavors[i] + " " + (parseInt(inputFlavors[i].value) * 1) + "â‚¬" + " \n";
+            }
+        }
+    
+    for (let i: number = 0; i < inputToppings.length; i++) {
+            if (inputToppings[i].checked) {
+                items.innerText += toppings[i] + " 0,15" + "â‚¬" + " \n";
+            }
+        }
+    sum.innerText = _sum.toString() +  "â‚¬";
+    
+    }
+        
+    function checkOrder(_event:Event): void{
+        
+    
+    
+    
+    
+    
+    }
 
 }
