@@ -41,7 +41,7 @@ namespace Form {
 
     function chooseDarreichungsform(_event: Event): void {
         let target: HTMLButtonElement = <HTMLButtonElement>_event.target;
-        let counter: HTMLInputElement = document.getElementById("ScoopCounter");        //Keine Ahnung was dieser Fehler bedeutet
+        let counter: HTMLInputElement = <HTMLInputElement>document.getElementById("ScoopCounter");
 
         if (target.id == "Waffel")
             counter.max = "5";
