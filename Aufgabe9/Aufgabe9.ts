@@ -24,7 +24,8 @@ namespace Form {
         document.addEventListener("click", chooseDarreichungsform);
 
         // Eissorte hinzufügen
-        //        document.addEventListener("click", addFlavor);
+        let newIcecream = document.getElementById("AddIcecream");
+        newIcecream.addEventListener("click", addFlavor);
 
         // Erstellt quasi alles 
         createIcecream();
@@ -40,7 +41,7 @@ namespace Form {
 
     function chooseDarreichungsform(_event: Event): void {
         let target: HTMLButtonElement = <HTMLButtonElement>_event.target;
-        let counter: HTMLInputElement = document.getElementById("ScoopCounter");
+        let counter: HTMLInputElement = document.getElementById("ScoopCounter");        //Keine Ahnung was dieser Fehler bedeutet
 
         if (target.id == "Waffel")
             counter.max = "5";
@@ -70,18 +71,24 @@ namespace Form {
     // Select Felder mit den Eissorten beschriften
     function createFlavor(_sort: string): void {
         // Ein Label ist ein Text den man anklicken kann um damit den Input auszulÃ¶sen
-        let select = document.getElementById("Flavours");
+        let icecream: HTMLElement = document.getElementById("Icecream");
+        let select: HTMLSelectElement = document.createElement("select");
         let option: HTMLOptionElement = document.createElement("option");
-
+        
         option.innerText = _sort;
         select.appendChild(option);
         option.value = "1";
-
-
-        inputFlavors.push();
+        
+        icecream.appendChild(select);
+        inputFlavors.push(option);
     }     
 //Eissorte hinzufügen            
-//function addFlavor(_event :Event) :void{    //        let select: HTMLSelectElement = document.createElement("select");
+        function addFlavor(_event :Event) :void{
+            let amount: number = 8;
+            for (let n: number = 0; n >= amount; n++){
+                createFlavor();
+            }
+            //        let select: HTMLSelectElement = document.createElement("select");
     //        let option: HTMLOptionElement = document.createElement("option");    //        let input: HTMLInputElement = document.createElement("input");
     //        
     //        option.innerText = _sort;
@@ -105,9 +112,9 @@ namespace Form {
 
      function change(): void {         let sum: number = 0;
          for (let i: number = 0; i < inputFlavors.length; i++) {             sum += parseInt(inputFlavors[i].value);         }
-         for (let i: number = 0; i < inputToppings.lengt; i++) {             sum += 0.15;         }          if (cupButton.onclick ){             sum += 0 ,1          }         els e{             break;         }          updateShoppingCard(sum);
+         for (let i: number = 0; i < inputToppings.length; i++) {             sum += 0.15;         }          if (cupButton.onclick ){             sum += 0 ,1          }         else{                      }          updateShoppingCard(sum);
     }    
-    function updateShoppingCard(): void {     let sum: HTMLElement = document.getElementById("Sum");
+    function updateShoppingCard(_sum: number): void {     let sum: HTMLElement = document.getElementById("Sum");
     let items: HTMLElement = document.getElementById("Items");
     items.innerText = "";
     
@@ -161,7 +168,7 @@ function checkOrder(_event: Event): void {
         // ############  Kundendaten #####
         if (name.validity.valid == false) {
             document.getElementById("ErrorCustomerData").style.display = "inline";
-            firstname.style.backgroundColor = "red";
+            name.style.backgroundColor = "red";
         }
 
         if (surname.validity.valid == false) {
