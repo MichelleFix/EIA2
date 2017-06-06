@@ -2,82 +2,117 @@
 <head>
 <meta charset="utf-8" />
 <title>FormElements</title>
-<link rel="stylesheet" href="FormElements.css" type="text/css" />
-<script src="FormElements.js" type="text/javascript" charset="utf-8"></script>
+
+<!-- Standartschrift Muli -->
+<link
+	href="https://fonts.googleapis.com/css?family=Bad+Script|Muli|Sacramento"
+	rel="stylesheet">
+
+<link rel="stylesheet" href="Aufgabe9.css" type="text/css" />
+<script src="Aufgabe9.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <body>
 
 	<header>
-		<h1>EISDEALER</h1>
+		<h1>Der Eisdealer</h1>
+		<h2>Wir bringen dir den Stoff für die heißen Tage!</h2>
 	</header>
+	<section id="Formular">
+		<fieldset id="WaffelOrCup">
+			<legend> Erstelle deinen persönlichen Eisbecher </legend>
 
-	<fieldset id="Icecream">
-		<legend> Erstelle deinen persönlichen Eisbecher </legend>
+			<!--WAFFEL oder BECHER  -->
+			<button id="Waffel">Waffel</button>
+			<p id="ParagraphIcecream">oder</p>
+			<button id="Cup">Becher</button>
 
-		<!--WAFFEL oder BECHER  -->
-		<button id="Waffel">Waffel</button>
-		<p>oder</p>
-		<button id="Cup">Becher</button>
+			<p class="Error" id="ErrorWaffelCup">* Bitte wählen Sie eine
+				Darreichungsform</p>
+			<br>
+		</fieldset>
+		
+		<fieldset id="Icecream">
+			<!--EISSORTE  -->
+			Eissorten <br> <select name="Flavours" id="Flavours"></select>
 
-		<!--EISSORTE  -->
-		Eissorten <select name="Eissorten" id="Eissorten">
-		</select>
+			<!--ANZAHL DER KUGELN  -->
+			<input type="number" id="ScoopCounter" name="Scoops" step="1" min="1" max="10"
+				value="0" />
 
-		<!--ANZAHL DER KUGELN  -->
-		<input type="number" name="Scoops" step="1" min="1" max="6" value="0" />
+			<!--Eissorte und Kugeln hinzufügen  -->
+			<button id="AddIcecreamToOrder">> Hinzufügen</button>
+			<!-- ERROR -->
+			<br>
+			<p class="Error" class="ErrorSorts">* Bitte wählen Sie eine Eissorte</p>
+			<p class="Error" class="ErrorScoops">* Bitte geben Sie die Anzahl
+				der Kugeln an</p>
+			<hr>
 
-		<!--Eissorte und Kugeln hinzufügen  -->
-		<button id="AddIcecreamToOrder">> Hinzufügen</button>
+			<button id="AddIcecream">+ Eissorte hinzufügen</button>
+
+		</fieldset>
+
+		<fieldset id="CheckboxToppings">
+			<legend> Toppings </legend>
+			<input type="checkbox" name="Checkbox1" value="check1" id="check1"
+				class="LeftRowToppings" /> <label for="check1">Schokosoße
+				(+10ct)</label> <input type="checkbox" name="Checkbox2" value="check2"
+				id="check2" class="RightRowToppings" /> <label for="check2">Streusel
+				(+10ct)</label> <br> <input type="checkbox" name="Checkbox3"
+				value="check3" id="check3" class="LeftRowToppings" /> <label
+				for="check3">Sahne (+15ct)</label> <input type="checkbox"
+				name="Checkbox4" value="check4" id="check4" class="RightRowToppings" />
+			<label for="check4"> Erdbeeren (+15ct)</label> <br> <input
+				type="checkbox" name="Checkbox5" value="check5" id="check5"
+				class="LeftRowToppings" /> <label for="check5">Smarties
+				(+10ct)</label> <input type="checkbox" name="Checkbox6" value="check6"
+				id="check6" class="RightRowToppings" /> <label for="check6">Krokant
+				(+15ct)</label> <br>
+
+
+			<!-- Add Toppings  -->
+			<button id="AddToppingsToOrder">> Hinzufügen</button>
+
+		</fieldset>
+
+		<fieldset id="Deliveryoptions">
+			<legend> Lieferoptionen </legend>
+			<input type="radio" name="Delivery" value="radio1" id="Pickup" /> <label
+				for="radio1">Abholung im Geschäft</label> <input type="radio"
+				name="Delivery" value="radio2" id="Delivery" /> <label for="radio2">Lieferung
+				nach Hause</label>
+			<p class="Error" id="ErrorDeliveryoptions">* Bitte wählen Sie
+				eine Lieferoption</p>
+		</fieldset>
+
+		<fieldset id="CustomerData">
+			<legend> Kundendaten </legend>
+
+			<input type="text" name="Name" placeholder="Name" required /> <input
+				type="text" name="Surname" placeholder="Vorname" /> <br> <input
+				type="text" name="Street" placeholder="Straße" /> <input
+				type="text" name="Housenumber" pattern="[0-9]{4}" placeholder="Nr." />
+			<br> <input type="text" name="Postcode" pattern="[0-9]{4}"
+				placeholder="PLZ" /> <input type="text" name="Place"
+				placeholder="Ort" /> <input type="email" name="Mail"
+				placeholder="E-Mail" />
+
+			<p class="Error" id="ErrorCustomerData">* Bitte überprüfen Sie
+				Ihre Angaben</p>
+		</fieldset>
+	</section>
+
+	<section id="OrderSummary">
+
+		<h2>Bestellübersicht</h2>
 
 		<hr>
+		<p id="Items"> </p>
 
-		<button id="AddIcecream">+ Eissorte hinzufügen</button>
-
-	</fieldset>
-
-	<fieldset id="CheckboxToppings">
-		<legend> Toppings </legend>
-		<input type="checkbox" name="Checkbox1" value="check1" id="check1" />
-		<input type="checkbox" name="Checkbox2" value="check2" id="check2" />
-		<input type="checkbox" name="Checkbox3" value="check3" id="check3" />
-		<input type="checkbox" name="Checkbox4" value="check4" id="check4" />
-		<input type="checkbox" name="Checkbox5" value="check5" id="check5" />
-		<input type="checkbox" name="Checkbox6" value="check6" id="check6" />
+		<p>Gesamt:</p>
+		<p id="Sum"></p>
 
 
-		<!-- Add Toppings  -->
-		<button id="AddToppingsToOrder">> Hinzufügen</button>
+	</section>
 
-	</fieldset>
-
-	<fieldset id="Deliveryoptions">
-		<legend> Lieferoptionen </legend>
-		<input type="radio" name="Delivery" value="radio1" id="Pickup"/> 
-		<label for="radio1">Abholung im Geschäft</label>
-		<input type="radio" name="Delivery" value="radio2" id="Delivery"/>
-		<label for="radio2">Lieferung nach Hause</label>
-		
-	</fieldset>
-	
-	<fieldset id="CustomerData">
-		<legend> Kundendaten </legend>
-		Name
-		<input type="text" name="Name" placeholder="Name" required/>
-
-		Vorname
-		<input type="text" name="Surname" placeholder="Vorname"/>
-
-		Anschrift
-		<input type="text" name="Street" placeholder="Straße"/>
-		<input type="number" name="Housenumber" pattern="[0-9]{4}" placeholder="Nr."/>
-		<input type="number" name="Postcode" pattern="[0-9]{4}" placeholder="PLZ"/>
-		<input type="text" name="Place" placeholder="Ort"/>
-		<input type="email" name="Mail" placeholder="E-Mail"/>
-
-	</fieldset>
-	
-	<button id="checkOrder"> Angaben überprüfen</button>
-	
-	
-	
-	
+	<button id="checkOrder">Eingaben überprüfen</button>
