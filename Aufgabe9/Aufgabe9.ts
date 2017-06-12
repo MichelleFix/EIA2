@@ -18,10 +18,12 @@ namespace Form {
 
     function init(_event: Event): void {
         fieldset = document.getElementsByTagName("fieldset")[1];
-
-
-        // Waffel oder Becher auswählen
-        document.addEventListener("click", chooseDarreichungsform);
+        
+//        // Becher auswählen
+//        waffelButton.addEventListener("click", chooseWaffel);
+//
+//        // Becher auswählen
+//        cupButton.addEventListener("click", chooseCup);
 
         // Eissorte hinzufügen
         let newIcecream = document.getElementById("AddIcecream");
@@ -39,28 +41,23 @@ namespace Form {
 
     // -------------------------------------------------- Waffel oder Becher ------------------------------------------------------
 
-    function chooseDarreichungsform(_event: Event): void {
-        let target: HTMLButtonElement = <HTMLButtonElement>_event.target;
-        let counter: HTMLInputElement = <HTMLInputElement>document.getElementById("ScoopCounter");
-
-        if (target.id == "Waffel")
-            counter.max = "5";
-        console.log("Waffel choosen");
-
-        if (target.id == "Cup")
-            counter.max = "10";
-        console.log("Cup choosen");
-
-    }
+//    function chooseWaffel(_event: Event): void {
+//        let counter: HTMLInputElement = <HTMLInputElement>document.getElementById("ScoopCounter");
+//            counter.max = "5";
+//        console.log("Waffel choosen");
+//    }
+//    
+//    function chooseCup(_event: Event): void {
+//        let counter: HTMLInputElement = <HTMLInputElement>document.getElementById("ScoopCounter");
+//            counter.max = "10";
+//        console.log("Cup choosen");
+//
+//    }
 
 
     // -------------------------------------------------- EISSORTEN ------------------------------------------------------
     //  Eissorten erstellen
     function createIcecream(): void {
-        for (let i: number = 0; i < flavors.length; i++) {
-            console.log(flavors[i]);
-            createFlavor(flavors[i]);
-        }
 
         for (let i: number = 0; i < toppings.length; i++) {
             createCheckbox(toppings[i]);
@@ -68,19 +65,19 @@ namespace Form {
     }
 
     // Select Felder mit den Eissorten beschriften
-    function createFlavor(_sort: string): void {
-        // Ein Label ist ein Text den man anklicken kann um damit den Input auszulÃ¶sen
-        let icecream: HTMLElement = document.getElementById("Icecream");
+    function createFlavor(): void {
         let select: HTMLSelectElement = document.createElement("select");
-        let option: HTMLOptionElement = document.createElement("option");
-        
-        option.innerText = _sort;
-        select.appendChild(option);
-        option.value = "1";
-        
-        icecream.appendChild(select);
-        inputFlavors.push(option);
-    }     
+        for (let i: number = 0; i < flavors.length; i++) {
+            let option: HTMLOptionElement = document.createElement("option");
+            
+            option.text = flavors[i];
+            option.value = flavors[i];
+            select.appendChild(option);
+            inputFlavors.push(option);            
+        }
+        document.getElementById("SelectFlavors").appendChild(select);
+    }
+    
 //Eissorte hinzufügen            
         function addFlavor(_event :Event) :void{
             let amount: number = 8;
@@ -100,14 +97,14 @@ namespace Form {
         label.id = _verzierung;
 
         checkboxToppings.appendChild(label);
-        inputToppings.push(input); 
+        inputToppings.push(input); 
     }
 
-     function change(): void {         let sum: number = 0;
-         for (let i: number = 0; i < inputFlavors.length; i++) {             sum += parseInt(inputFlavors[i].value);         }
-         for (let i: number = 0; i < inputToppings.length; i++) {             sum += 0.15;         }          if (cupButton.onclick ){             sum += 0 ,1          }         else{                      }          updateShoppingCard(sum);
-    }    
-    function updateShoppingCard(_sum: number): void {     let sum: HTMLElement = document.getElementById("Sum");
+     function change(): void {         let sum: number = 0;
+         for (let i: number = 0; i < inputFlavors.length; i++) {             sum += parseInt(inputFlavors[i].value);         }
+         for (let i: number = 0; i < inputToppings.length; i++) {             sum += 0.15;         }          if (cupButton.onclick ){             sum += 0 ,1          }         else{                      }          updateShoppingCard(sum);
+    }    
+    function updateShoppingCard(_sum: number): void {     let sum: HTMLElement = document.getElementById("Sum");
     let items: HTMLElement = document.getElementById("Items");
     items.innerText = "";
     

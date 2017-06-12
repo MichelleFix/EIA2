@@ -16,8 +16,11 @@ var Form;
     var checkboxToppings = document.getElementById("CheckboxToppings");
     function init(_event) {
         fieldset = document.getElementsByTagName("fieldset")[1];
-        // Waffel oder Becher ausw�hlen
-        document.addEventListener("click", chooseDarreichungsform);
+        //        // Becher ausw�hlen
+        //        waffelButton.addEventListener("click", chooseWaffel);
+        //
+        //        // Becher ausw�hlen
+        //        cupButton.addEventListener("click", chooseCup);
         // Eissorte hinzuf�gen
         var newIcecream = document.getElementById("AddIcecream");
         newIcecream.addEventListener("click", addFlavor);
@@ -28,38 +31,36 @@ var Form;
         fieldset.addEventListener("change", change);
     }
     // -------------------------------------------------- Waffel oder Becher ------------------------------------------------------
-    function chooseDarreichungsform(_event) {
-        var target = _event.target;
-        var counter = document.getElementById("ScoopCounter");
-        if (target.id == "Waffel")
-            counter.max = "5";
-        console.log("Waffel choosen");
-        if (target.id == "Cup")
-            counter.max = "10";
-        console.log("Cup choosen");
-    }
+    //    function chooseWaffel(_event: Event): void {
+    //        let counter: HTMLInputElement = <HTMLInputElement>document.getElementById("ScoopCounter");
+    //            counter.max = "5";
+    //        console.log("Waffel choosen");
+    //    }
+    //    
+    //    function chooseCup(_event: Event): void {
+    //        let counter: HTMLInputElement = <HTMLInputElement>document.getElementById("ScoopCounter");
+    //            counter.max = "10";
+    //        console.log("Cup choosen");
+    //
+    //    }
     // -------------------------------------------------- EISSORTEN ------------------------------------------------------
     //  Eissorten erstellen
     function createIcecream() {
-        for (var i = 0; i < flavors.length; i++) {
-            console.log(flavors[i]);
-            createFlavor(flavors[i]);
-        }
         for (var i = 0; i < toppings.length; i++) {
             createCheckbox(toppings[i]);
         }
     }
     // Select Felder mit den Eissorten beschriften
-    function createFlavor(_sort) {
-        // Ein Label ist ein Text den man anklicken kann um damit den Input auszulösen
-        var icecream = document.getElementById("Icecream");
+    function createFlavor() {
         var select = document.createElement("select");
-        var option = document.createElement("option");
-        option.innerText = _sort;
-        select.appendChild(option);
-        option.value = "1";
-        icecream.appendChild(select);
-        inputFlavors.push(option);
+        for (var i = 0; i < flavors.length; i++) {
+            var option = document.createElement("option");
+            option.text = flavors[i];
+            option.value = flavors[i];
+            select.appendChild(option);
+            inputFlavors.push(option);
+        }
+        document.getElementById("SelectFlavors").appendChild(select);
     }
     //Eissorte hinzuf�gen            
     function addFlavor(_event) {
@@ -89,8 +90,7 @@ var Form;
         if (cupButton.onclick) {
             sum += 0, 1;
         }
-        else {
-        }
+        else { }
         updateShoppingCard(sum);
     }
     function updateShoppingCard(_sum) {
