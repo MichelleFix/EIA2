@@ -8,7 +8,11 @@ namespace Form {
     let inputFlavors: HTMLOptionElement[] = [];
     let inputToppings: HTMLInputElement[] = [];
 
-    // Elemente aus dem HTML Dokument
+   
+    function init(_event: Event): void {
+        fieldset = document.getElementsByTagName("fieldset")[1];
+        
+         // Elemente aus dem HTML Dokument
     let waffelButton: HTMLElement = document.getElementById("Waffel");
     let cupButton: HTMLElement = document.getElementById("Cup");
     let newFlavorButton: HTMLElement = document.getElementById("AddIcecream");
@@ -16,8 +20,6 @@ namespace Form {
     let checkboxToppings: HTMLElement = document.getElementById("CheckboxToppings");
 
 
-    function init(_event: Event): void {
-        fieldset = document.getElementsByTagName("fieldset")[1];
         
 //        // Becher auswählen
 //        waffelButton.addEventListener("click", chooseWaffel);
