@@ -29,7 +29,7 @@ namespace Form {
 
         // Eissorte hinzufügen
         let newIcecream = document.getElementById("AddIcecream");
-        newIcecream.addEventListener("click", addFlavor);
+        newIcecream.addEventListener("click", createFlavor);
 
         // Erstellt quasi alles 
         createIcecream();

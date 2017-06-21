@@ -89,8 +89,8 @@ button {
 	margin: 1em 0em 1em 1em;
 }
 
-#CheckboxToppings {
-	height: 8em;
+#Toppings{
+	width: 10em;
 }
 
 .RightRowToppings {
@@ -107,17 +107,17 @@ button {
 	margin: 0.5em;
 }
 
-#OrderSummary {
+#Orderview {
 	width: 41%;
 	display: inline;
 	float: right;
 	background-color: #FFD5EF;
 	padding: 1em;
 	position: relative;
-	bottom: 40.4em;
+	bottom:50.4em;
 }
 
-#OrderSummary p{
+#Orderview p{
 	width: 4em;
 	display: inline-block;
 }
