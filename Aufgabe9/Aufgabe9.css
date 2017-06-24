@@ -89,7 +89,7 @@ button {
 	margin: 1em 0em 1em 1em;
 }
 
-#Toppings{
+#Toppings {
 	width: 10em;
 }
 
@@ -107,6 +107,14 @@ button {
 	margin: 0.5em;
 }
 
+#CustomerData input:invalid {
+	background-color: red;
+}
+
+#CustomerData input:required{
+	background-color: white;
+}
+
 #Orderview {
 	width: 41%;
 	display: inline;
@@ -114,10 +122,10 @@ button {
 	background-color: #FFD5EF;
 	padding: 1em;
 	position: relative;
-	bottom:50.4em;
+	bottom: 50.4em;
 }
 
-#Orderview p{
+#Orderview p {
 	width: 4em;
 	display: inline-block;
 }

@@ -47,32 +47,25 @@ var Form;
         var delivery = document.getElementById("Delivery");
         if (surname.validity.valid == false)
             document.getElementById("ErrorCustomerData").style.display = "inline";
-        surname.style.backgroundColor = "red";
         correction.push("ErrorSurname");
         if (name.validity.valid == false) {
             document.getElementById("ErrorCustomerData").style.display = "inline";
-            name.style.backgroundColor = "red";
             correction.push("ErrorName");
         }
         if (street.validity.valid == false)
             document.getElementById("ErrorCustomerData").style.display = "inline";
-        street.style.backgroundColor = "red";
         correction.push("Error");
         if (postcode.validity.valid == false)
             document.getElementById("ErrorCustomerData").style.display = "inline";
-        postcode.style.backgroundColor = "red";
         correction.push("Error");
         if (place.validity.valid == false)
             document.getElementById("ErrorCustomerData").style.display = "inline";
-        place.style.backgroundColor = "red";
         correction.push("Error");
         if (mail.validity.valid == false)
             document.getElementById("ErrorCustomerData").style.display = "inline";
-        mail.style.backgroundColor = "red";
         correction.push("Error");
         if (delivery.value != "Abholung" && delivery.value != "Lieferung")
             document.getElementById("ErrorDeliveryoptions").style.display = "inline";
-        console.log("Lieferung");
         correction.push("Error");
         var iceSorts = 0;
         var behaelter = 0;
