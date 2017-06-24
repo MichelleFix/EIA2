@@ -7,7 +7,7 @@ var Form;
 (function (Form) {
     window.addEventListener("load", init);
     var flavorsArray = ["Schokolade", "Stracciatella", "Erdbeere", "Zitrone", "Waldmeister", "Sauerkirsche", "Himbeere", "Vanille"];
-    var toppingsArray = ["Schokosirup", "Streusel", "Erdbeeren", "Sahne", "Smarties", "Krokant", "Kein Topping"];
+    var toppingsArray = ["Schokosirup", "Streusel", "Erdbeeren", "Sahne", "Smarties", "Krokant"];
     var waffelCupArray = ["Waffel", "Becher"];
     var deliveryArray = ["Abholung", "Lieferung"];
     var flavorsDiv;
@@ -35,6 +35,7 @@ var Form;
     }
     // ##### Bestellung mit Button �berpr�fen ##    
     function checkFormular(_event) {
+        var correction = [];
         var name = document.getElementById("Name");
         var surname = document.getElementById("Surname");
         var street = document.getElementById("Street");
@@ -47,24 +48,32 @@ var Form;
         if (surname.validity.valid == false)
             document.getElementById("ErrorCustomerData").style.display = "inline";
         surname.style.backgroundColor = "red";
-        if (name.validity.valid == false)
+        correction.push("ErrorSurname");
+        if (name.validity.valid == false) {
             document.getElementById("ErrorCustomerData").style.display = "inline";
-        name.style.backgroundColor = "red";
+            name.style.backgroundColor = "red";
+            correction.push("ErrorName");
+        }
         if (street.validity.valid == false)
             document.getElementById("ErrorCustomerData").style.display = "inline";
         street.style.backgroundColor = "red";
+        correction.push("Error");
         if (postcode.validity.valid == false)
             document.getElementById("ErrorCustomerData").style.display = "inline";
         postcode.style.backgroundColor = "red";
+        correction.push("Error");
         if (place.validity.valid == false)
             document.getElementById("ErrorCustomerData").style.display = "inline";
         place.style.backgroundColor = "red";
+        correction.push("Error");
         if (mail.validity.valid == false)
             document.getElementById("ErrorCustomerData").style.display = "inline";
         mail.style.backgroundColor = "red";
+        correction.push("Error");
         if (delivery.value != "Abholung" && delivery.value != "Lieferung")
             document.getElementById("ErrorDeliveryoptions").style.display = "inline";
         console.log("Lieferung");
+        correction.push("Error");
         var iceSorts = 0;
         var behaelter = 0;
         for (var i = 0; i < inputsIcecream.length; i++) {
@@ -73,9 +82,9 @@ var Form;
         }
         if (iceSorts == 0)
             document.getElementById("ErrorSorts").style.display = "inline";
-        else {
-            alert("Vielen Dank f�r Ihre Bestellung!");
-            location.reload();
+        correction.push("Error");
+        if (correction.length == 0) {
+            alert("Vielen Dank fuer Ihre Bestellung");
         }
     }
     // ### Waffel und Cup Radio erstellen, Toppings erstellen und den Stepper erstellen 
