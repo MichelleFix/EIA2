@@ -65,8 +65,7 @@ var Form;
             document.getElementById("ErrorCustomerData").style.display = "inline";
         correction.push("Error");
         if (delivery.value != "Abholung" && delivery.value != "Lieferung")
-            document.getElementById("ErrorDeliveryoptions").style.display = "inline";
-        correction.push("Error");
+            correction.push("Error");
         var iceSorts = 0;
         var behaelter = 0;
         for (var i = 0; i < inputsIcecream.length; i++) {

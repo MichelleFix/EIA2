@@ -83,6 +83,7 @@ namespace Form {
         correction.push("Error");
 
         if (delivery.value != "Abholung" && delivery.value != "Lieferung")
+            document.getElementById("ErrorDeliveryoptions").style.display = "inline";
         correction.push("Error");
 
         let iceSorts: number = 0;
