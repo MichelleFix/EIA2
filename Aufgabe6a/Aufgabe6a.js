@@ -8,12 +8,12 @@
 var L6_Canvas;
 (function (L6_Canvas) {
     window.addEventListener("load", init);
-    var crc2;
-    var bees = [];
+    let crc2;
+    let bees = [];
     var n = 10; // Anzahl der Bienen
     // Canvas wird nach jeder Bienenbewegung neu geladen
-    var imgData;
-    var canvas;
+    let imgData;
+    let canvas;
     canvas = document.getElementsByTagName("canvas")[0];
     crc2 = canvas.getContext("2d");
     console.log(canvas);
@@ -75,13 +75,13 @@ var L6_Canvas;
             }
         }
         // 10 Bienen zeichnen
-        for (var i_1 = 0; i_1 < n; i_1++) {
-            var b = { x: 0, y: 0, color: " ", wingSize: 0 };
+        for (let i = 0; i < n; i++) {
+            let b = { x: 0, y: 0, color: " ", wingSize: 0 };
             b.x = 170;
             b.y = 400;
             b.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             b.wingSize = (Math.random() * (40 - 10) + 10);
-            bees[i_1] = b;
+            bees[i] = b;
         }
         // Bienen fliegen lassen
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
@@ -277,8 +277,8 @@ var L6_Canvas;
     function flyBees() {
         console.log("Animate called");
         crc2.putImageData(imgData, 0, 0); // Laden der Landschaft
-        for (var i = 0; i < n; i++) {
-            var b = bees[i];
+        for (let i = 0; i < n; i++) {
+            let b = bees[i];
             b.x += Math.floor(Math.random() * 10) - 5;
             b.y += Math.random() * 4 - 2;
             if (b.x < 0 - 10) {

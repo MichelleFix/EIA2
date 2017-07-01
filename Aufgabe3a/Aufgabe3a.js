@@ -11,11 +11,11 @@ var schach;
     document.addEventListener('DOMContentLoaded', init);
     function init(_event) {
         //Variablen deklarieren
-        var n = 64;
-        var lines = 0;
-        var rice = 1;
+        let n = 64;
+        let lines = 0;
+        let rice = 1;
         for (var i = 0; i < n; i++) {
-            var div = document.createElement("div"); //Div Tag werden erstellt und in den Body geschrieben. 
+            let div = document.createElement("div"); //Div Tag werden erstellt und in den Body geschrieben. 
             document.body.appendChild(div);
             div.className = "schachbrett";
             if (i % 8 == 0) {
@@ -51,14 +51,14 @@ var schach;
         var firstRow = document.getElementsByTagName("div");
         console.log(firstRow);
         for (var k = 0; k < 8; k++) {
-            var div = firstRow[k];
+            let div = firstRow[k];
             div.addEventListener("click", Markierung);
         }
     }
     function Markierung(_event) {
-        var div = _event.target;
+        let div = _event.target;
         console.log("Hallo");
-        var newColor = "#ffff00";
+        let newColor = "#ffff00";
         console.log(div.style.backgroundColor);
         div.classList.toggle("marked");
         //this.classList.toggle("marked");
@@ -72,7 +72,7 @@ var schach;
         }
         else {
             document.getElementById("display").style.display = "inline";
-            for (var l = 0; l < markedDiv.length; l++) {
+            for (let l = 0; l < markedDiv.length; l++) {
                 total += Number(markedDiv[l].textContent);
                 document.getElementById("display").innerText = "Dezimal: " + total + "\r" + "Hexadezimal: " + total.toString(16);
             }

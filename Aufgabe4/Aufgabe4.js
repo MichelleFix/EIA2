@@ -8,9 +8,9 @@
 var L4_Canvas;
 (function (L4_Canvas) {
     window.addEventListener("load", init);
-    var crc2;
+    let crc2;
     function init(_event) {
-        var canvas;
+        let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
         console.log(canvas);

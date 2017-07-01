@@ -1,17 +1,17 @@
 var L7_Classes;
 (function (L7_Classes) {
-    var Bee = (function () {
-        function Bee(_x, _y) {
+    class Bee {
+        constructor(_x, _y) {
             this.setRandomStyle();
             //this.setRandomPosition();
             this.x = _x;
             this.y = _y;
         }
-        Bee.prototype.update = function () {
+        update() {
             this.draw();
             this.fly();
-        };
-        Bee.prototype.draw = function () {
+        }
+        draw() {
             // K�rper
             L7_Classes.crc2.beginPath();
             L7_Classes.crc2.fillStyle = this.color;
@@ -62,17 +62,16 @@ var L7_Classes;
             L7_Classes.crc2.closePath();
             L7_Classes.crc2.fill();
             L7_Classes.crc2.stroke();
-        };
-        Bee.prototype.fly = function () {
+        }
+        fly() {
             this.x += Math.floor(Math.random() * 10) - 5;
             this.y += Math.random() * 4 - 2;
-        };
-        Bee.prototype.setRandomStyle = function () {
+        }
+        setRandomStyle() {
             this.color = "hsl(" + Math.random() * 360 + ", 100%, 50%)";
             this.wingSize = (Math.random() * (40 - 10) + 10);
-        };
-        return Bee;
-    }());
+        }
+    }
     L7_Classes.Bee = Bee;
 })(L7_Classes || (L7_Classes = {}));
 //# sourceMappingURL=Bees.js.map

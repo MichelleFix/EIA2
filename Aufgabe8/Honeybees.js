@@ -1,25 +1,19 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var L8_Inheritance;
 (function (L8_Inheritance) {
-    var HoneyBee = (function (_super) {
-        __extends(HoneyBee, _super);
-        function HoneyBee(_x, _y) {
-            _super.call(this, _x, _y);
+    class HoneyBee extends L8_Inheritance.allBees {
+        constructor(_x, _y) {
+            super(_x, _y);
             this.speed = 0.05;
             this.setRandomTarget();
         }
-        HoneyBee.prototype.setRandomTarget = function () {
-            var randomtargetflower = Math.round(Math.random() * (L8_Inheritance.f.length - 1));
+        setRandomTarget() {
+            let randomtargetflower = Math.round(Math.random() * (L8_Inheritance.f.length - 1));
             this.targetX = L8_Inheritance.f[randomtargetflower].x;
             this.targetY = L8_Inheritance.f[randomtargetflower].y;
-        };
-        HoneyBee.prototype.fly = function () {
-            var dx = this.targetX - this.x;
-            var dy = this.targetY - this.y;
+        }
+        fly() {
+            let dx = this.targetX - this.x;
+            let dy = this.targetY - this.y;
             if (Math.abs(dx) < 0.5 && Math.abs(dy) < 1) {
                 this.setRandomTarget();
             }
@@ -27,8 +21,8 @@ var L8_Inheritance;
                 this.x += dx * this.speed;
                 this.y += dy * this.speed;
             }
-        };
-        HoneyBee.prototype.draw = function () {
+        }
+        draw() {
             // K�rper
             L8_Inheritance.crc2.beginPath();
             L8_Inheritance.crc2.fillStyle = "#E4BE35";
@@ -79,9 +73,8 @@ var L8_Inheritance;
             L8_Inheritance.crc2.closePath();
             L8_Inheritance.crc2.fill();
             L8_Inheritance.crc2.stroke();
-        };
-        return HoneyBee;
-    }(L8_Inheritance.allBees));
+        }
+    }
     L8_Inheritance.HoneyBee = HoneyBee; // Ende Klasse
 })(L8_Inheritance || (L8_Inheritance = {})); // Ende namespace
 //# sourceMappingURL=Honeybees.js.map

@@ -7,15 +7,15 @@ var L8_Inheritance;
 (function (L8_Inheritance) {
     window.addEventListener("load", init);
     // Variablen f�r die Bienen
-    var bees = []; // Bienen-Array
+    let bees = []; // Bienen-Array
     var n = 10; // Anzahl der Bienen
-    var imgData; // Bildschirm wird aktualisiert
+    let imgData; // Bildschirm wird aktualisiert
     // Variablen f�r die Blumen
     L8_Inheritance.f = [];
     var b = 15; // Anzahl der Blumen
     //    let randomFlowerNumber: number;
-    var x;
-    var y;
+    let x;
+    let y;
     function init(_event) {
         L8_Inheritance.canvas = document.getElementsByTagName("canvas")[0];
         L8_Inheritance.crc2 = L8_Inheritance.canvas.getContext("2d");
@@ -53,17 +53,17 @@ var L8_Inheritance;
         // Blumen vor Bienen und imgData hinter Blumen, nicht hinter Bienen, sonst werden Bienen auch mit abgespeichert
         //  ----------------------------  Blumen ----------------------------------------
         // neue Blume wird erstellt
-        for (var i = 0; i < b; i++) {
-            var randomFlowerNumber = Math.floor((Math.random() * 2) + 0);
+        for (let i = 0; i < b; i++) {
+            let randomFlowerNumber = Math.floor((Math.random() * 2) + 0);
             // let randomNumber zw 0 1
             switch (randomFlowerNumber) {
                 case 0:
-                    var t = new L8_Inheritance.Tulip();
+                    let t = new L8_Inheritance.Tulip();
                     t.draw();
                     L8_Inheritance.f.push(t);
                     break;
                 case 1:
-                    var l = new L8_Inheritance.Lollipop(10);
+                    let l = new L8_Inheritance.Lollipop(10);
                     l.draw();
                     L8_Inheritance.f.push(l);
                     break;
@@ -74,13 +74,13 @@ var L8_Inheritance;
         imgData = L8_Inheritance.crc2.getImageData(0, 0, L8_Inheritance.canvas.width, L8_Inheritance.canvas.height); // canvas speichern
         //  ----------------------------  Bienen ----------------------------------------
         // 10 normale Bienen zeichnen
-        for (var i = 0; i < n; i++) {
-            var b_1 = new L8_Inheritance.normalBee(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
-            bees.push(b_1);
+        for (let i = 0; i < n; i++) {
+            let b = new L8_Inheritance.normalBee(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
+            bees.push(b);
         }
         // 10 Honigbienen zeichnen
-        for (var i = 0; i < n; i++) {
-            var h = new L8_Inheritance.HoneyBee(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
+        for (let i = 0; i < n; i++) {
+            let h = new L8_Inheritance.HoneyBee(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
             h.draw();
             bees.push(h);
         }
@@ -198,23 +198,23 @@ var L8_Inheritance;
     function flyBees() {
         L8_Inheritance.crc2.putImageData(imgData, 0, 0); // Laden der Landschaft
         // in bees.length ge�ndert
-        for (var i = 0; i < bees.length; i++) {
-            var b_2 = bees[i];
-            if (b_2.x < 0 - 10) {
-                b_2.x = L8_Inheritance.canvas.width + 10; // +10 ist der Radius der Biene, damit es einen flie�eden �bergang gibt
+        for (let i = 0; i < bees.length; i++) {
+            let b = bees[i];
+            if (b.x < 0 - 10) {
+                b.x = L8_Inheritance.canvas.width + 10; // +10 ist der Radius der Biene, damit es einen flie�eden �bergang gibt
             }
-            if (b_2.y > L8_Inheritance.canvas.height) {
-                b_2.y = 0;
+            if (b.y > L8_Inheritance.canvas.height) {
+                b.y = 0;
             }
-            if (b_2.y < 0) {
-                b_2.y = L8_Inheritance.canvas.height;
+            if (b.y < 0) {
+                b.y = L8_Inheritance.canvas.height;
             }
-            b_2.update();
+            b.update();
         }
         window.setTimeout(flyBees, 20);
     }
     function clickCanvas(_event) {
-        var newBee = new L8_Inheritance.HoneyBee(170, 400); // es wird auf den constructor zugegriffen, der die beiden Parameter x und y verlangt        
+        let newBee = new L8_Inheritance.HoneyBee(170, 400); // es wird auf den constructor zugegriffen, der die beiden Parameter x und y verlangt        
         bees.push(newBee);
         n++;
     }

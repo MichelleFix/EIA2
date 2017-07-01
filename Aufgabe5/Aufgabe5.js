@@ -8,12 +8,12 @@
 var L4_Canvas;
 (function (L4_Canvas) {
     window.addEventListener("load", init);
-    var crc2;
+    let crc2;
     var n = 10;
-    var x = [];
-    var y = [];
-    var imgData;
-    var canvas;
+    let x = [];
+    let y = [];
+    let imgData;
+    let canvas;
     canvas = document.getElementsByTagName("canvas")[0];
     crc2 = canvas.getContext("2d");
     console.log(canvas);
@@ -82,9 +82,9 @@ var L4_Canvas;
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
         flyBees();
         // 10 Bienen zeichnen
-        for (var i_1 = 0; i_1 < n; i_1++) {
-            x[i_1] = 170;
-            y[i_1] = 400;
+        for (let i = 0; i < n; i++) {
+            x[i] = 170;
+            y[i] = 400;
         }
         window.setTimeout(flyBees, 100);
         canvas.addEventListener("click", clickCanvas);
@@ -277,7 +277,7 @@ var L4_Canvas;
     function flyBees() {
         console.log("Animate called");
         crc2.putImageData(imgData, 0, 0); // Laden der Landschaft
-        for (var i = 0; i < n; i++) {
+        for (let i = 0; i < n; i++) {
             x[i] += Math.floor(Math.random() * 10) - 5;
             y[i] += Math.random() * 4 - 2;
             if (x[i] < 0 - 10) {

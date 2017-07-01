@@ -1,18 +1,18 @@
 var StudiVZ;
 (function (StudiVZ) {
-    var students = [];
-    var stop = false;
+    let students = [];
+    let stop = false;
     while (!stop) {
         var action = prompt("Datensatz anlegen (n), abfragen(a) oder Programm beenden (s)\nn,a oder s eingeben");
         switch (action) {
             case "n":
             case "N":
-                var input = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0 = w oder 1 = m) und Kommentar");
+                let input = prompt("Eingabe (jeweils mit Komma getrennt) von\nMatrikelnummer, Name, Vorname, Alter, Geschlecht (0 = w oder 1 = m) und Kommentar");
                 alert(saveData(input));
                 break;
             case "a":
             case "A":
-                var matrikel = parseInt(prompt("Eingabe Matrikelnummer"));
+                let matrikel = parseInt(prompt("Eingabe Matrikelnummer"));
                 alert(queryData(matrikel));
                 break;
             case "s":
@@ -21,8 +21,8 @@ var StudiVZ;
         }
     }
     function saveData(_input) {
-        var array = _input.split(","); // bei jedem Komma wir das array zerhackt
-        var s = {
+        let array = _input.split(","); // bei jedem Komma wir das array zerhackt
+        let s = {
             matrikel: parseInt(array[0]),
             name: array[1],
             firstname: array[2],
@@ -31,7 +31,7 @@ var StudiVZ;
             comment: array[5]
         };
         students.push(s);
-        var geschlecht;
+        let geschlecht;
         if (s.sex == true) {
             geschlecht = "m"; // wird 1 eingegeben, ist der Nutzer m�nnlich
         }
@@ -41,11 +41,11 @@ var StudiVZ;
         return "Daten gespeichert\nMatrikelnr: " + s.matrikel + "\nName: " + s.name + "\nVorname: " + s.firstname + "\nAlter: " + s.age + "\nGeschlecht: " + geschlecht + "\nKommentar: " + s.comment;
     }
     function queryData(_matrikel) {
-        var result;
-        for (var i = 0; i < students.length; i++) {
-            var sex = void 0;
+        let result;
+        for (let i = 0; i < students.length; i++) {
+            let sex;
             if (students[i].matrikel == _matrikel) {
-                var sex_1 = (students[i].sex).toString(); // sex irgendwie in typ string umwandeln wie kann 
+                let sex = (students[i].sex).toString(); // sex irgendwie in typ string umwandeln wie kann 
                 return "Welcome back " + students[i].firstname + "! : \nMatrikelnummer: " + students[i].matrikel + "\nName: " + students[i].name + "\nVorname: " + students[i].firstname + "\nAlter: " + students[i].age + "\nGeschlecht: " + students[i].sex + "\nKommentar: " + students[i].comment;
             }
         }

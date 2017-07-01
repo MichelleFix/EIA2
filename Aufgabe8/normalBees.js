@@ -1,23 +1,17 @@
-var __extends = (this && this.__extends) || function (d, b) {
-    for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
-    function __() { this.constructor = d; }
-    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-};
 var L8_Inheritance;
 (function (L8_Inheritance) {
-    var normalBee = (function (_super) {
-        __extends(normalBee, _super);
-        function normalBee(_x, _y) {
-            _super.call(this, _x, _y);
+    class normalBee extends L8_Inheritance.allBees {
+        constructor(_x, _y) {
+            super(_x, _y);
             console.log("Create normal Bee");
             //            this.setRandomStyle();
         }
         // Info von fly reingemacht
-        normalBee.prototype.fly = function () {
+        fly() {
             this.x += Math.floor(Math.random() * 10) - 5;
             this.y += Math.random() * 4 - 2;
-        };
-        normalBee.prototype.draw = function () {
+        }
+        draw() {
             // K�rper
             L8_Inheritance.crc2.beginPath();
             L8_Inheritance.crc2.fillStyle = this.color;
@@ -68,9 +62,8 @@ var L8_Inheritance;
             L8_Inheritance.crc2.closePath();
             L8_Inheritance.crc2.fill();
             L8_Inheritance.crc2.stroke();
-        };
-        return normalBee;
-    }(L8_Inheritance.allBees));
+        }
+    }
     L8_Inheritance.normalBee = normalBee;
 })(L8_Inheritance || (L8_Inheritance = {}));
 //# sourceMappingURL=normalBees.js.map

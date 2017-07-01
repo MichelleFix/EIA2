@@ -1,13 +1,13 @@
 var L7_Classes;
 (function (L7_Classes) {
-    var Flower = (function () {
-        function Flower() {
+    class Flower {
+        constructor() {
             this.setRandomPosition();
             //this.x = _x;
             //this.y = _y;
         }
         // BLume
-        Flower.prototype.drawFlower1 = function () {
+        drawFlower1() {
             L7_Classes.crc2.beginPath();
             L7_Classes.crc2.fillStyle = "hsl(" + Math.random() * 360 + ", 100%, 50%)"; // Attribut von Flower
             L7_Classes.crc2.strokeStyle = L7_Classes.crc2.fillStyle;
@@ -19,9 +19,9 @@ var L7_Classes;
             L7_Classes.crc2.closePath();
             L7_Classes.crc2.fill();
             L7_Classes.crc2.stroke();
-        };
+        }
         // BLume 2 
-        Flower.prototype.drawFlower2 = function () {
+        drawFlower2() {
             L7_Classes.crc2.beginPath();
             L7_Classes.crc2.fillStyle = "hsl(" + Math.random() * 360 + ", 100%, 50%)"; // "#F2F5A9"
             L7_Classes.crc2.strokeStyle = L7_Classes.crc2.fillStyle;
@@ -31,13 +31,12 @@ var L7_Classes;
             L7_Classes.crc2.closePath();
             L7_Classes.crc2.fill();
             L7_Classes.crc2.stroke();
-        };
-        Flower.prototype.setRandomPosition = function () {
+        }
+        setRandomPosition() {
             this.x = (Math.random() * (400 - 250) + 250); // 2. Attribut von Flower
             this.y = (Math.random() * (540 - 450) + 450); // 3. Attribut von Flower
-        };
-        return Flower;
-    }());
+        }
+    }
     L7_Classes.Flower = Flower;
 })(L7_Classes || (L7_Classes = {}));
 //# sourceMappingURL=flowers.js.map

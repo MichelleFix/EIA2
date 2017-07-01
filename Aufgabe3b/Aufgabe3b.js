@@ -13,10 +13,10 @@ var maumau;
     var discard = []; //leeres Array f�r den Ablagestapel
     function moveToHand() {
         if (handCards.length < 5) {
-            var min = 0;
-            var max = cards.length - 1;
-            var value = Math.round(Math.random() * (max - min) + min);
-            var pulledCard = cards[value];
+            let min = 0;
+            let max = cards.length - 1;
+            let value = Math.round(Math.random() * (max - min) + min);
+            let pulledCard = cards[value];
             console.log(pulledCard); //die gezogene Karte 
             cards.splice(value, 1); // EIN Element, das an der Stelle "value" kommt, wird aus dem array entfernt
             handCards.push(pulledCard); // Das entfernte element wird in das array handcards an der stelle 0 eingef�gt. also ganz noch vorne
@@ -27,7 +27,7 @@ var maumau;
             document.getElementById("handcard").appendChild(div);
             div.textContent = pulledCard; //darauf soll geschrieben werden, um welche karte es sich handelt
             //Die neu erstellten Divs
-            var s = div.style;
+            let s = div.style;
             s.position = "relative";
             s.cssFloat = "left";
             s.display = "inline";
@@ -39,9 +39,9 @@ var maumau;
         }
     }
     function moveToDiscard(_event) {
-        var currentCard;
+        let currentCard;
         console.log(handCards);
-        var div = _event.target;
+        let div = _event.target;
         console.log(div);
         for (var i = 0; i < handCards.length; i++) {
             discard.push(handCards[i]);

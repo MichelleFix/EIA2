@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded', function () {
     //Variablen deklarieren
-    var n = 64;
-    var lines = 0;
-    var rice = 1;
+    let n = 64;
+    let lines = 0;
+    let rice = 1;
     for (var i = 0; i < 64; i++) {
-        var div = document.createElement("div"); //Div Tag werden erstellt und in den Body geschrieben. 
+        let div = document.createElement("div"); //Div Tag werden erstellt und in den Body geschrieben. 
         document.body.appendChild(div);
         if (i % 8 == 0) {
             div.className = "divFloat";

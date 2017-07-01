@@ -7,15 +7,15 @@ var L7_Classes;
 (function (L7_Classes) {
     window.addEventListener("load", init);
     // Variablen f�r die Bienen
-    var bees = []; // Bienen-Array
+    let bees = []; // Bienen-Array
     var n = 10; // Anzahl der Bienen
-    var imgData; // Bildschirm wird aktualisiert
+    let imgData; // Bildschirm wird aktualisiert
     // Variablen f�r die Blumen
     var f = 50; // Anzahl der Bienen
-    var flowerArray = []; // Blumen-Array
-    var randomFlowerNumber;
-    var x;
-    var y;
+    let flowerArray = []; // Blumen-Array
+    let randomFlowerNumber;
+    let x;
+    let y;
     function init(_event) {
         L7_Classes.canvas = document.getElementsByTagName("canvas")[0];
         L7_Classes.crc2 = L7_Classes.canvas.getContext("2d");
@@ -52,13 +52,13 @@ var L7_Classes;
         drawBasket();
         //  ----------------------------  Bienen ----------------------------------------
         // 10 Bienen zeichnen
-        for (var i = 0; i < n; i++) {
-            var b = new L7_Classes.Bee(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
+        for (let i = 0; i < n; i++) {
+            let b = new L7_Classes.Bee(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
             bees[i] = b;
         }
         //  ----------------------------  Blumen ----------------------------------------
-        for (var i = 0; i < 50; i++) {
-            var flower = new L7_Classes.Flower(); // neue Blume wird erstellt
+        for (let i = 0; i < 50; i++) {
+            let flower = new L7_Classes.Flower(); // neue Blume wird erstellt
             flower.randomFlowerNumber = Math.floor((Math.random() * 1) + 0); // 1. Attribut von Flower
             flower.setRandomPosition();
             switch (flower.randomFlowerNumber) {
@@ -188,8 +188,8 @@ var L7_Classes;
     // Bienen fliegen lassen
     function flyBees() {
         L7_Classes.crc2.putImageData(imgData, 0, 0); // Laden der Landschaft
-        for (var i = 0; i < n; i++) {
-            var b = bees[i];
+        for (let i = 0; i < n; i++) {
+            let b = bees[i];
             if (b.x < 0 - 10) {
                 b.x = L7_Classes.canvas.width + 10; // +10 ist der Radius der Biene, damit es einen flie�eden �bergang gibt
             }
@@ -204,7 +204,7 @@ var L7_Classes;
         window.setTimeout(flyBees, 20);
     }
     function clickCanvas(_event) {
-        var newBee = new L7_Classes.Bee(170, 400); // es wird auf den constructor zugegriffen, der die beiden Parameter x und y verlangt        
+        let newBee = new L7_Classes.Bee(170, 400); // es wird auf den constructor zugegriffen, der die beiden Parameter x und y verlangt        
         bees.push(newBee);
         n++;
     }
