@@ -7,8 +7,13 @@ namespace crazyCircles {
     let y: number;
     let circles: Circles[] = [];
     let b: number = 10;
+    let speed: number = 3;
 
     let imgData: ImageData;     // Bildschirm wird aktualisiert
+
+    //HTML Elemente
+    let start: HTMLElement;
+    let intro: HTMLElement;
 
     window.addEventListener("load", init);
 
@@ -17,16 +22,29 @@ namespace crazyCircles {
 
         canvas = document.getElementsByTagName("canvas")[0];
         crc2 = canvas.getContext("2d");
+        //HTML Elemente
+        start = document.getElementById("startButton");
+        intro = document.getElementById("introducing");
+
+        start.addEventListener("click", startGame);
 
         for (let i: number = 0; i < b; i++) {
             let c: Circles = new Circles();   // ein neuer Kreis wird erstellt
+            circles[i] = c;
             c.setRandomPosition();
         }
 
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
-        animateCircles();
-        window.setTimeout(animateCircles, 200);
+
+
     } // INIT ENDE
+
+    function startGame(): void {
+        intro.style.display = "none";
+        animateCircles();
+        console.log("animate");
+        window.setTimeout(animateCircles, 200);
+    }
 
     function animateCircles(): void {
 
@@ -35,26 +53,32 @@ namespace crazyCircles {
 
         for (let i: number = 0; i < b; i++) {
 
-            let k: Circles = circles[i];
+            let c: Circles = circles[i];
 
-
-            if (k.x < 0 - 10) {
-                k.x = canvas.width + 10;
+            //            if (c.x > canvas.width + 30) {
+            //                c.x = 0 - 30;
+            //            }
+            //                if (c.y > canvas.height + 30) {
+            //
+            //                    c.y = 0 - 30;
+            //                }
+            //
+            //                if (c.y < 0 - 30) {
+            //                    c.y = canvas.height - 30;
+            //                }
+            if ((c.x + speed + c.radius > 0 + canvas.width) || (c.x - c.radius + speed < 0)) {
+                speed = - speed;
+            }
+            if ((c.y + speed + c.radius > 0 + canvas.height) || (c.y - c.radius + speed < 0)) {
+                speed = - speed;
             }
 
-            if (k.y > canvas.height) {
 
-                k.y = 0;
-            }
-
-            if (k.y < 0) {
-                k.y = canvas.height;
-            }
-            k.update();
+            c.update();
 
         }
 
-        window.setTimeout(animateCircles, 20);
+        window.setTimeout(animateCircles, 10);
     }
 
 
