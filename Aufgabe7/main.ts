@@ -17,7 +17,7 @@ namespace L7_Classes {
     let imgData: ImageData;     // Bildschirm wird aktualisiert
 
     // Variablen für die Blumen
-    var f: number = 50;         // Anzahl der Bienen
+    var f: number = 50;         // Anzahl der Blumen
     let flowerArray: Flower[] = [];     // Blumen-Array
     let randomFlowerNumber: number;
     let x: number;
@@ -67,14 +67,9 @@ namespace L7_Classes {
 
         // 10 Bienen zeichnen
         for (let i: number = 0; i < n; i++) {
-            let b: Bee = new Bee(170, 400);// { x: 0, y: 0, color: " ", wingSize: 0 };
+            let b: Bee = new Bee(170, 400); // { x: 0, y: 0, color: " ", wingSize: 0 };
             bees[i] = b;
         }
-
-
-
-
-
         //  ----------------------------  Blumen ----------------------------------------
 
 
@@ -103,7 +98,7 @@ namespace L7_Classes {
         console.log(flowerArray);                          //Array in die Konsole
 
         //  ----------------------------  Bienen ----------------------------------------
-        
+
         // Bienen fliegen lassen
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
         flyBees();

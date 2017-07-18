@@ -11,7 +11,7 @@ var L7_Classes;
     var n = 10; // Anzahl der Bienen
     let imgData; // Bildschirm wird aktualisiert
     // Variablen f�r die Blumen
-    var f = 50; // Anzahl der Bienen
+    var f = 50; // Anzahl der Blumen
     let flowerArray = []; // Blumen-Array
     let randomFlowerNumber;
     let x;
