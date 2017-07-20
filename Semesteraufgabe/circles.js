@@ -1,13 +1,16 @@
 var crazyCircles;
 (function (crazyCircles) {
     class Circles {
-        constructor() {
+        constructor(_x, _y) {
             this.setRandomPosition();
             this.radius = 30;
+            this.vx = 2;
+            this.vy = -2;
         }
         update() {
             this.moveCircles();
             this.drawCircles();
+            this.animateCircles();
         }
         drawCircles() {
             crazyCircles.crc2.beginPath();
@@ -23,8 +26,18 @@ var crazyCircles;
             this.y += Math.random() * 5;
         }
         setRandomPosition() {
-            this.x = (Math.random() * (500) + 10); // 2. Attribut von Flower
-            this.y = (Math.random() * (500) + 10); // 3. Attribut von Flower
+            this.x = (Math.random() * (150) + 10); // 2. Attribut von Flower
+            this.y = (Math.random() * (150) + 10); // 3. Attribut von Flower
+        }
+        animateCircles() {
+            if ((this.x + this.vx + this.radius > 0 + crazyCircles.crc2.canvas.width) || (this.x - this.radius + this.vx < 0)) {
+                this.vx = -this.vx;
+            }
+            if ((this.y + this.vy + this.radius > 0 + crazyCircles.crc2.canvas.height) || (this.y - this.radius + this.vy < 0)) {
+                this.vy = -this.vy;
+            }
+            this.x += this.vx;
+            this.y += this.vy;
         }
     }
     crazyCircles.Circles = Circles;
