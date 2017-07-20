@@ -1,7 +1,42 @@
-#gameOver{
+body {
+	font-family: 'Quicksand', sans-serif;
+	width: 500px;
+}
+
+#introducing {
+	width: 500px;
+	height: 500px;
+}
+
+em {
+	font-family: 'Mountains of Christmas', cursive;
+}
+
+div {
+	width: 100%;
+	height: 500px;
+	text-align: center;
+	border-style: solid;
+	border-color: black;
+	border-width: 2px;
+	position: absolute;
+	z-index: 100;
+}
+
+div>p {
+	font-size: 17pt;
+}
+
+canvas {
+	border-style: solid;
+	border-color: black;
+	border-width: 2px;
+	border-color: black;
+}
+
+#gameOver {
 	display: none;
 	width: 500px;
-	
 	background-color: white;
 	position: absolute;
 	z-index: 100;

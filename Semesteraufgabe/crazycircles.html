@@ -14,18 +14,28 @@ nicht kopiert und auch nicht diktiert.
 <head>
 <meta charset="utf-8">
 <link rel="stylesheet" type="text/css" href="Semesteraufgabe.css">
+
+<link
+	href="https://fonts.googleapis.com/css?family=Mountains+of+Christmas|Quicksand"
+	rel="stylesheet">
+
 <title>Crazy Circles</title>
+
+
 </head>
 
 
 <body>
 
 	<div id="introducing">
-		<h1>Crazy Circles</h1>
+		<h1>
+			<em>Crazy</em> Circles
+		</h1>
 
 		<p>Instructions:</p>
+		<p> Versuche den roten Kreis mit einem Klick einzufangen.
+		<br> Du hast 5 Versuche!</p>
 
-		<p id="level"></p>
 	</div>
 	<canvas id="canvas" width="500" height="500"></canvas>
 
@@ -36,10 +46,9 @@ nicht kopiert und auch nicht diktiert.
 
 	<button id="startButton">Start Game</button>
 	<button id="resetButton">Reset</button>
-	<p id="round"> </p>
-
-	<p id="misses"> </p>
-	<p id="gameOver"> You loose! </p>
+	<p id="level"></p>
+	<p id="misses"></p>
+	<p id="gameOver">You loose!</p>
 </body>
 
 </html>

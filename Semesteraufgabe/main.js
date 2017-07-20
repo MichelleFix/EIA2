@@ -12,11 +12,11 @@ var crazyCircles;
     crazyCircles.clickedCircle = [];
     let rc;
     let r = 1;
-    let round = 0;
+    let level = 0;
     //HTML Elemente
     let start;
     let intro;
-    let displayRound = document.getElementById("round");
+    let displaylevel = document.getElementById("level");
     let displayMiss;
     window.addEventListener("load", init);
     function init(_event) {
@@ -70,11 +70,11 @@ var crazyCircles;
     }
     function clickRedCircle() {
         //Runden werden hochgez�hlt...
-        round++;
+        level++;
         // und ins HTML geschrieben
-        document.getElementById("round").innerHTML = "Runde:" + round;
+        document.getElementById("level").innerHTML = "Runde:" + level;
         // angeklickte rote Kreise werden in ein Array geschoben
-        crazyCircles.clickedCircle.push(("redcircle" + round));
+        crazyCircles.clickedCircle.push(("redcircle" + level));
         console.log(crazyCircles.clickedCircle);
         if (crazyCircles.clickedCircle.length == 5) {
             rc.update();

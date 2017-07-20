@@ -16,12 +16,12 @@ namespace crazyCircles {
     export let clickedCircle: string[] = [];
     let rc: RedCircle;
     let r: number = 1;
-    let round: number = 0;
+    let level: number = 0;
 
     //HTML Elemente
     let start: HTMLElement;
     let intro: HTMLElement;
-    let displayRound: HTMLElement = document.getElementById("round");
+    let displaylevel: HTMLElement = document.getElementById("level");
     let displayMiss: HTMLElement;
 
 
@@ -100,12 +100,12 @@ namespace crazyCircles {
 
     function clickRedCircle(): void {
         //Runden werden hochgezählt...
-        round++;
+        level++;
         // und ins HTML geschrieben
-        document.getElementById("round").innerHTML = "Runde:" + round;
+        document.getElementById("level").innerHTML = "Runde:" + level;
 
         // angeklickte rote Kreise werden in ein Array geschoben
-        clickedCircle.push(("redcircle" + round));
+        clickedCircle.push(("redcircle" + level));
         console.log(clickedCircle);
 
         if (clickedCircle.length == 5) {        //wenn 5 Kreise im Array sind, wird ein weiterer Kreis hinzugefügt
