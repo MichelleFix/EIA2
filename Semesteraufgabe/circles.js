@@ -1,29 +1,25 @@
 var crazyCircles;
 (function (crazyCircles) {
     class Circles {
-        constructor(_x, _y) {
+        constructor() {
             this.setRandomPosition();
             this.radius = 30;
             this.vx = 2;
             this.vy = -2;
         }
         update() {
-            this.moveCircles();
             this.drawCircles();
             this.animateCircles();
         }
         drawCircles() {
             crazyCircles.crc2.beginPath();
             crazyCircles.crc2.fillStyle = "black";
+            crazyCircles.crc2.strokeStyle = "black";
             crazyCircles.crc2.moveTo(this.x, this.y);
             crazyCircles.crc2.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
             crazyCircles.crc2.closePath();
             crazyCircles.crc2.fill();
             crazyCircles.crc2.stroke();
-        }
-        moveCircles() {
-            this.x += Math.random() * 5;
-            this.y += Math.random() * 5;
         }
         setRandomPosition() {
             this.x = (Math.random() * (150) + 10); // 2. Attribut von Flower

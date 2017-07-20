@@ -7,7 +7,7 @@ namespace crazyCircles {
         vy: number;
 
 
-        constructor(_x: number, _y: number) {
+        constructor() {
             this.setRandomPosition();
             this.radius = 30;
             this.vx = 2;
@@ -15,7 +15,7 @@ namespace crazyCircles {
         }
 
         update(): void {
-            this.moveCircles();
+
             this.drawCircles();
             this.animateCircles();
         }
@@ -23,17 +23,12 @@ namespace crazyCircles {
         drawCircles(): void {
             crc2.beginPath();
             crc2.fillStyle = "black";
+            crc2.strokeStyle = "black";
             crc2.moveTo(this.x, this.y);
             crc2.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
             crc2.closePath();
             crc2.fill();
             crc2.stroke();
-        }
-
-        moveCircles(): void {
-            this.x += Math.random() * 5;
-            this.y += Math.random() * 5;
-
         }
 
         setRandomPosition(): void {
@@ -53,21 +48,6 @@ namespace crazyCircles {
             this.x += this.vx;
             this.y += this.vy;
         }
-        //
-        //            //linker oder rechter Rand erreicht
-        //            if (this.x + this.vx > crc2.canvas.width - this.radius || this.x + this.vx < this.radius) {
-        //                this.vx = -this.vx;
-        //            }
-        //
-        //            //oberer und unterer Rand erreicht
-        //            if (this.y + this.vy < this.radius || this.y + this.vy >= crc2.canvas.height - this.radius) {
-        //                this.vy = -this.vy; //nach unten bewegen --> Vorzeichen von vy zu +
-        //            }
-        //
-        //            this.x += this.vx; //+2
-        //            this.y += this.vy; //-2
-        //
-
 
     }
 }
