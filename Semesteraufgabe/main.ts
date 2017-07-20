@@ -50,7 +50,33 @@ namespace crazyCircles {
             c.setRandomPosition();
         }
 
+        drawRedCircle();
 
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
+
+
+    } // INIT ENDE
+
+    function startGame(_event: Event): void {
+        intro.style.display = "none";
+        window.setTimeout(animate, 20);
+//        start.disabled =  true;
+    }
+
+
+    function animate(): void {
+        crc2.putImageData(imgData, 0, 0);
+
+        rc.update();
+        c.update();
+
+        console.log("animate");
+        window.setTimeout(animate, 20);
+
+    }
+
+    function drawRedCircle(): void {
+        // Roter Kreis wird gezeichnet
         for (let i: number = 0; i < r; i++) {
             rc = new RedCircle();
             redCircle[i] = rc;
@@ -58,26 +84,6 @@ namespace crazyCircles {
             rc.setRandomPosition();
 
         }
-
-
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
-
-
-    } // INIT ENDE
-
-    function startGame(): void {
-        intro.style.display = "none";
-        window.setTimeout(animate, 10);
-    }
-
-
-    function animate(): void {
-        crc2.putImageData(imgData, 0, 0);
-        rc.update();
-        c.update();
-        console.log("animate");
-        window.setTimeout(animate, 10);
-
     }
 
     function clickCanvas(_event: MouseEvent): void {
@@ -108,8 +114,13 @@ namespace crazyCircles {
         clickedCircle.push(("redcircle" + level));
         console.log(clickedCircle);
 
+        // Kreis bewegt sich schneller
+        rc.vx += 2;
+
+
         if (clickedCircle.length == 5) {        //wenn 5 Kreise im Array sind, wird ein weiterer Kreis hinzugefügt
-            rc.update();
+            let newRedCircle: RedCircle = new RedCircle();
+            redCircle.push(newRedCircle);
         }
 
     }

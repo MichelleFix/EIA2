@@ -35,24 +35,29 @@ var crazyCircles;
             console.log("create new circle");
             c.setRandomPosition();
         }
-        for (let i = 0; i < r; i++) {
-            rc = new crazyCircles.RedCircle();
-            redCircle[i] = rc;
-            console.log("create new red circle");
-            rc.setRandomPosition();
-        }
+        drawRedCircle();
         imgData = crazyCircles.crc2.getImageData(0, 0, crazyCircles.canvas.width, crazyCircles.canvas.height); // canvas speichern
     } // INIT ENDE
-    function startGame() {
+    function startGame(_event) {
         intro.style.display = "none";
-        window.setTimeout(animate, 10);
+        window.setTimeout(animate, 20);
+        //        start.disabled =  true;
     }
     function animate() {
         crazyCircles.crc2.putImageData(imgData, 0, 0);
         rc.update();
         c.update();
         console.log("animate");
-        window.setTimeout(animate, 10);
+        window.setTimeout(animate, 20);
+    }
+    function drawRedCircle() {
+        // Roter Kreis wird gezeichnet
+        for (let i = 0; i < r; i++) {
+            rc = new crazyCircles.RedCircle();
+            redCircle[i] = rc;
+            console.log("create new red circle");
+            rc.setRandomPosition();
+        }
     }
     function clickCanvas(_event) {
         let mX = _event.clientX;
@@ -76,8 +81,11 @@ var crazyCircles;
         // angeklickte rote Kreise werden in ein Array geschoben
         crazyCircles.clickedCircle.push(("redcircle" + level));
         console.log(crazyCircles.clickedCircle);
+        // Kreis bewegt sich schneller
+        rc.vx += 2;
         if (crazyCircles.clickedCircle.length == 5) {
-            rc.update();
+            let newRedCircle = new crazyCircles.RedCircle();
+            redCircle.push(newRedCircle);
         }
     }
     function failedClick() {
