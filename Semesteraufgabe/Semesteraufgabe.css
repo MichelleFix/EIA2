@@ -1,9 +1,8 @@
 #gameOver{
 	display: none;
 	width: 500px;
-	height: 500 px;
+	
 	background-color: white;
-	transparancy: 40%;
 	position: absolute;
 	z-index: 100;
 	font-size: 30pt;

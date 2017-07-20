@@ -12,7 +12,7 @@ var crazyCircles;
     crazyCircles.clickedCircle = [];
     let rc;
     let r = 1;
-    crazyCircles.round = 0;
+    let round = 0;
     //HTML Elemente
     let start;
     let intro;
@@ -70,23 +70,33 @@ var crazyCircles;
     }
     function clickRedCircle() {
         //Runden werden hochgez�hlt...
-        crazyCircles.round++;
-        // und in HTML geschrieben
-        displayRound.innerHTML = "Runde" + crazyCircles.round;
+        round++;
+        // und ins HTML geschrieben
+        document.getElementById("round").innerHTML = "Runde:" + round;
         // angeklickte rote Kreise werden in ein Array geschoben
-        crazyCircles.clickedCircle.push(("redcircle" + crazyCircles.round));
+        crazyCircles.clickedCircle.push(("redcircle" + round));
         console.log(crazyCircles.clickedCircle);
         if (crazyCircles.clickedCircle.length == 5) {
             rc.update();
         }
     }
     function failedClick() {
+        console.log("failedClick");
         let miss = 0;
-        miss++;
-        displayMiss.innerHTML = "Daneben:" + crazyCircles.round;
-        if (miss == 4) {
+        miss += 1;
+        console.log(miss);
+        displayMiss.innerHTML = "Daneben:" + miss;
+        if (miss == 5) {
+            console.log("gameover");
             document.getElementById("gameOver").style.display = "inline";
         }
+        //        for (let i: number = 0; i > 5; i++) {
+        //            displayMiss.innerHTML = "Daneben:" + i;
+        //
+        //            if (i == 5) {
+        //                document.getElementById("gameOver").style.display = "inline";
+        //            }
+        //        }
     }
 })(crazyCircles || (crazyCircles = {}));
 //# sourceMappingURL=main.js.map
