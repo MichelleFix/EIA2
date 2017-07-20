@@ -21,7 +21,7 @@ namespace crazyCircles {
     //HTML Elemente
     let start: HTMLElement;
     let intro: HTMLElement;
-    export let displayRound: HTMLElement = document.getElementById("round");
+    let displayRound: HTMLElement = document.getElementById("round");
     let displayMiss: HTMLElement;
 
 
@@ -88,10 +88,12 @@ namespace crazyCircles {
         let diffY = rc.y - _event.clientY;
 
         if (Math.abs(diffX) < rc.radius && Math.abs(diffY) < rc.radius) {
+            console.log("getroffen");
             clickRedCircle();
         }
 
         else {
+            console.log("daneben");
             failedClick();
         }
     }
@@ -116,7 +118,7 @@ namespace crazyCircles {
         let miss: number = 0;
         miss++;
         displayMiss.innerHTML = "Daneben:" + round;
-        if (miss >= 5) {
+        if (miss == 4) {
             document.getElementById("gameOver").style.display = "inline";
         }
 

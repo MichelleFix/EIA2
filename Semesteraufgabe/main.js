@@ -16,7 +16,7 @@ var crazyCircles;
     //HTML Elemente
     let start;
     let intro;
-    crazyCircles.displayRound = document.getElementById("round");
+    let displayRound = document.getElementById("round");
     let displayMiss;
     window.addEventListener("load", init);
     function init(_event) {
@@ -60,9 +60,11 @@ var crazyCircles;
         let diffX = rc.x - _event.clientX;
         let diffY = rc.y - _event.clientY;
         if (Math.abs(diffX) < rc.radius && Math.abs(diffY) < rc.radius) {
+            console.log("getroffen");
             clickRedCircle();
         }
         else {
+            console.log("daneben");
             failedClick();
         }
     }
@@ -70,7 +72,7 @@ var crazyCircles;
         //Runden werden hochgez�hlt...
         crazyCircles.round++;
         // und in HTML geschrieben
-        crazyCircles.displayRound.innerHTML = "Runde" + crazyCircles.round;
+        displayRound.innerHTML = "Runde" + crazyCircles.round;
         // angeklickte rote Kreise werden in ein Array geschoben
         crazyCircles.clickedCircle.push(("redcircle" + crazyCircles.round));
         console.log(crazyCircles.clickedCircle);
@@ -82,7 +84,7 @@ var crazyCircles;
         let miss = 0;
         miss++;
         displayMiss.innerHTML = "Daneben:" + crazyCircles.round;
-        if (miss >= 5) {
+        if (miss == 4) {
             document.getElementById("gameOver").style.display = "inline";
         }
     }
