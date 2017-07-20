@@ -12,6 +12,8 @@ namespace crazyCircles {
             this.radius = 30;
             this.vx = 2;
             this.vy = -2;
+            this.x = Math.random();
+            this.y = Math.random();
         }
 
         update(): void {
@@ -32,8 +34,8 @@ namespace crazyCircles {
         }
 
         setRandomPosition(): void {
-            this.x = (Math.random() * (150) + 10);      // 2. Attribut von Flower
-            this.y = (Math.random() * (150) + 10);      // 3. Attribut von Flower
+            this.x = (Math.random() * (450) + 10);      // 2. Attribut von Flower
+            this.y = (Math.random() * (450) + 10);      // 3. Attribut von Flower
 
         }
 

@@ -6,14 +6,14 @@ namespace crazyCircles {
     let x: number;
     let y: number;
     let circles: Circles[] = [];
-    let b: number = 10;
-    let c: Circles;
+    let b: number = 20;
+    //    let c: Circles;
 
     let imgData: ImageData;     // Bildschirm wird aktualisiert
 
     //Variablen für den roten Kreis
     let redCircle: RedCircle[] = [];
-    export let clickedCircle: string[] = [];
+    let clickedCircle: string[] = [];
     let rc: RedCircle;
     let r: number = 1;
     let level: number = 0;
@@ -23,6 +23,7 @@ namespace crazyCircles {
     let intro: HTMLElement;
     let displaylevel: HTMLElement = document.getElementById("level");
     let displayMiss: HTMLElement;
+    let resetButton: HTMLElement;
 
 
     window.addEventListener("load", init);
@@ -37,39 +38,47 @@ namespace crazyCircles {
         start = document.getElementById("startButton");
         intro = document.getElementById("introducing");
         displayMiss = document.getElementById("misses");
+        resetButton = document.getElementById("resetButton");
 
-        //Bei Klick auf Start beginnt das Spiel
-        start.addEventListener("click", startGame);
+        //Klick-Events
+        start.addEventListener("click", startGame);     // Startet das Game
+        start.addEventListener("touchstart", startGame);
+        canvas.addEventListener("click", clickCanvas);      // Fängt die roten Kreise
+        canvas.addEventListener("touchstart", clickCanvas);
+        resetButton.addEventListener("click", resetGame);   // Lädt das Spiel neu
+        resetButton.addEventListener("touchstart", resetGame);
 
-        canvas.addEventListener("click", clickCanvas);
-
+        // Erstellt 10 schwarze Kreise
         for (let i: number = 0; i < b; i++) {
-            c = new Circles();   // ein neuer Kreis wird erstellt
+            let c: Circles = new Circles();
             circles[i] = c;
             console.log("create new circle");
             c.setRandomPosition();
         }
 
+        // Erstellt ein roter Kreis
         drawRedCircle();
 
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
 
-
     } // INIT ENDE
 
+    // Spiel wird gestartet
     function startGame(_event: Event): void {
         intro.style.display = "none";
         window.setTimeout(animate, 20);
-//        start.disabled =  true;
+        //        start.disabled =  true;
     }
 
 
     function animate(): void {
         crc2.putImageData(imgData, 0, 0);
+        for (let i: number = 0; i < b; i++) {
+            let c: Circles = circles[i];
+            c.update();
 
+        }
         rc.update();
-        c.update();
-
         console.log("animate");
         window.setTimeout(animate, 20);
 
@@ -115,7 +124,7 @@ namespace crazyCircles {
         console.log(clickedCircle);
 
         // Kreis bewegt sich schneller
-        rc.vx += 2;
+        rc.vx += 3;
 
 
         if (clickedCircle.length == 5) {        //wenn 5 Kreise im Array sind, wird ein weiterer Kreis hinzugefügt
@@ -148,5 +157,8 @@ namespace crazyCircles {
 
     }
 
+    function resetGame(_event: Event): void {
+        document.location.reload();
+    }
 
 }

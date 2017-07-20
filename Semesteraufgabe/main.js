@@ -4,12 +4,12 @@ var crazyCircles;
     let x;
     let y;
     let circles = [];
-    let b = 10;
-    let c;
+    let b = 20;
+    //    let c: Circles;
     let imgData; // Bildschirm wird aktualisiert
     //Variablen f�r den roten Kreis
     let redCircle = [];
-    crazyCircles.clickedCircle = [];
+    let clickedCircle = [];
     let rc;
     let r = 1;
     let level = 0;
@@ -18,6 +18,7 @@ var crazyCircles;
     let intro;
     let displaylevel = document.getElementById("level");
     let displayMiss;
+    let resetButton;
     window.addEventListener("load", init);
     function init(_event) {
         crazyCircles.canvas = document.getElementsByTagName("canvas")[0];
@@ -26,18 +27,26 @@ var crazyCircles;
         start = document.getElementById("startButton");
         intro = document.getElementById("introducing");
         displayMiss = document.getElementById("misses");
-        //Bei Klick auf Start beginnt das Spiel
-        start.addEventListener("click", startGame);
-        crazyCircles.canvas.addEventListener("click", clickCanvas);
+        resetButton = document.getElementById("resetButton");
+        //Klick-Events
+        start.addEventListener("click", startGame); // Startet das Game
+        start.addEventListener("touchstart", startGame);
+        crazyCircles.canvas.addEventListener("click", clickCanvas); // F�ngt die roten Kreise
+        crazyCircles.canvas.addEventListener("touchstart", clickCanvas);
+        resetButton.addEventListener("click", resetGame); // L�dt das Spiel neu
+        resetButton.addEventListener("touchstart", resetGame);
+        // Erstellt 10 schwarze Kreise
         for (let i = 0; i < b; i++) {
-            c = new crazyCircles.Circles(); // ein neuer Kreis wird erstellt
+            let c = new crazyCircles.Circles();
             circles[i] = c;
             console.log("create new circle");
             c.setRandomPosition();
         }
+        // Erstellt ein roter Kreis
         drawRedCircle();
         imgData = crazyCircles.crc2.getImageData(0, 0, crazyCircles.canvas.width, crazyCircles.canvas.height); // canvas speichern
     } // INIT ENDE
+    // Spiel wird gestartet
     function startGame(_event) {
         intro.style.display = "none";
         window.setTimeout(animate, 20);
@@ -45,8 +54,11 @@ var crazyCircles;
     }
     function animate() {
         crazyCircles.crc2.putImageData(imgData, 0, 0);
+        for (let i = 0; i < b; i++) {
+            let c = circles[i];
+            c.update();
+        }
         rc.update();
-        c.update();
         console.log("animate");
         window.setTimeout(animate, 20);
     }
@@ -79,11 +91,11 @@ var crazyCircles;
         // und ins HTML geschrieben
         document.getElementById("level").innerHTML = "Runde:" + level;
         // angeklickte rote Kreise werden in ein Array geschoben
-        crazyCircles.clickedCircle.push(("redcircle" + level));
-        console.log(crazyCircles.clickedCircle);
+        clickedCircle.push(("redcircle" + level));
+        console.log(clickedCircle);
         // Kreis bewegt sich schneller
-        rc.vx += 2;
-        if (crazyCircles.clickedCircle.length == 5) {
+        rc.vx += 3;
+        if (clickedCircle.length == 5) {
             let newRedCircle = new crazyCircles.RedCircle();
             redCircle.push(newRedCircle);
         }
@@ -105,6 +117,9 @@ var crazyCircles;
         //                document.getElementById("gameOver").style.display = "inline";
         //            }
         //        }
+    }
+    function resetGame(_event) {
+        document.location.reload();
     }
 })(crazyCircles || (crazyCircles = {}));
 //# sourceMappingURL=main.js.map

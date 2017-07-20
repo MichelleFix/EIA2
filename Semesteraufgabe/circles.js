@@ -6,6 +6,8 @@ var crazyCircles;
             this.radius = 30;
             this.vx = 2;
             this.vy = -2;
+            this.x = Math.random();
+            this.y = Math.random();
         }
         update() {
             this.drawCircles();
@@ -22,8 +24,8 @@ var crazyCircles;
             crazyCircles.crc2.stroke();
         }
         setRandomPosition() {
-            this.x = (Math.random() * (150) + 10); // 2. Attribut von Flower
-            this.y = (Math.random() * (150) + 10); // 3. Attribut von Flower
+            this.x = (Math.random() * (450) + 10); // 2. Attribut von Flower
+            this.y = (Math.random() * (450) + 10); // 3. Attribut von Flower
         }
         animateCircles() {
             if ((this.x + this.vx + this.radius > 0 + crazyCircles.crc2.canvas.width) || (this.x - this.radius + this.vx < 0)) {
