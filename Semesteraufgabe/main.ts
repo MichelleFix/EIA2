@@ -2,14 +2,15 @@ namespace crazyCircles {
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
 
+    // Variable für beide Kreise
+    let circles: Circles[] = [];
+
     //Variablen für die schwarzen Kreise
     let x: number;
     let y: number;
-    let circles: Circles[] = [];
+    let blackCircle: BlackCircles[] = [];
+    let bc: BlackCircles;
     let b: number = 20;
-    //    let c: Circles;
-
-    let imgData: ImageData;     // Bildschirm wird aktualisiert
 
     //Variablen für den roten Kreis
     let redCircle: RedCircle[] = [];
@@ -17,6 +18,10 @@ namespace crazyCircles {
     let rc: RedCircle;
     let r: number = 1;
     let level: number = 0;
+
+    let imgData: ImageData;     // Bildschirm wird aktualisiert
+    
+    let miss: number = 0;
 
     //HTML Elemente
     let start: HTMLElement;
@@ -48,17 +53,6 @@ namespace crazyCircles {
         resetButton.addEventListener("click", resetGame);   // Lädt das Spiel neu
         resetButton.addEventListener("touchstart", resetGame);
 
-        // Erstellt 10 schwarze Kreise
-        for (let i: number = 0; i < b; i++) {
-            let c: Circles = new Circles();
-            circles[i] = c;
-            console.log("create new circle");
-            c.setRandomPosition();
-        }
-
-        // Erstellt ein roter Kreis
-        drawRedCircle();
-
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // canvas speichern
 
     } // INIT ENDE
@@ -66,8 +60,11 @@ namespace crazyCircles {
     // Spiel wird gestartet
     function startGame(_event: Event): void {
         intro.style.display = "none";
+        drawRedCircle();
+        drawBlackCircles();
         window.setTimeout(animate, 20);
         //        start.disabled =  true;
+
     }
 
 
@@ -79,7 +76,6 @@ namespace crazyCircles {
 
         }
         rc.update();
-        console.log("animate");
         window.setTimeout(animate, 20);
 
     }
@@ -92,6 +88,15 @@ namespace crazyCircles {
             console.log("create new red circle");
             rc.setRandomPosition();
 
+        }
+    }
+
+    function drawBlackCircles(): void {
+        for (let i: number = 0; i < b; i++) {
+            bc = new BlackCircles();
+            circles[i] = bc;
+            console.log("create new circle");
+            bc.setRandomPosition();
         }
     }
 
@@ -124,19 +129,20 @@ namespace crazyCircles {
         console.log(clickedCircle);
 
         // Kreis bewegt sich schneller
-        rc.vx += 3;
+        rc.vx *= 1.5;
 
 
         if (clickedCircle.length == 5) {        //wenn 5 Kreise im Array sind, wird ein weiterer Kreis hinzugefügt
             let newRedCircle: RedCircle = new RedCircle();
+            console.log("create new  red circle");
             redCircle.push(newRedCircle);
+            r++;
         }
 
     }
 
     function failedClick(): void {
         console.log("failedClick");
-        let miss: number = 0;
         miss += 1;
         console.log(miss);
         displayMiss.innerHTML = "Daneben:" + miss;

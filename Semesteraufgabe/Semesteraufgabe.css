@@ -37,9 +37,11 @@ canvas {
 #gameOver {
 	display: none;
 	width: 500px;
-	background-color: white;
+	height: 500px;
+	background-color: red;
 	position: absolute;
 	z-index: 100;
 	font-size: 30pt;
 	text-align: center;
+	margin: 0em;
 }

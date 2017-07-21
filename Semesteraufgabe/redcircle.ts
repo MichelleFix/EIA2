@@ -1,6 +1,6 @@
 namespace crazyCircles {
 
-    export class RedCircle {
+    export class RedCircle extends Circles {
         x: number;
         y: number;
         vx: number;
@@ -9,18 +9,12 @@ namespace crazyCircles {
         radius: number;
 
         constructor() {
-            this.setRandomPosition();
-            this.radius = 30;
-            this.vx = 2;
-            this.vy = -2;
+            super();
+            this.vx = 3;
+            this.vy = -3;
         }
 
-        update(): void {
-            this.drawRedCircle();
-            this.animateRedCircle();
-        }
-
-        drawRedCircle(): void {
+        draw(): void {
             crc2.beginPath();
             crc2.fillStyle = "red";
             crc2.strokeStyle = "red";
@@ -31,13 +25,9 @@ namespace crazyCircles {
             crc2.stroke();
         }
 
-        setRandomPosition(): void {
-            this.x = (Math.random() * (450) + 10);      // 2. Attribut von Flower
-            this.y = (Math.random() * (450) + 10);      // 3. Attribut von Flower
 
-        }
 
-        animateRedCircle(): void {
+        move(): void {
             let newX = this.x + this.vx;
 
 
@@ -56,6 +46,11 @@ namespace crazyCircles {
             this.y += this.vy; //-2
         }//move
 
+        setRandomPosition(): void {
+            this.x = (Math.random() * (400) + 50);      // 2. Attribut von Flower
+            this.y = (Math.random() * (400) + 50);      // 3. Attribut von Flower
+
+        }
 
     }
 }

@@ -1,17 +1,12 @@
 var crazyCircles;
 (function (crazyCircles) {
-    class RedCircle {
+    class RedCircle extends crazyCircles.Circles {
         constructor() {
-            this.setRandomPosition();
-            this.radius = 30;
-            this.vx = 2;
-            this.vy = -2;
+            super();
+            this.vx = 3;
+            this.vy = -3;
         }
-        update() {
-            this.drawRedCircle();
-            this.animateRedCircle();
-        }
-        drawRedCircle() {
+        draw() {
             crazyCircles.crc2.beginPath();
             crazyCircles.crc2.fillStyle = "red";
             crazyCircles.crc2.strokeStyle = "red";
@@ -21,11 +16,7 @@ var crazyCircles;
             crazyCircles.crc2.fill();
             crazyCircles.crc2.stroke();
         }
-        setRandomPosition() {
-            this.x = (Math.random() * (450) + 10); // 2. Attribut von Flower
-            this.y = (Math.random() * (450) + 10); // 3. Attribut von Flower
-        }
-        animateRedCircle() {
+        move() {
             let newX = this.x + this.vx;
             //linker oder rechter Rand erreicht
             if (newX > crazyCircles.crc2.canvas.width - this.radius || newX < this.radius) {
@@ -39,6 +30,10 @@ var crazyCircles;
             this.x += this.vx; //+2
             this.y += this.vy; //-2
         } //move
+        setRandomPosition() {
+            this.x = (Math.random() * (400) + 50); // 2. Attribut von Flower
+            this.y = (Math.random() * (400) + 50); // 3. Attribut von Flower
+        }
     }
     crazyCircles.RedCircle = RedCircle;
 })(crazyCircles || (crazyCircles = {}));

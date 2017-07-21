@@ -33,22 +33,29 @@ nicht kopiert und auch nicht diktiert.
 		</h1>
 
 		<p>Instructions:</p>
-		<p> Versuche den roten Kreis mit einem Klick einzufangen.
-		<br> Du hast 5 Versuche!</p>
+		<p>
+			Versuche den roten Kreis mit einem Klick einzufangen. <br> Du
+			hast 5 Versuche!
+		</p>
 
 	</div>
+	<p id="gameOver">
+		You loose! <br> Press Reset to try again!
+	</p>
+	
 	<canvas id="canvas" width="500" height="500"></canvas>
 
 
 	<script src="main.js"></script>
 	<script src="circles.js"></script>
+	<script src="blackcircles.js"></script>
 	<script src="redcircle.js"></script>
 
 	<button id="startButton">Start Game</button>
 	<button id="resetButton">Reset</button>
 	<p id="level"></p>
 	<p id="misses"></p>
-	<p id="gameOver">You loose!</p>
+
 </body>
 
 </html>
