@@ -10,8 +10,8 @@ namespace crazyCircles {
         constructor() {
             this.setRandomPosition();
             this.radius = 30;
-            this.x = Math.random();
-            this.y = Math.random();
+            this.x = (Math.random() * (400) + 50);
+            this.y = (Math.random() * (400) + 50);
         }
 
         update(): void {

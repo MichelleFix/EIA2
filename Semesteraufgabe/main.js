@@ -2,6 +2,7 @@ var crazyCircles;
 (function (crazyCircles) {
     // Variable f�r beide Kreise
     let circles = [];
+    let c;
     //Variablen f�r die schwarzen Kreise
     let x;
     let y;
@@ -51,7 +52,7 @@ var crazyCircles;
     function animate() {
         crazyCircles.crc2.putImageData(imgData, 0, 0);
         for (let i = 0; i < b; i++) {
-            let c = circles[i];
+            c = circles[i];
             c.update();
         }
         rc.update();
@@ -61,7 +62,7 @@ var crazyCircles;
         // Roter Kreis wird gezeichnet
         for (let i = 0; i < r; i++) {
             rc = new crazyCircles.RedCircle();
-            redCircle[i] = rc;
+            circles[i] = rc;
             console.log("create new red circle");
             rc.setRandomPosition();
         }
@@ -99,7 +100,7 @@ var crazyCircles;
         if (clickedCircle.length == 5) {
             let newRedCircle = new crazyCircles.RedCircle();
             circles.push(newRedCircle);
-            console.log("create new  red circle");
+            console.log(newRedCircle.x);
             b++;
             rc.vx = 3;
         }

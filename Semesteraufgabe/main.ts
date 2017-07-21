@@ -4,6 +4,7 @@ namespace crazyCircles {
 
     // Variable für beide Kreise
     let circles: Circles[] = [];
+    let c: Circles;
 
     //Variablen für die schwarzen Kreise
     let x: number;
@@ -71,7 +72,7 @@ namespace crazyCircles {
     function animate(): void {
         crc2.putImageData(imgData, 0, 0);
         for (let i: number = 0; i < b; i++) {
-            let c: Circles = circles[i];
+            c = circles[i];
             c.update();
 
         }
@@ -85,7 +86,7 @@ namespace crazyCircles {
         // Roter Kreis wird gezeichnet
         for (let i: number = 0; i < r; i++) {
             rc = new RedCircle();
-            redCircle[i] = rc;
+            circles[i] = rc;
             console.log("create new red circle");
             rc.setRandomPosition();
 
@@ -134,7 +135,7 @@ namespace crazyCircles {
         if (clickedCircle.length == 5) {        //wenn 5 Kreise im Array sind, wird ein weiterer Kreis hinzugefügt
             let newRedCircle: Circles = new RedCircle();
             circles.push(newRedCircle);
-            console.log("create new  red circle");
+            console.log(newRedCircle.x);
             b++;
             rc.vx = 3;
         }
