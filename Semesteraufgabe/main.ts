@@ -76,6 +76,7 @@ namespace crazyCircles {
 
         }
         rc.update();
+
         window.setTimeout(animate, 20);
 
     }
@@ -102,8 +103,8 @@ namespace crazyCircles {
 
     function clickCanvas(_event: MouseEvent): void {
 
-        let diffX: number = rc.x - _event.clientX;
-        let diffY: number = rc.y - _event.clientY;
+        let diffX: number = rc.x - _event.offsetX;
+        let diffY: number = rc.y - _event.offsetY;
 
         if (Math.abs(diffX) < rc.radius && Math.abs(diffY) < rc.radius) {
             console.log("getroffen");

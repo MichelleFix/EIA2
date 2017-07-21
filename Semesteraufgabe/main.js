@@ -75,8 +75,8 @@ var crazyCircles;
         }
     }
     function clickCanvas(_event) {
-        let diffX = rc.x - _event.clientX;
-        let diffY = rc.y - _event.clientY;
+        let diffX = rc.x - _event.offsetX;
+        let diffY = rc.y - _event.offsetY;
         if (Math.abs(diffX) < rc.radius && Math.abs(diffY) < rc.radius) {
             console.log("getroffen");
             clickRedCircle();
