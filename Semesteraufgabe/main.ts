@@ -135,7 +135,8 @@ namespace crazyCircles {
             let newRedCircle: Circles = new RedCircle();
             circles.push(newRedCircle);
             console.log("create new  red circle");
-            r++;
+            b++;
+            rc.vx = 3;
         }
 
     }

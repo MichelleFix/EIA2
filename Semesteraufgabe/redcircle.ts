@@ -44,7 +44,7 @@ namespace crazyCircles {
             //neue Position
             this.x += this.vx; //+2
             this.y += this.vy; //-2
-        }//move
+        }
 
         setRandomPosition(): void {
             this.x = (Math.random() * (400) + 50);      // 2. Attribut von Flower

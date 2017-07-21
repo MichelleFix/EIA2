@@ -29,7 +29,7 @@ var crazyCircles;
             //neue Position
             this.x += this.vx; //+2
             this.y += this.vy; //-2
-        } //move
+        }
         setRandomPosition() {
             this.x = (Math.random() * (400) + 50); // 2. Attribut von Flower
             this.y = (Math.random() * (400) + 50); // 3. Attribut von Flower
