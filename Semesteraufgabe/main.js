@@ -75,8 +75,6 @@ var crazyCircles;
         }
     }
     function clickCanvas(_event) {
-        let mX = _event.clientX;
-        let mY = _event.clientY;
         let diffX = rc.x - _event.clientX;
         let diffY = rc.y - _event.clientY;
         if (Math.abs(diffX) < rc.radius && Math.abs(diffY) < rc.radius) {
@@ -100,8 +98,8 @@ var crazyCircles;
         rc.vx *= 1.5;
         if (clickedCircle.length == 5) {
             let newRedCircle = new crazyCircles.RedCircle();
-            console.log("create new  red circle");
             circles.push(newRedCircle);
+            console.log("create new  red circle");
             r++;
         }
     }

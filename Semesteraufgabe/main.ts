@@ -20,7 +20,7 @@ namespace crazyCircles {
     let level: number = 0;
 
     let imgData: ImageData;     // Bildschirm wird aktualisiert
-    
+
     let miss: number = 0;
 
     //HTML Elemente
@@ -101,11 +101,9 @@ namespace crazyCircles {
     }
 
     function clickCanvas(_event: MouseEvent): void {
-        let mX = _event.clientX;
-        let mY = _event.clientY;
 
-        let diffX = rc.x - _event.clientX;
-        let diffY = rc.y - _event.clientY;
+        let diffX: number = rc.x - _event.clientX;
+        let diffY: number = rc.y - _event.clientY;
 
         if (Math.abs(diffX) < rc.radius && Math.abs(diffY) < rc.radius) {
             console.log("getroffen");
@@ -134,8 +132,8 @@ namespace crazyCircles {
 
         if (clickedCircle.length == 5) {        //wenn 5 Kreise im Array sind, wird ein weiterer Kreis hinzugefügt
             let newRedCircle: Circles = new RedCircle();
-            console.log("create new  red circle");
             circles.push(newRedCircle);
+            console.log("create new  red circle");
             r++;
         }
 
