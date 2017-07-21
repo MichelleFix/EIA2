@@ -133,9 +133,9 @@ namespace crazyCircles {
 
 
         if (clickedCircle.length == 5) {        //wenn 5 Kreise im Array sind, wird ein weiterer Kreis hinzugefügt
-            let newRedCircle: RedCircle = new RedCircle();
+            let newRedCircle: Circles = new RedCircle();
             console.log("create new  red circle");
-            redCircle.push(newRedCircle);
+            circles.push(newRedCircle);
             r++;
         }
 

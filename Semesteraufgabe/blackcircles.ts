@@ -9,8 +9,8 @@ namespace crazyCircles {
 
         constructor() {
             super();
-            this.vx = 2;
-            this.vy = -2;
+            this.vx = (Math.random() * (3) + 0);
+            this.vy = (Math.random() * (0) + -3);
         }
 
 

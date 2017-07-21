@@ -101,7 +101,7 @@ var crazyCircles;
         if (clickedCircle.length == 5) {
             let newRedCircle = new crazyCircles.RedCircle();
             console.log("create new  red circle");
-            redCircle.push(newRedCircle);
+            circles.push(newRedCircle);
             r++;
         }
     }
